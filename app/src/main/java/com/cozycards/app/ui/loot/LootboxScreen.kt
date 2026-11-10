@@ -91,7 +91,7 @@ fun LootboxScreen(onCard: (String) -> Unit) {
         busy = true
         scope.launch {
             // Cards are granted inside the transaction before any animation plays.
-            runCatching { block() }.onSuccess { opening = it }.onFailure { error = it.message }
+            runCatching { block() }.onSuccess { if (it.isNotEmpty()) opening = it }.onFailure { error = it.message }
             busy = false
         }
     }

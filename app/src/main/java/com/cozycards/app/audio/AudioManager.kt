@@ -47,6 +47,7 @@ class GameAudio(private val context: Context) {
         Sfx.entries.forEach { ids[it] = pool.load(context, it.res, 1) }
     }
 
+    @Synchronized
     fun apply(s: AppSettings) {
         settings = s
         updateMusic()
@@ -64,6 +65,7 @@ class GameAudio(private val context: Context) {
         pool.play(id, v, v, 1, 0, rate.coerceIn(0.5f, 2f))
     }
 
+    @Synchronized
     fun onForeground(fg: Boolean) {
         foreground = fg
         updateMusic()
@@ -83,6 +85,7 @@ class GameAudio(private val context: Context) {
         }
     }
 
+    @Synchronized
     fun release() {
         music?.release(); music = null
         pool.release()

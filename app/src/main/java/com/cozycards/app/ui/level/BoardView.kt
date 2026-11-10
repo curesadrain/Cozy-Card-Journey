@@ -192,6 +192,12 @@ private fun DrawScope.drawStatic(board: Board, s: Float) {
 private fun gravityOffset(g: Dir) = Offset(-g.dx.toFloat(), -g.dy.toFloat())
 
 private fun DrawScope.drawTransition(from: Board, to: Board, kind: StepKind, spawned: Set<Int>, t: Float, s: Float, gravity: Dir) {
+    // A new stage can have a different board size: no per-cell interpolation is possible.
+    if (kind == StepKind.STAGE || from.width != to.width || from.height != to.height) {
+        drawStatic(to, s)
+        drawRect(Color.White.copy(alpha = (1f - t) * 0.8f))
+        return
+    }
     val fromPos = HashMap<Int, Pos>()
     for (p in from.positions) from[p].piece?.let { fromPos[it.id] = p }
     val toPieces = HashMap<Int, Pair<Pos, Piece>>()

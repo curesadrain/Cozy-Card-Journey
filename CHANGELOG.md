@@ -29,9 +29,9 @@ First complete version.
 * Original synthesised music and sound effects.
 
 ### Tests (all passing at release)
-* engine: 55 · levels: 21 (over all 1000 levels) · game: 36 · app (Robolectric): 10 (Room parity,
+* engine: 55 · levels: 21 (over all 1000 levels) · game: 36 · app (Robolectric): 11 (Room parity,
   rollback, migration v1→v2, full level played through the ViewModel, animation watchdog,
-  pre-level boosters, screenshots of 12 screens + card art). Total 122.
+  pre-level boosters, board stage-change rendering, screenshots of 12 screens + card art). Total 123.
 * Shader harness: both programs compile/link and render in WebGL (SwiftShader).
 * Release APK built with R8; generated serializers and Room implementation verified present.
 
@@ -43,3 +43,6 @@ First complete version.
 * Navigation from a coroutine could resume off the main thread after a DB transaction → explicit
   switch to the main dispatcher before navigating.
 * Rarity labels on the map were unreadable on light scenes → dark pill background.
+* Stage change to a board of a different size would index out of bounds in the board animation.
+* Opening an empty set of lootboxes could crash the opening overlay.
+* Concurrent state refreshes could publish an older snapshot last → refreshes are serialised.

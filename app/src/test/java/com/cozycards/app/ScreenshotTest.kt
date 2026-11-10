@@ -9,6 +9,9 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.fillMaxSize
 import com.cozycards.app.cards.CardArt
 import com.cozycards.app.ui.CozyApp
 import com.cozycards.app.ui.theme.CozyTheme
@@ -112,6 +115,39 @@ class ScreenshotTest {
         clickText("Settings")
         shot("12_settings")
     }
+
+    @Test
+    fun boardAnimatesEffectsAndStageChanges() {
+        val spec = { w: Int, h: Int -> com.cozycards.engine.GameSpec(5, 20, listOf(com.cozycards.engine.StageSpec(w, h, List(w * h) { com.cozycards.engine.CellSpec(ice = if (it % 5 == 0) 1 else 0) }, listOf(com.cozycards.engine.Goal(com.cozycards.engine.GoalType.SCORE, 99999))))) }
+        val g = com.cozycards.engine.Match3Game(spec(8, 8), 5)
+        val bombAt = g.placeSpecials(listOf(com.cozycards.engine.Special.BOMB, com.cozycards.engine.Special.ROCKET_H))
+        val before = g.board.copy()
+        val r = g.useHammer(bombAt.first()) as com.cozycards.engine.MoveResult.Applied
+        val big = com.cozycards.engine.Match3Game(spec(9, 9), 6)
+        val steps = listOf(
+            com.cozycards.app.ui.level.StepAnim(1, before, r.steps.first()),
+            com.cozycards.app.ui.level.StepAnim(2, before, com.cozycards.engine.Step(com.cozycards.engine.StepKind.STAGE, big.board.copy())),
+        )
+        var current by androidx.compose.runtime.mutableStateOf(steps[0])
+        compose.mainClock.autoAdvance = false
+        compose.setContent {
+            CozyTheme {
+                com.cozycards.app.ui.level.BoardView(
+                    state = com.cozycards.app.ui.level.LevelUiState(board = current.from, anim = current, movesLeft = 10, score = 0, goals = emptyList(), stageIndex = 0, stageCount = 2, gravity = com.cozycards.engine.Dir.DOWN),
+                    portals = emptyList(), conveyors = emptyList(), reducedMotion = false, haptics = false,
+                    onSwap = { _, _ -> }, onTap = {}, onStepDone = {},
+                    modifier = androidx.compose.ui.Modifier.androidxFill(),
+                )
+            }
+        }
+        advance(120)
+        shot("13_board_blast_midway")
+        current = steps[1]
+        advance(300)
+        shot("14_board_stage_change")
+    }
+
+    private fun androidx.compose.ui.Modifier.androidxFill() = this.fillMaxSize()
 
     @Test
     fun renderCardArt() {

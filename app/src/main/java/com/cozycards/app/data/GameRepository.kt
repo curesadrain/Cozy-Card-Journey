@@ -28,6 +28,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.TimeZone
@@ -88,7 +89,12 @@ class GameRepository(
         writeBackup()
     }
 
-    suspend fun refresh() {
+    private val refreshLock = kotlinx.coroutines.sync.Mutex()
+
+    /** Serialised so an older snapshot can never overwrite a newer one. */
+    suspend fun refresh() = refreshLock.withLock { refreshInternal() }
+
+    private suspend fun refreshInternal() {
         val s = store.read { dao ->
             val meta = dao.allMeta().associate { it.key to it.value }
             val owned = Cosmetic.entries.filter { dao.ledgerCount("cosmetic.${it.name}") > 0 }.toSet()
