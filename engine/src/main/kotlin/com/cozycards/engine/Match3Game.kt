@@ -15,6 +15,9 @@ class Match3Game(val spec: GameSpec, seed: Long) {
         const val POINTS_PER_OBSTACLE = 20
     }
 
+    /** When false, no board snapshots are recorded (much faster; used by simulations). */
+    var recordSteps = true
+
     private val rng = Rng(seed)
     private var idCounter = 0
     private fun newId() = ++idCounter
@@ -191,7 +194,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
 
         if (comboKind(pa, pb)) {
             swapPieces(a, b)
-            steps += Step(StepKind.SWAP, board.copy())
+            if (recordSteps) steps += Step(StepKind.SWAP, board.copy())
             consumeMove()
             val r = resolver()
             // After the swap the dragged piece (pa) sits at b: that's the combo centre.
@@ -204,7 +207,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
                 swapPieces(a, b)
                 return MoveResult.Invalid("No match")
             }
-            steps += Step(StepKind.SWAP, board.copy())
+            if (recordSteps) steps += Step(StepKind.SWAP, board.copy())
             consumeMove()
             cascade(steps, events, listOf(b, a), startCascade = 0, settleFirst = false)
         }
@@ -244,7 +247,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
         score += delta
         goals.forEach { it.addScore(delta) }
         events += r.events
-        steps += Step(kind, board.copy(), r.touched.toSet(), r.effects.toList(), r.events.toList(), cascade)
+        if (recordSteps) steps += Step(kind, board.copy(), r.touched.toSet(), r.effects.toList(), r.events.toList(), cascade)
     }
 
     /**
@@ -283,7 +286,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
         var guard = 0
         while (guard++ < 50) {
             val res = Gravity.settle(board, topology, spawner)
-            if (res.moved) steps += Step(StepKind.FALL, board.copy(), spawnedIds = res.spawnedIds)
+            if (res.moved && recordSteps) steps += Step(StepKind.FALL, board.copy(), spawnedIds = res.spawnedIds)
             val delivered = board.positions.filter { topology.isExit(it) && board[it].piece?.kind == PieceKind.DROP }
             if (delivered.isEmpty()) return
             val evs = delivered.map { p ->
@@ -294,7 +297,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
             score += evs.size * 100
             goals.forEach { it.addScore(evs.size * 100) }
             events += evs
-            steps += Step(StepKind.CLEAR, board.copy(), delivered.toSet(), emptyList(), evs)
+            if (recordSteps) steps += Step(StepKind.CLEAR, board.copy(), delivered.toSet(), emptyList(), evs)
         }
     }
 
@@ -332,7 +335,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
             val st = stage
             if (st.conveyors.isNotEmpty()) {
                 for (loop in st.conveyors) shiftConveyor(loop)
-                steps += Step(StepKind.CONVEYOR, board.copy())
+                if (recordSteps) steps += Step(StepKind.CONVEYOR, board.copy())
                 cascade(steps, events, emptyList(), 0)
             }
             if (st.gravitySwitchEvery > 0 && st.gravityCycle.isNotEmpty() && movesMade % st.gravitySwitchEvery == 0) {
@@ -341,7 +344,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
                 topology = Topology(board, gravity, st.portals)
                 val e = GameEvent.GravityChanged(gravity)
                 events += e
-                steps += Step(StepKind.GRAVITY, board.copy(), events = listOf(e))
+                if (recordSteps) steps += Step(StepKind.GRAVITY, board.copy(), events = listOf(e))
                 cascade(steps, events, emptyList(), 0)
             }
         }
@@ -363,7 +366,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
                 events += e
                 loadStage(stageIndex + 1)
                 movesLeft += stage.bonusMoves
-                steps += Step(StepKind.STAGE, board.copy(), events = listOf(e))
+                if (recordSteps) steps += Step(StepKind.STAGE, board.copy(), events = listOf(e))
                 return
             }
             status = GameStatus.WON
@@ -377,7 +380,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
         if (!hasPossibleMove()) {
             if (shuffleBoard()) {
                 events += GameEvent.Shuffled
-                steps += Step(StepKind.SHUFFLE, board.copy(), events = listOf(GameEvent.Shuffled))
+                if (recordSteps) steps += Step(StepKind.SHUFFLE, board.copy(), events = listOf(GameEvent.Shuffled))
             } else {
                 status = GameStatus.LOST
                 lossReason = LossReason.NO_POSSIBLE_MOVES
@@ -485,7 +488,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
         val pa = board[a].piece!!
         val pb = board[b].piece!!
         swapPieces(a, b)
-        steps += Step(StepKind.SWAP, board.copy())
+        if (recordSteps) steps += Step(StepKind.SWAP, board.copy())
         if (comboKind(pa, pb)) {
             val r = resolver()
             r.combo(a, board[a].piece!!, b, board[b].piece!!)

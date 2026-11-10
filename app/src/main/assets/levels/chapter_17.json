@@ -1,0 +1,3144 @@
+{
+ "chapter": 17,
+ "levels": [
+  {
+   "id": "c17_l01",
+   "number": 801,
+   "chapter": 17,
+   "indexInChapter": 1,
+   "colors": 5,
+   "moves": 16,
+   "difficulty": 0.584,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . X1 X1 X1 . . .",
+      "X1 . . . . . . . X1",
+      "X1 . X1 X1 . X1 X1 . X1"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 11
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+crates-bottom",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l02",
+   "number": 802,
+   "chapter": 17,
+   "indexInChapter": 2,
+   "colors": 5,
+   "moves": 14,
+   "difficulty": 0.589,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "w. . w. w. w. w. . w.",
+      ". . . w. w. . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_WEBS",
+       "target": 8
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+webs-bottom",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l03",
+   "number": 803,
+   "chapter": 17,
+   "indexInChapter": 3,
+   "colors": 5,
+   "moves": 23,
+   "difficulty": 0.594,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". S1 . . . . . S1 .",
+      ". S1 . . . . . S1 .",
+      "# # . . S1 . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 5
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "cross+stones-pillars",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l04",
+   "number": 804,
+   "chapter": 17,
+   "indexInChapter": 4,
+   "colors": 5,
+   "moves": 22,
+   "difficulty": 0.599,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . X3 X3 X3 X3 . .",
+      ". . . . . . . R",
+      "X3 . . . . . . X3",
+      ". . . . . . . .",
+      "X3 . . . . . . X3",
+      ". . . . . . . .",
+      ". . X3 . . X3 . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+crates-border+gift",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l05",
+   "number": 805,
+   "chapter": 17,
+   "indexInChapter": 5,
+   "colors": 5,
+   "moves": 20,
+   "difficulty": 0.604,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". X1 . X1 X1 . X1 .",
+      ". X1 X1 X1 X1 X1 X1 ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 40,
+       "color": 4
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "RARE"
+   },
+   "template": "courtyard8+crates-lower",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l06",
+   "number": 806,
+   "chapter": 17,
+   "indexInChapter": 6,
+   "colors": 5,
+   "moves": 14,
+   "difficulty": 0.538,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      "# . . . . . . . #",
+      ". X1 X1 . . . X1 X1 .",
+      ". X1 X1 . . . X1 X1 .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . X1 . . . X1 . .",
+      "# . . . . . . . #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      }
+     ],
+     "gravityCycle": [
+      "DOWN",
+      "LEFT",
+      "DOWN",
+      "RIGHT"
+     ],
+     "gravitySwitchEvery": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+turning-sky+crates-corners",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l07",
+   "number": 807,
+   "chapter": 17,
+   "indexInChapter": 7,
+   "colors": 5,
+   "moves": 20,
+   "difficulty": 0.613,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . X1 . . . X1 . .",
+      ". . . . . . . . .",
+      "i. i. I. I. i. i. I. I. I.",
+      "# i. I. I. I. I. i. i. #",
+      "# i. X1 X1 I. X1 X1 i. #",
+      "# # . X1 . X1 . # #",
+      "# # # . . . # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 19
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "teacup+crates-ring+ice-band",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l08",
+   "number": 808,
+   "chapter": 17,
+   "indexInChapter": 8,
+   "colors": 5,
+   "moves": 28,
+   "difficulty": 0.618,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. S1 . S1 . S1 i. .",
+      "S1 i. . . i. . . i. S1",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 5
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 26
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 39,
+       "color": 3
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+stones-band+ice-pillars",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 19,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l09",
+   "number": 809,
+   "chapter": 17,
+   "indexInChapter": 9,
+   "colors": 5,
+   "moves": 29,
+   "difficulty": 0.623,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# . . . . . . . #",
+      ". S1 . . . . . S1 .",
+      ". S1 . . . . . S1 .",
+      ". . . . . . . . .",
+      ". . c. . . . c. . .",
+      "c. . w. c. c. c. w. . c.",
+      "w. w. . c. w. c. . w. w.",
+      "# S1 . . w. . . S1 #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 9
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 8
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+stones-pillars+chains-lower+webs-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 23,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l10",
+   "number": 810,
+   "chapter": 17,
+   "indexInChapter": 10,
+   "colors": 5,
+   "moves": 12,
+   "difficulty": 0.748,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . w. . . w. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . w. . . w. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . w. . . w. . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_WEBS",
+       "target": 6
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 41,
+       "color": 0
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 2
+       },
+       {
+        "x": 1,
+        "y": 2
+       },
+       {
+        "x": 2,
+        "y": 2
+       },
+       {
+        "x": 3,
+        "y": 2
+       },
+       {
+        "x": 4,
+        "y": 2
+       },
+       {
+        "x": 5,
+        "y": 2
+       },
+       {
+        "x": 6,
+        "y": 2
+       },
+       {
+        "x": 7,
+        "y": 2
+       },
+       {
+        "x": 7,
+        "y": 3
+       },
+       {
+        "x": 6,
+        "y": 3
+       },
+       {
+        "x": 5,
+        "y": 3
+       },
+       {
+        "x": 4,
+        "y": 3
+       },
+       {
+        "x": 3,
+        "y": 3
+       },
+       {
+        "x": 2,
+        "y": 3
+       },
+       {
+        "x": 1,
+        "y": 3
+       },
+       {
+        "x": 0,
+        "y": 3
+       }
+      ]
+     ]
+    },
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". w. . . w. . . w. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# # . . . . . # #",
+      "# # . . w. . . # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_WEBS",
+       "target": 4
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 5
+       },
+       {
+        "x": 1,
+        "y": 5
+       },
+       {
+        "x": 2,
+        "y": 5
+       },
+       {
+        "x": 3,
+        "y": 5
+       },
+       {
+        "x": 4,
+        "y": 5
+       },
+       {
+        "x": 5,
+        "y": 5
+       },
+       {
+        "x": 6,
+        "y": 5
+       },
+       {
+        "x": 7,
+        "y": 5
+       },
+       {
+        "x": 8,
+        "y": 5
+       },
+       {
+        "x": 8,
+        "y": 6
+       },
+       {
+        "x": 7,
+        "y": 6
+       },
+       {
+        "x": 6,
+        "y": 6
+       },
+       {
+        "x": 5,
+        "y": 6
+       },
+       {
+        "x": 4,
+        "y": 6
+       },
+       {
+        "x": 3,
+        "y": 6
+       },
+       {
+        "x": 2,
+        "y": 6
+       },
+       {
+        "x": 1,
+        "y": 6
+       },
+       {
+        "x": 0,
+        "y": 6
+       }
+      ]
+     ],
+     "bonusMoves": 7
+    },
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". w. . w. w. . w. .",
+      "B . . w. w. . . .",
+      ". . . w. w. . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_WEBS",
+       "target": 8
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 36,
+       "color": 2
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 2
+       },
+       {
+        "x": 1,
+        "y": 2
+       },
+       {
+        "x": 2,
+        "y": 2
+       },
+       {
+        "x": 3,
+        "y": 2
+       },
+       {
+        "x": 4,
+        "y": 2
+       },
+       {
+        "x": 5,
+        "y": 2
+       },
+       {
+        "x": 6,
+        "y": 2
+       },
+       {
+        "x": 7,
+        "y": 2
+       },
+       {
+        "x": 7,
+        "y": 3
+       },
+       {
+        "x": 6,
+        "y": 3
+       },
+       {
+        "x": 5,
+        "y": 3
+       },
+       {
+        "x": 4,
+        "y": 3
+       },
+       {
+        "x": 3,
+        "y": 3
+       },
+       {
+        "x": 2,
+        "y": 3
+       },
+       {
+        "x": 1,
+        "y": 3
+       },
+       {
+        "x": 0,
+        "y": 3
+       }
+      ]
+     ],
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 137,
+    "lootbox": "EPIC"
+   },
+   "template": "courtyard8+belt+webs-stripes | frame+belt+webs-stripes | street8x9+belt+webs-bottom+gift",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 21,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l11",
+   "number": 811,
+   "chapter": 17,
+   "indexInChapter": 11,
+   "colors": 5,
+   "moves": 35,
+   "difficulty": 0.563,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # # . # . # # #",
+      "# # . X3 . X3 . # #",
+      "# . . . . . . . #",
+      ". . . . . . . . .",
+      "X3 . . . # . . . X3",
+      "X3 . . . . . . . X3",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # # X3 # X3 # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 39,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "petal+crates-border",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 23,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l12",
+   "number": 812,
+   "chapter": 17,
+   "indexInChapter": 12,
+   "colors": 5,
+   "moves": 42,
+   "difficulty": 0.638,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . X3 X3 X3 X3 X3 . .",
+      ". . . . . . . . .",
+      ". . . # V # . . .",
+      ". . . # # # . . .",
+      "c. c. X3 # # # X3 c. c.",
+      "c. c. X3 # # # X3 c. c.",
+      ". . . # # # . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 9
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 8
+      }
+     ],
+     "portals": [
+      {
+       "entrance": {
+        "x": 3,
+        "y": 2
+       },
+       "exit": {
+        "x": 5,
+        "y": 0
+       }
+      },
+      {
+       "entrance": {
+        "x": 8,
+        "y": 7
+       },
+       "exit": {
+        "x": 0,
+        "y": 0
+       }
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "bridge+tide-portals+crates-ring+chains-lower+gift",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 35,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l13",
+   "number": 813,
+   "chapter": 17,
+   "indexInChapter": 13,
+   "colors": 5,
+   "moves": 40,
+   "difficulty": 0.643,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # w. . w. # #",
+      "# . . . . . #",
+      "w. . . . . . w.",
+      ". . . . . . .",
+      ". . . . . . .",
+      ". . . . . . .",
+      "X3 X3 X3 X3 X3 X3 X3",
+      "# w. . . . w. #",
+      "# # . X3 . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 6
+      }
+     ]
+    },
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . X3 X3 . . .",
+      ". . . X3 X3 . . .",
+      ". . X3 X3 X3 X3 . .",
+      ". . . . . . . .",
+      "w. . . X3 X3 . . w.",
+      "w. . w. w. w. w. . w.",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 8
+      }
+     ],
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "lantern+crates-bottom+webs-checker | street8x9+crates-center+webs-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 38,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l14",
+   "number": 814,
+   "chapter": 17,
+   "indexInChapter": 14,
+   "colors": 5,
+   "moves": 25,
+   "difficulty": 0.648,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". S1 . . . . . S1 .",
+      ". . c. c. S1 c. c. . .",
+      ". . c. . . . c. . .",
+      ". S1 . . . . . S1 .",
+      ". . c. . . . c. . .",
+      ". . c. c. . c. c. . .",
+      ". . . . . . . . .",
+      ". . . . S1 . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 12
+      }
+     ],
+     "portals": [
+      {
+       "entrance": {
+        "x": 0,
+        "y": 8
+       },
+       "exit": {
+        "x": 8,
+        "y": 0
+       }
+      },
+      {
+       "entrance": {
+        "x": 6,
+        "y": 8
+       },
+       "exit": {
+        "x": 2,
+        "y": 0
+       }
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+tide-portals+stones-pillars+chains-ring",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l15",
+   "number": 815,
+   "chapter": 17,
+   "indexInChapter": 15,
+   "colors": 5,
+   "moves": 43,
+   "difficulty": 0.653,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . D . . . . .",
+      ". S1 . . . . S1 .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". S1 . . . . S1 .",
+      "I. S1 i. I. i. i. S1 I.",
+      "I. i. I. I. i. i. I. I.",
+      "I. I. i. I. i. I. i. I."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 22
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "RARE"
+   },
+   "template": "street8x9+stones-pillars+ice-bottom+charms",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 36,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l16",
+   "number": 816,
+   "chapter": 17,
+   "indexInChapter": 16,
+   "colors": 5,
+   "moves": 19,
+   "difficulty": 0.587,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# . . # # # . . #",
+      ". . . . # . . . .",
+      "X3 . . . . . . . X3",
+      "R . . X3 X3 X3 . . .",
+      "X3 . . X3 . X3 . . X3",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # # . . . # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 9
+      }
+     ],
+     "gravity": "RIGHT"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+wind-right+crates-upper+gift",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l17",
+   "number": 817,
+   "chapter": 17,
+   "indexInChapter": 17,
+   "colors": 5,
+   "moves": 49,
+   "difficulty": 0.662,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# . . . . . . # #",
+      ". . . . # # # # #",
+      ". . . # # # # # #",
+      ". . . # # # # # #",
+      ". . . . # # # # #",
+      "# . . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "COLLECT_COLOR",
+       "target": 42,
+       "color": 1
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 42,
+       "color": 0
+      }
+     ],
+     "gravity": "LEFT"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "crescent+wind-left",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 41,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l18",
+   "number": 818,
+   "chapter": 17,
+   "indexInChapter": 18,
+   "colors": 5,
+   "moves": 20,
+   "difficulty": 0.667,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# . . # # # . . #",
+      ". . . . # . . . .",
+      ". . . S1 . S1 . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# . . S1 S1 S1 . . #",
+      "# # . . S1 . . # #",
+      "# # # . . . # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 3
+       },
+       {
+        "x": 1,
+        "y": 3
+       },
+       {
+        "x": 2,
+        "y": 3
+       },
+       {
+        "x": 3,
+        "y": 3
+       },
+       {
+        "x": 4,
+        "y": 3
+       },
+       {
+        "x": 5,
+        "y": 3
+       },
+       {
+        "x": 6,
+        "y": 3
+       },
+       {
+        "x": 7,
+        "y": 3
+       },
+       {
+        "x": 8,
+        "y": 3
+       },
+       {
+        "x": 8,
+        "y": 4
+       },
+       {
+        "x": 7,
+        "y": 4
+       },
+       {
+        "x": 6,
+        "y": 4
+       },
+       {
+        "x": 5,
+        "y": 4
+       },
+       {
+        "x": 4,
+        "y": 4
+       },
+       {
+        "x": 3,
+        "y": 4
+       },
+       {
+        "x": 2,
+        "y": 4
+       },
+       {
+        "x": 1,
+        "y": 4
+       },
+       {
+        "x": 0,
+        "y": 4
+       }
+      ]
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+belt+stones-center",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l19",
+   "number": 819,
+   "chapter": 17,
+   "indexInChapter": 19,
+   "colors": 5,
+   "moves": 39,
+   "difficulty": 0.672,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . D . . . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      "X3 X3 . X3 . X3 . X3 X3",
+      ". . . . . . . . .",
+      "X3 . . X3 X3 X3 . . X3",
+      ". . . . . . . . .",
+      "# # . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 11
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "cross+crates-band+charms",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 32,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l20",
+   "number": 820,
+   "chapter": 17,
+   "indexInChapter": 20,
+   "colors": 5,
+   "moves": 38,
+   "difficulty": 0.797,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # . . X3 . . # #",
+      "# # . . S1 . . # #",
+      "# . . S1 X3 S1 . . #",
+      "# X3 . . . . . X3 #",
+      ". X3 . S1 S1 S1 . X3 .",
+      ". . . . X3 . . . .",
+      ". X3 . . . . . X3 .",
+      ". X3 . . . . . X3 ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 11
+      }
+     ],
+     "gravity": "RIGHT"
+    }
+   ],
+   "reward": {
+    "coins": 137,
+    "lootbox": "EPIC"
+   },
+   "template": "mountain+wind-right+stones-center+crates-pillars",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 33,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l21",
+   "number": 821,
+   "chapter": 17,
+   "indexInChapter": 21,
+   "colors": 5,
+   "moves": 18,
+   "difficulty": 0.612,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . S1 S1 S1 S1 . .",
+      ". . . S1 S1 . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 3
+       },
+       {
+        "x": 1,
+        "y": 3
+       },
+       {
+        "x": 2,
+        "y": 3
+       },
+       {
+        "x": 3,
+        "y": 3
+       },
+       {
+        "x": 4,
+        "y": 3
+       },
+       {
+        "x": 5,
+        "y": 3
+       },
+       {
+        "x": 6,
+        "y": 3
+       },
+       {
+        "x": 7,
+        "y": 3
+       },
+       {
+        "x": 7,
+        "y": 4
+       },
+       {
+        "x": 6,
+        "y": 4
+       },
+       {
+        "x": 5,
+        "y": 4
+       },
+       {
+        "x": 4,
+        "y": 4
+       },
+       {
+        "x": 3,
+        "y": 4
+       },
+       {
+        "x": 2,
+        "y": 4
+       },
+       {
+        "x": 1,
+        "y": 4
+       },
+       {
+        "x": 0,
+        "y": 4
+       }
+      ]
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+belt+stones-center",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l22",
+   "number": 822,
+   "chapter": 17,
+   "indexInChapter": 22,
+   "colors": 5,
+   "moves": 23,
+   "difficulty": 0.687,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . X3 . . . .",
+      ". . X3 . . . X3 . .",
+      ". . X3 . . . X3 . .",
+      ". . . . . . . . .",
+      ". . X3 X3 X3 X3 X3 . .",
+      "# # . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      }
+     ],
+     "gravity": "UP"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "frame+wind-up+crates-ring",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l23",
+   "number": 823,
+   "chapter": 17,
+   "indexInChapter": 23,
+   "colors": 5,
+   "moves": 30,
+   "difficulty": 0.692,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". X1 X1 . . . X1 X1 .",
+      ". S1 . . . . . S1 .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      "X1 X1 . . . . . X1 X1",
+      "X1 S1 . . S1 . . S1 X1",
+      ". . X1 . . . X1 . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 5
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 12
+      }
+     ],
+     "portals": [
+      {
+       "entrance": {
+        "x": 1,
+        "y": 8
+       },
+       "exit": {
+        "x": 7,
+        "y": 0
+       }
+      },
+      {
+       "entrance": {
+        "x": 8,
+        "y": 8
+       },
+       "exit": {
+        "x": 0,
+        "y": 0
+       }
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "ring+tide-portals+stones-pillars+crates-corners",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 23,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l24",
+   "number": 824,
+   "chapter": 17,
+   "indexInChapter": 24,
+   "colors": 5,
+   "moves": 26,
+   "difficulty": 0.697,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# X3 . . X3 . . X3 #",
+      "# . . . X3 . . . #",
+      "# # . . . . . # #",
+      "# # . . X3 . . # #",
+      "# # # . X3 . # # #",
+      "# # # # X3 # # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 7
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 42,
+       "color": 2
+      }
+     ],
+     "gravityCycle": [
+      "DOWN",
+      "LEFT",
+      "DOWN",
+      "RIGHT"
+     ],
+     "gravitySwitchEvery": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "fan+turning-sky+crates-pillars",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 21,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l25",
+   "number": 825,
+   "chapter": 17,
+   "indexInChapter": 25,
+   "colors": 5,
+   "moves": 24,
+   "difficulty": 0.702,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". K . . . . . .",
+      "X2 . . . . . . X2",
+      "X2 X1 . . . . X1 X2",
+      ". . . L L . . .",
+      ". . X1 . . X1 . .",
+      "X2 X2 . L L . X2 X2"
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 4
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 12
+      }
+     ],
+     "keySpawns": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "RARE"
+   },
+   "template": "street8x9+vault+crates-lower",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 17,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l26",
+   "number": 826,
+   "chapter": 17,
+   "indexInChapter": 26,
+   "colors": 5,
+   "moves": 35,
+   "difficulty": 0.636,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "i. . . . . . . . i.",
+      "i. i. i. iC. i. iC. i. i. i.",
+      "# . C. . . . C. . #",
+      "# . . . . . . . #",
+      "# # S1 S1 S1 S1 S1 # #",
+      "# # . C. S1 C. . # #",
+      "# # # . . . # # #",
+      "# # # # i. # # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 6
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 12
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "fan+stones-band+chains-checker+ice-border",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 28,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l27",
+   "number": 827,
+   "chapter": 17,
+   "indexInChapter": 27,
+   "colors": 5,
+   "moves": 14,
+   "difficulty": 0.711,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      "X1 X1 X2 X1 . X1 X2 X1 X1",
+      "# . . . . . . . #",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      "# # # . . . # # #",
+      "# # # # . # # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "fan+crates-border",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l28",
+   "number": 828,
+   "chapter": 17,
+   "indexInChapter": 28,
+   "colors": 5,
+   "moves": 27,
+   "difficulty": 0.636,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "# . . i. i. . . #",
+      "# # X1 I. I. X1 # #",
+      "# # X1 I. I. X1 # #",
+      "# X1 . X1 X1 . X1 #",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 6
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 37,
+       "color": 4
+      }
+     ],
+     "gravityCycle": [
+      "DOWN",
+      "LEFT",
+      "DOWN",
+      "RIGHT"
+     ],
+     "gravitySwitchEvery": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "hourglass+turning-sky+crates-band+ice-center",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 20,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l29",
+   "number": 829,
+   "chapter": 17,
+   "indexInChapter": 29,
+   "colors": 5,
+   "moves": 26,
+   "difficulty": 0.721,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # D . . . . # #",
+      "# # . w. . w. . # #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . w. . . . w. . .",
+      ". w. . . . . . w. .",
+      "w. X1 X1 X1 X1 X1 X1 X1 w.",
+      "# # X1 . X1 . X1 # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 8
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "frame+crates-bottom+webs-checker+charms",
+   "metrics": {
+    "botWinRate": 0.58,
+    "botMedianMoves": 22,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l30",
+   "number": 830,
+   "chapter": 17,
+   "indexInChapter": 30,
+   "colors": 5,
+   "moves": 32,
+   "difficulty": 0.846,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . # #",
+      "# D X3 . X3 . #",
+      ". . . . . . .",
+      ". . X1 X1 X1 . .",
+      "X1 X1 . X1 . X1 X1",
+      ". . . . . . .",
+      ". . . . . . .",
+      "# . . . . . #",
+      "# # . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 4
+      }
+     ],
+     "dropSpawns": 3
+    }
+   ],
+   "reward": {
+    "coins": 137,
+    "lootbox": "EPIC"
+   },
+   "template": "lantern+crates-upper+charms",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 28,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l31",
+   "number": 831,
+   "chapter": 17,
+   "indexInChapter": 31,
+   "colors": 5,
+   "moves": 14,
+   "difficulty": 0.661,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . X3 . . X3 . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . X3 . . X3 . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . X1 . . X1 . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 6
+      }
+     ]
+    },
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # . . . . . # #",
+      "# # X1 . X3 . X1 # #",
+      "# . . . . . . . #",
+      "# . . . . . . . #",
+      ". . . . . . . . .",
+      ". . X3 X3 X1 X3 X3 . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      }
+     ],
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+crates-stripes | mountain+crates-ring",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 17,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l32",
+   "number": 832,
+   "chapter": 17,
+   "indexInChapter": 32,
+   "colors": 5,
+   "moves": 20,
+   "difficulty": 0.736,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      "# . K . . . . . #",
+      "# . . . . . . . #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . L . L . . .",
+      ". . L . L . L . ."
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 5
+      }
+     ],
+     "keySpawns": 5
+    },
+    {
+     "rows": [
+      ". . . . . . . . .",
+      "K . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". L . . . . . L .",
+      ". L . . L . . L .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 5
+      }
+     ],
+     "keySpawns": 5,
+     "bonusMoves": 7
+    },
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # K . . . . # #",
+      "# # . . . . . # #",
+      "# . . . . . . . #",
+      "# . . . . . . . #",
+      ". . . . . . . . .",
+      ". L . . . . . L .",
+      ". . . . . . . . .",
+      "L . . . L . . . L"
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 5
+      }
+     ],
+     "keySpawns": 5,
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "mountain+vault | ring+vault | mountain+vault",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 28,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l33",
+   "number": 833,
+   "chapter": 17,
+   "indexInChapter": 33,
+   "colors": 5,
+   "moves": 22,
+   "difficulty": 0.741,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # i. X1 i. X1 i. # #",
+      "# . c. X1 . X1 c. . #",
+      "i. X1 . X1 . X1 . X1 i.",
+      "i. . c. . X1 . c. . i.",
+      "i. . c. . . . c. . i.",
+      "# . c. . c. . c. . #",
+      "# # . . . . . # #",
+      "# # # i. i. i. # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 9
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 9
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 12
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "diamond+crates-upper+chains-ring+ice-border",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 18,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l34",
+   "number": 834,
+   "chapter": 17,
+   "indexInChapter": 34,
+   "colors": 5,
+   "moves": 13,
+   "difficulty": 0.746,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". X1 . . X1 . . X1 .",
+      ". . X3 . . . X3 . .",
+      "X1 . . . . . . . X1",
+      "X3 . X1 X1 X3 X1 X1 . X3",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 14
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 44,
+       "color": 2
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 6
+       },
+       {
+        "x": 1,
+        "y": 6
+       },
+       {
+        "x": 2,
+        "y": 6
+       },
+       {
+        "x": 3,
+        "y": 6
+       },
+       {
+        "x": 4,
+        "y": 6
+       },
+       {
+        "x": 5,
+        "y": 6
+       },
+       {
+        "x": 6,
+        "y": 6
+       },
+       {
+        "x": 7,
+        "y": 6
+       },
+       {
+        "x": 8,
+        "y": 6
+       },
+       {
+        "x": 8,
+        "y": 7
+       },
+       {
+        "x": 7,
+        "y": 7
+       },
+       {
+        "x": 6,
+        "y": 7
+       },
+       {
+        "x": 5,
+        "y": 7
+       },
+       {
+        "x": 4,
+        "y": 7
+       },
+       {
+        "x": 3,
+        "y": 7
+       },
+       {
+        "x": 2,
+        "y": 7
+       },
+       {
+        "x": 1,
+        "y": 7
+       },
+       {
+        "x": 0,
+        "y": 7
+       }
+      ]
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+belt+crates-upper",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 10,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l35",
+   "number": 835,
+   "chapter": 17,
+   "indexInChapter": 35,
+   "colors": 5,
+   "moves": 13,
+   "difficulty": 0.751,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      "X1 . c. . . c. . X1",
+      ". . . . . . . .",
+      "X1 . . . . . . X1",
+      "X1 X1 X1 X1 X1 X1 X1 X1",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . c. . . c. . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 12
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 4
+      }
+     ],
+     "gravityCycle": [
+      "DOWN",
+      "RIGHT",
+      "UP",
+      "LEFT"
+     ],
+     "gravitySwitchEvery": 3
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "RARE"
+   },
+   "template": "courtyard8+turning-sky+crates-upper+chains-stripes",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 10,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l36",
+   "number": 836,
+   "chapter": 17,
+   "indexInChapter": 36,
+   "colors": 5,
+   "moves": 25,
+   "difficulty": 0.685,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . c. . . . .",
+      "# . . . . . . . #",
+      "# # . . c. . . # #",
+      "# # c. c. c. c. c. # #",
+      "# # . # R # . # #",
+      "# # X1 X1 X1 X1 X1 # #",
+      "# # X1 . X1 . X1 # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 8
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 7
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "torii+crates-bottom+chains-center+gift",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 19,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l37",
+   "number": 837,
+   "chapter": 17,
+   "indexInChapter": 37,
+   "colors": 5,
+   "moves": 30,
+   "difficulty": 0.76,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# i. i. # # # i. i. #",
+      "i. S1 i. . # . i. S1 i.",
+      "i. i. i. . w. . i. i. i.",
+      ". w. . . S1 . . w. R",
+      ". w. . . S1 . . w. .",
+      "# iw. i. . . . i. iw. #",
+      "# # i. . S1 . i. # #",
+      "# # # . S1 . # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 7
+      },
+      {
+       "type": "CLEAR_ICE",
+       "target": 20
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+stones-pillars+webs-pillars+ice-corners+gift",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 26,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l38",
+   "number": 838,
+   "chapter": 17,
+   "indexInChapter": 38,
+   "colors": 5,
+   "moves": 46,
+   "difficulty": 0.765,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . .",
+      ". S2 . . . S2 .",
+      ". S2 . . . S2 .",
+      "X1 . . . . . X1",
+      "X1 . . . . . X1",
+      ". X1 . . . X1 .",
+      ". S2 X1 X3 X1 S2 ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 9
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 46,
+       "color": 4
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+stones-pillars+crates-lower",
+   "metrics": {
+    "botWinRate": 0.5,
+    "botMedianMoves": 41,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l39",
+   "number": 839,
+   "chapter": 17,
+   "indexInChapter": 39,
+   "colors": 5,
+   "moves": 75,
+   "difficulty": 0.77,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# . . # # # . . #",
+      ". X3 X3 . # . X3 X3 .",
+      "X3 . . S2 . S2 . . X3",
+      ". . . . S2 . . . .",
+      ". . S2 . . . S2 . .",
+      "# . . S2 . S2 . . #",
+      "# # . . . . . # #",
+      "# # # X3 X3 X3 # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 7
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 9
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 44,
+       "color": 1
+      }
+     ],
+     "gravity": "RIGHT"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+wind-right+stones-center+crates-border",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 68,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l40",
+   "number": 840,
+   "chapter": 17,
+   "indexInChapter": 40,
+   "colors": 5,
+   "moves": 16,
+   "difficulty": 0.895,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . X3 X3 X3 X3 X3 . .",
+      ". . X3 # # # X3 . .",
+      ". . X3 # # # X3 . .",
+      ". . X3 # # # X3 . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 11
+      }
+     ],
+     "portals": [
+      {
+       "entrance": {
+        "x": 1,
+        "y": 8
+       },
+       "exit": {
+        "x": 7,
+        "y": 0
+       }
+      },
+      {
+       "entrance": {
+        "x": 5,
+        "y": 8
+       },
+       "exit": {
+        "x": 3,
+        "y": 0
+       }
+      }
+     ],
+     "conveyors": [
+      [
+       {
+        "x": 0,
+        "y": 6
+       },
+       {
+        "x": 1,
+        "y": 6
+       },
+       {
+        "x": 2,
+        "y": 6
+       },
+       {
+        "x": 3,
+        "y": 6
+       },
+       {
+        "x": 4,
+        "y": 6
+       },
+       {
+        "x": 5,
+        "y": 6
+       },
+       {
+        "x": 6,
+        "y": 6
+       },
+       {
+        "x": 7,
+        "y": 6
+       },
+       {
+        "x": 8,
+        "y": 6
+       },
+       {
+        "x": 8,
+        "y": 7
+       },
+       {
+        "x": 7,
+        "y": 7
+       },
+       {
+        "x": 6,
+        "y": 7
+       },
+       {
+        "x": 5,
+        "y": 7
+       },
+       {
+        "x": 4,
+        "y": 7
+       },
+       {
+        "x": 3,
+        "y": 7
+       },
+       {
+        "x": 2,
+        "y": 7
+       },
+       {
+        "x": 1,
+        "y": 7
+       },
+       {
+        "x": 0,
+        "y": 7
+       }
+      ]
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 137,
+    "lootbox": "EPIC"
+   },
+   "template": "ring+belt+tide-portals+crates-ring",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 13,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l41",
+   "number": 841,
+   "chapter": 17,
+   "indexInChapter": 41,
+   "colors": 5,
+   "moves": 16,
+   "difficulty": 0.71,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . X3 . . . .",
+      ". . . . . . . . .",
+      "w. . . w. . w. . . w.",
+      "w. X3 w. . X3 . w. X3 w.",
+      ". . . . w. . . . .",
+      "# # . . . . . # #",
+      "# # . . X3 . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 5
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 9
+      }
+     ],
+     "gravity": "LEFT"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "frame+wind-left+crates-stripes+webs-lower",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 9,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l42",
+   "number": 842,
+   "chapter": 17,
+   "indexInChapter": 42,
+   "colors": 5,
+   "moves": 32,
+   "difficulty": 0.785,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". S1 . . . . S1 .",
+      ". S1 . c. C. . S1 .",
+      ". S1 c. C. c. C. S1 .",
+      ". . C. . . c. . .",
+      ". . . C. c. . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 10
+      }
+     ],
+     "gravity": "UP"
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+wind-up+stones-pillars+chains-center",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 28,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l43",
+   "number": 843,
+   "chapter": 17,
+   "indexInChapter": 43,
+   "colors": 5,
+   "moves": 27,
+   "difficulty": 0.79,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . V . . . .",
+      ". . . K . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "X3 . X3 X2 L X2 X3 . X3",
+      ". X2 X3 . . . X3 X2 .",
+      ". X2 X2 L L L X2 X2 ."
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 4
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 14
+      }
+     ],
+     "keySpawns": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+vault+crates-bottom+gift",
+   "metrics": {
+    "botWinRate": 0.58,
+    "botMedianMoves": 19,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l44",
+   "number": 844,
+   "chapter": 17,
+   "indexInChapter": 44,
+   "colors": 5,
+   "moves": 42,
+   "difficulty": 0.795,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". D . . . . . .",
+      ". C. . C. c. . c. .",
+      "C. . . c. C. . . c.",
+      ". . S1 . . S1 . .",
+      ". S1 S1 c. C. S1 S1 .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 10
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+stones-band+chains-upper+charms",
+   "metrics": {
+    "botWinRate": 0.58,
+    "botMedianMoves": 37,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l45",
+   "number": 845,
+   "chapter": 17,
+   "indexInChapter": 45,
+   "colors": 5,
+   "moves": 75,
+   "difficulty": 0.72,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . X3 . S1 . X3 . .",
+      ". . X3 . S1 . X3 . .",
+      ". . X3 . . . X3 . .",
+      ". S1 . . . . . S1 .",
+      ". . X3 X3 . X3 X3 . .",
+      "# # . . S1 . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 5
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      }
+     ]
+    },
+    {
+     "rows": [
+      ". . . . . . . . .",
+      "S1 . S1 . . . S1 . S1",
+      "# S1 . . X3 . . S1 #",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # . P X3 . . # #",
+      "# # # . . . # # #",
+      "# # # # . # # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 2
+      }
+     ],
+     "bonusMoves": 7
+    },
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . X3 S1 S1 X3 . .",
+      ". S1 X3 S1 S1 X3 S1 .",
+      "X3 X3 X3 . . X3 X3 X3",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 35,
+       "color": 0
+      }
+     ],
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "RARE"
+   },
+   "template": "frame+stones-pillars+crates-ring | fan+stones-corners+crates-stripes+gift | street8x9+stones-band+crates-band",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 82,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l46",
+   "number": 846,
+   "chapter": 17,
+   "indexInChapter": 46,
+   "colors": 5,
+   "moves": 75,
+   "difficulty": 0.734,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". D . . . . . . .",
+      ". . . . . . . . .",
+      ". S1 . . . . . S1 .",
+      ". . . # . # . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      "S1 S1 . # # # . S1 S1"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2
+    },
+    {
+     "rows": [
+      "# # . . . D . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      ". . . . S1 . . . .",
+      ". . S1 . S1 . S1 . .",
+      ". . . S1 . S1 . . .",
+      ". . . . . . . . .",
+      "# # . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 41,
+       "color": 1
+      }
+     ],
+     "dropSpawns": 2,
+     "bonusMoves": 7
+    },
+    {
+     "rows": [
+      ". . . . . . . . D",
+      ". . . . . . . . .",
+      ". S1 . . . . . S1 .",
+      ". . . . . . . . .",
+      "# S1 . . . . . S1 #",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # # . S1 . # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 5
+      },
+      {
+       "type": "DELIVER_DROPS",
+       "target": 3
+      }
+     ],
+     "dropSpawns": 2,
+     "bonusMoves": 7
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "bridge+stones-corners+charms | frame+stones-center+charms | teacup+stones-pillars+charms",
+   "metrics": {
+    "botWinRate": 0.58,
+    "botMedianMoves": 95,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l47",
+   "number": 847,
+   "chapter": 17,
+   "indexInChapter": 47,
+   "colors": 5,
+   "moves": 33,
+   "difficulty": 0.809,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      "c. c. . . . . . c. c.",
+      "c. S1 S1 . . . S1 S1 c.",
+      "# c. . . . . . c. #",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # S1 w. w. w. S1 # #",
+      "# # # w. . w. # # #",
+      "# # # # w. # # # #"
+     ],
+     "goals": [
+      {
+       "type": "BREAK_STONES",
+       "target": 6
+      },
+      {
+       "type": "BREAK_CHAINS",
+       "target": 8
+      },
+      {
+       "type": "CLEAR_WEBS",
+       "target": 6
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "fan+stones-corners+chains-corners+webs-bottom",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 29,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l48",
+   "number": 848,
+   "chapter": 17,
+   "indexInChapter": 48,
+   "colors": 5,
+   "moves": 11,
+   "difficulty": 0.814,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . X1 . . X1 . .",
+      ". K . . . . . .",
+      ". . . . . . . .",
+      ". . X1 . . X1 . .",
+      ". L . . . . L .",
+      "L . . . . . . L",
+      ". . X1 . . X1 . ."
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 4
+      },
+      {
+       "type": "BREAK_BOXES",
+       "target": 6
+      }
+     ],
+     "gravity": "RIGHT",
+     "keySpawns": 4
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+wind-right+vault+crates-stripes",
+   "metrics": {
+    "botWinRate": 0.75,
+    "botMedianMoves": 6,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l49",
+   "number": 849,
+   "chapter": 17,
+   "indexInChapter": 49,
+   "colors": 5,
+   "moves": 36,
+   "difficulty": 0.819,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . X3 # . # X3 . .",
+      ". X3 X2 # # # X2 X3 .",
+      ". X2 X2 # # # X2 X2 .",
+      ". . . # # # . . .",
+      ". . . # # # . . ."
+     ],
+     "goals": [
+      {
+       "type": "BREAK_BOXES",
+       "target": 10
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 44,
+       "color": 4
+      }
+     ],
+     "gravityCycle": [
+      "DOWN",
+      "RIGHT",
+      "UP",
+      "LEFT"
+     ],
+     "gravitySwitchEvery": 3
+    }
+   ],
+   "reward": {
+    "coins": 91,
+    "lootbox": "COMMON"
+   },
+   "template": "bridge+turning-sky+crates-band",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 32,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c17_l50",
+   "number": 850,
+   "chapter": 17,
+   "indexInChapter": 50,
+   "colors": 5,
+   "moves": 70,
+   "difficulty": 0.944,
+   "tier": "SUPER_HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . S2 . . . S2 . .",
+      ". . K . . . . . .",
+      ". . . # . # . . .",
+      ". . . # # # . . .",
+      "S2 L . # # # . L S2",
+      "S2 L S2 # # # S2 L S2",
+      ". . L # # # L . ."
+     ],
+     "goals": [
+      {
+       "type": "OPEN_LOCKS",
+       "target": 6
+      },
+      {
+       "type": "BREAK_STONES",
+       "target": 8
+      }
+     ],
+     "portals": [
+      {
+       "entrance": {
+        "x": 0,
+        "y": 7
+       },
+       "exit": {
+        "x": 8,
+        "y": 0
+       }
+      },
+      {
+       "entrance": {
+        "x": 5,
+        "y": 2
+       },
+       "exit": {
+        "x": 3,
+        "y": 0
+       }
+      }
+     ],
+     "keySpawns": 6
+    }
+   ],
+   "reward": {
+    "coins": 137,
+    "lootbox": "LEGENDARY"
+   },
+   "template": "bridge+tide-portals+vault+stones-corners",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 50,
+    "simulatedRuns": 24
+   }
+  }
+ ]
+}

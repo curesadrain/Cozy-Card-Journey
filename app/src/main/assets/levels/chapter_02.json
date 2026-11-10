@@ -1,0 +1,2070 @@
+{
+ "chapter": 2,
+ "levels": [
+  {
+   "id": "c02_l01",
+   "number": 51,
+   "chapter": 2,
+   "indexInChapter": 1,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.074,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . i. i. . i. i. . .",
+      ". . i. . i. . i. . .",
+      ". i. . i. . i. . i. .",
+      "# # . . . . . # #",
+      "# # . i. . i. . # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "frame+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l02",
+   "number": 52,
+   "chapter": 2,
+   "indexInChapter": 2,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.079,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "i. i. i. . . . i. i. i.",
+      ". . i. i. . i. i. . .",
+      ". i. i. i. i. i. i. i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 17
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-bottom",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l03",
+   "number": 53,
+   "chapter": 2,
+   "indexInChapter": 3,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.084,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . i. . . . .",
+      ". . . i. i. i. . . .",
+      ". . i. i. i. i. i. . .",
+      ". . . i. i. i. . . .",
+      ". . . . i. . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 21,
+       "color": 0
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-center",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 4,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l04",
+   "number": 54,
+   "chapter": 2,
+   "indexInChapter": 4,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.089,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # # . i. . # # #",
+      "# # . . i. . . # #",
+      "# # . . . . . # #",
+      "# i. . . i. . . i. #",
+      "# i. . . . . . i. #",
+      ". i. . . . . . i. .",
+      ". i. . . . . . i. .",
+      ". . . . B . . . .",
+      ". i. . . . . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "mountain+ice-pillars+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 6,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l05",
+   "number": 55,
+   "chapter": 2,
+   "indexInChapter": 5,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.094,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". i. i. . . i. i. .",
+      "# . i. . . i. . #",
+      "# # . i. i. . # #",
+      "# # i. i. i. i. # #",
+      "# . . . . . . #",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 12
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "RARE"
+   },
+   "template": "hourglass+ice-upper",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 6,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l06",
+   "number": 56,
+   "chapter": 2,
+   "indexInChapter": 6,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.028,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "i. . i. . . . i. . i.",
+      ". i. . . . . . i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . i. . . . i. . .",
+      ". i. . i. . i. . i. .",
+      ". . i. . i. . i. . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 15
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-checker",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 7,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l07",
+   "number": 57,
+   "chapter": 2,
+   "indexInChapter": 7,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.103,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . .",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. i. . . . i. i.",
+      ". . i. . i. . .",
+      ". . . . . . .",
+      ". i. i. . i. i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 10
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 7,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l08",
+   "number": 58,
+   "chapter": 2,
+   "indexInChapter": 8,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.108,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# . . . i. . . . #",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". . . . i. . . . .",
+      ". . . . i. . . . .",
+      ". i. . . i. . . i. .",
+      "# . . . . . . . #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 15
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+ice-pillars",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l09",
+   "number": 59,
+   "chapter": 2,
+   "indexInChapter": 9,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.113,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . .",
+      ". . . . . . .",
+      ". . . . . . .",
+      ". i. i. i. i. i. .",
+      ". i. . i. . i. .",
+      ". . . i. . . .",
+      "i. . . i. . . i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 12
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l10",
+   "number": 60,
+   "chapter": 2,
+   "indexInChapter": 10,
+   "colors": 5,
+   "moves": 18,
+   "difficulty": 0.238,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # i. i. . i. i. # #",
+      "# # i. i. . i. i. # #",
+      "# i. i. i. i. i. i. i. #",
+      "# . i. . . . i. . #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 17
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 69,
+    "lootbox": "EPIC"
+   },
+   "template": "mountain+ice-upper",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l11",
+   "number": 61,
+   "chapter": 2,
+   "indexInChapter": 11,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.053,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . # #",
+      "# . . . . . #",
+      ". . . . . . .",
+      ". . . i. . . .",
+      "i. . . . . . i.",
+      ". i. . i. . i. .",
+      "i. . i. . i. . i.",
+      "# . . . . . #",
+      "# # . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 10
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "lantern+ice-checker",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l12",
+   "number": 62,
+   "chapter": 2,
+   "indexInChapter": 12,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.128,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". . . . . . . .",
+      ". i. . . . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 14
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+ice-pillars",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l13",
+   "number": 63,
+   "chapter": 2,
+   "indexInChapter": 13,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.133,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "i. . . i. . . i.",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. . . i. . . i.",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. . . i. . . i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 9
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l14",
+   "number": 64,
+   "chapter": 2,
+   "indexInChapter": 14,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.138,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "V . . . . . . . .",
+      ". . i. . . . i. . .",
+      ". i. i. i. . i. i. i. .",
+      "i. . . i. . i. . . i.",
+      "i. i. . . . . . i. i.",
+      ". . . i. . i. . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-lower+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 6,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l15",
+   "number": 65,
+   "chapter": 2,
+   "indexInChapter": 15,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.143,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# . . . . . . # #",
+      ". . . . # # # # #",
+      ". . . # # # # # #",
+      ". . . # # # # # #",
+      ". . . . # # # # #",
+      "# . i. i. . i. i. # #",
+      "# # i. i. . i. i. # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 8
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "RARE"
+   },
+   "template": "crescent+ice-bottom",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 9,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l16",
+   "number": 66,
+   "chapter": 2,
+   "indexInChapter": 16,
+   "colors": 4,
+   "moves": 19,
+   "difficulty": 0.077,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . i. . . . .",
+      ". . . i. i. i. . . .",
+      ". . i. i. i. i. i. . .",
+      ". . . i. i. i. . . .",
+      ". . . . i. . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 20,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-center",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l17",
+   "number": 67,
+   "chapter": 2,
+   "indexInChapter": 17,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.152,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "i. i. i. i. i. i. i. i.",
+      ". i. . . . . i. .",
+      "i. . . i. i. . . i.",
+      ". i. . . . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 16
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 6,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l18",
+   "number": 68,
+   "chapter": 2,
+   "indexInChapter": 18,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.157,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". i. . . . . . i. .",
+      "i. i. . i. i. i. . i. i.",
+      ". . i. . . . i. . .",
+      "# # . i. . i. . # #",
+      "# # . i. . i. . # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 15
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "frame+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 7,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l19",
+   "number": 69,
+   "chapter": 2,
+   "indexInChapter": 19,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.162,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# . . . . . . . #",
+      ". i. . . . . . i. .",
+      "i. i. i. . . . i. i. i.",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "i. . . . . . . . i.",
+      "i. i. i. . . . i. i. i.",
+      "# . . . . . . . #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 16
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+ice-corners",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l20",
+   "number": 70,
+   "chapter": 2,
+   "indexInChapter": 20,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.287,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . i. i. . . .",
+      ". . i. i. i. i. . .",
+      ". i. i. i. i. i. i. .",
+      ". . i. i. i. i. . .",
+      ". . . i. i. . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 69,
+    "lootbox": "EPIC"
+   },
+   "template": "street8x9+ice-center",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l21",
+   "number": 71,
+   "chapter": 2,
+   "indexInChapter": 21,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.102,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . .",
+      ". . . i. . . .",
+      ". . . i. . . .",
+      ". i. i. i. i. i. .",
+      ". . i. i. i. . .",
+      ". . . i. . . .",
+      ". . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 11
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-center",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l22",
+   "number": 72,
+   "chapter": 2,
+   "indexInChapter": 22,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.177,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# . . # # # . . #",
+      ". . . . # . . . .",
+      ". i. . . i. . . i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# i. . . i. . . i. #",
+      "# # . . . . . # #",
+      "# # # . . . # # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 6
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 5,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l23",
+   "number": 73,
+   "chapter": 2,
+   "indexInChapter": 23,
+   "colors": 5,
+   "moves": 19,
+   "difficulty": 0.182,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# . . . . . . . #",
+      "# i. . . . . . i. #",
+      "# # i. i. . i. i. # #",
+      "# # i. i. i. i. i. # #",
+      "# # # . . . # # #",
+      "# # # # . # # # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 11
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "fan+ice-band",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l24",
+   "number": 74,
+   "chapter": 2,
+   "indexInChapter": 24,
+   "colors": 5,
+   "moves": 32,
+   "difficulty": 0.187,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# . . . . . . # #",
+      ". . . . # # # # #",
+      ". . . # # # # # #",
+      ". . . # # # # # #",
+      ". . . . # # # # #",
+      "# . . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "COLLECT_COLOR",
+       "target": 27,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "crescent",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 20,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l25",
+   "number": 75,
+   "chapter": 2,
+   "indexInChapter": 25,
+   "colors": 5,
+   "moves": 22,
+   "difficulty": 0.192,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "i. . . . . . . . i.",
+      "i. i. i. . . . i. i. i.",
+      "i. . i. . . . i. . i.",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". i. i. . . . i. i. .",
+      ". i. i. . . . i. i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 20
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "RARE"
+   },
+   "template": "plaza9+ice-corners",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l26",
+   "number": 76,
+   "chapter": 2,
+   "indexInChapter": 26,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.126,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". i. i. . . i. i. .",
+      ". i. i. . . i. i. .",
+      ". . i. . . i. . .",
+      ". i. . i. i. . i. .",
+      ". . . . . . P .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 16
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+ice-ring+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 4,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l27",
+   "number": 77,
+   "chapter": 2,
+   "indexInChapter": 27,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.201,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . i. i. i. i. i. . .",
+      ". . i. . . . i. . .",
+      ". . i. . . . i. . .",
+      ". . i. . . . i. . .",
+      ". . i. i. i. i. i. . .",
+      "# # . . . . . # #",
+      "# # . . . . . # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 16
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "cross+ice-ring",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l28",
+   "number": 78,
+   "chapter": 2,
+   "indexInChapter": 28,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.206,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . V . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 6
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 25,
+       "color": 3
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+ice-stripes+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 9,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l29",
+   "number": 79,
+   "chapter": 2,
+   "indexInChapter": 29,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.211,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# . . . . . . . #",
+      ". . i. . . . i. . .",
+      ". . i. i. . i. i. . .",
+      ". . . . . . . . .",
+      ". . i. . . . i. . .",
+      ". . i. i. i. i. i. . .",
+      "R . i. i. . i. i. . .",
+      "# . . . . . . . #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 17
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+ice-ring+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 9,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l30",
+   "number": 80,
+   "chapter": 2,
+   "indexInChapter": 30,
+   "colors": 5,
+   "moves": 19,
+   "difficulty": 0.336,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "i. . . i. i. . . i.",
+      "i. . i. i. i. i. . i.",
+      "i. i. i. i. i. i. i. i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 69,
+    "lootbox": "EPIC"
+   },
+   "template": "courtyard8+ice-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 13,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l31",
+   "number": 81,
+   "chapter": 2,
+   "indexInChapter": 31,
+   "colors": 4,
+   "moves": 18,
+   "difficulty": 0.151,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". i. i. . . . i. i. .",
+      ". i. . . . . . i. .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". . . # # # . . .",
+      ". i. i. . . . i. i. .",
+      ". . i. . . . i. . .",
+      "i. i. . . . . . i. i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 16
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "ring+ice-corners",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 7,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l32",
+   "number": 82,
+   "chapter": 2,
+   "indexInChapter": 32,
+   "colors": 5,
+   "moves": 19,
+   "difficulty": 0.226,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      "# # i. # . # i. # #",
+      "# # i. i. i. i. i. # #",
+      "# # i. i. i. i. i. # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 12
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "torii+ice-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l33",
+   "number": 83,
+   "chapter": 2,
+   "indexInChapter": 33,
+   "colors": 5,
+   "moves": 21,
+   "difficulty": 0.231,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      "i. i. . . i. . . i. i.",
+      "i. . . i. . i. . . i.",
+      ". i. . i. i. i. . i. .",
+      ". i. i. i. i. i. i. i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 21
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-upper",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l34",
+   "number": 84,
+   "chapter": 2,
+   "indexInChapter": 34,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.236,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 6
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l35",
+   "number": 85,
+   "chapter": 2,
+   "indexInChapter": 35,
+   "colors": 5,
+   "moves": 28,
+   "difficulty": 0.241,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      "# # i. # i. # i. # #",
+      "# # i. i. i. i. i. # #",
+      "# # i. i. i. i. i. # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "RARE"
+   },
+   "template": "torii+ice-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l36",
+   "number": 86,
+   "chapter": 2,
+   "indexInChapter": 36,
+   "colors": 4,
+   "moves": 21,
+   "difficulty": 0.175,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # . . i. . . # #",
+      "# # . # i. # . # #",
+      "# # i. i. . i. i. # #",
+      "# # i. i. i. i. i. # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 11
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "torii+ice-lower",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l37",
+   "number": 87,
+   "chapter": 2,
+   "indexInChapter": 37,
+   "colors": 5,
+   "moves": 18,
+   "difficulty": 0.25,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "COLLECT_COLOR",
+       "target": 26,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l38",
+   "number": 88,
+   "chapter": 2,
+   "indexInChapter": 38,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.255,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . i. . . i. . .",
+      ". . . . . . . ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 6
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 26,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 8,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l39",
+   "number": 89,
+   "chapter": 2,
+   "indexInChapter": 39,
+   "colors": 5,
+   "moves": 23,
+   "difficulty": 0.26,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      "# i. . . . . . i. #",
+      ". i. . . . . . i. .",
+      ". i. i. . . . i. i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "i. i. i. . . . i. i. i.",
+      ". i. . . . . . i. .",
+      "# i. . . . . . i. #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "tatami+ice-corners",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l40",
+   "number": 90,
+   "chapter": 2,
+   "indexInChapter": 40,
+   "colors": 5,
+   "moves": 18,
+   "difficulty": 0.385,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "i. i. i. . . i. i. i.",
+      ". . i. . . i. . .",
+      ". i. . . . . i. .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "i. i. i. . . i. i. i.",
+      ". . . . . . . .",
+      "i. i. i. . . i. i. i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 22
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 69,
+    "lootbox": "EPIC"
+   },
+   "template": "street8x9+ice-corners",
+   "metrics": {
+    "botWinRate": 0.67,
+    "botMedianMoves": 13,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l41",
+   "number": 91,
+   "chapter": 2,
+   "indexInChapter": 41,
+   "colors": 5,
+   "moves": 19,
+   "difficulty": 0.2,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      "# . . # # # . . #",
+      ". . . . # . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "# i. i. i. i. i. i. i. #",
+      "# # . i. i. i. . # #",
+      "# # # i. i. i. # # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "heart+ice-bottom",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l42",
+   "number": 92,
+   "chapter": 2,
+   "indexInChapter": 42,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.275,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      ". i. . . . . i. .",
+      "V i. . . . . i. .",
+      ". i. . . . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 26,
+       "color": 0
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+ice-pillars+gift",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l43",
+   "number": 93,
+   "chapter": 2,
+   "indexInChapter": 43,
+   "colors": 5,
+   "moves": 21,
+   "difficulty": 0.28,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      "i. . . i. . . i.",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. . . i. . . i.",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. . . i. . . i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 9
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 29,
+       "color": 4
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 14,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l44",
+   "number": 94,
+   "chapter": 2,
+   "indexInChapter": 44,
+   "colors": 5,
+   "moves": 22,
+   "difficulty": 0.285,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      "i. . . . . . i.",
+      ". i. . i. . i. .",
+      ". . . . . . .",
+      ". . . . . . .",
+      "i. . . . . . i.",
+      "i. . . . . . i.",
+      "i. . i. . i. . i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 13
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 27,
+       "color": 4
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard7+ice-border",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 15,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l45",
+   "number": 95,
+   "chapter": 2,
+   "indexInChapter": 45,
+   "colors": 5,
+   "moves": 28,
+   "difficulty": 0.29,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      "# # # . . . # # #",
+      "# # i. i. i. i. i. # #",
+      "# . . . . . . . #",
+      "i. . . . . . . . i.",
+      "i. . . . . . . . i.",
+      "i. . . . . . . . i.",
+      "# . . . . . . . #",
+      "# # . . . . . # #",
+      "# # # i. i. i. # # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 14
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "RARE"
+   },
+   "template": "diamond+ice-border",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l46",
+   "number": 96,
+   "chapter": 2,
+   "indexInChapter": 46,
+   "colors": 5,
+   "moves": 17,
+   "difficulty": 0.224,
+   "tier": "EASY",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". i. . . i. . . i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". i. . . i. . . i. .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". i. . . i. . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 9
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "plaza9+ice-stripes",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 10,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l47",
+   "number": 97,
+   "chapter": 2,
+   "indexInChapter": 47,
+   "colors": 5,
+   "moves": 24,
+   "difficulty": 0.299,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". . i. . . i. . .",
+      ". i. i. . . i. i. .",
+      "i. . . . . . . i.",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". i. . . . . i. .",
+      "i. . i. . . i. . i.",
+      "i. i. i. . . i. i. i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 20
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 29,
+       "color": 4
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "street8x9+ice-corners",
+   "metrics": {
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l48",
+   "number": 98,
+   "chapter": 2,
+   "indexInChapter": 48,
+   "colors": 5,
+   "moves": 21,
+   "difficulty": 0.304,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". i. . . # . . i. .",
+      ". i. . . # . . i. .",
+      ". i. . . # . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . i. . . i. .",
+      ". i. . . # . . i. .",
+      ". i. . . # . . i. .",
+      ". i. . . # . . i. .",
+      ". i. . . # . . i. ."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 20
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "twin_towers+ice-pillars",
+   "metrics": {
+    "botWinRate": 0.83,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l49",
+   "number": 99,
+   "chapter": 2,
+   "indexInChapter": 49,
+   "colors": 5,
+   "moves": 23,
+   "difficulty": 0.309,
+   "tier": "NORMAL",
+   "stages": [
+    {
+     "rows": [
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      ". . . . . . . .",
+      "i. i. . . . . i. i.",
+      ". i. i. . . i. i. .",
+      ". . i. i. i. i. . .",
+      "i. . i. i. i. i. . i."
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 18
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 46,
+    "lootbox": "COMMON"
+   },
+   "template": "courtyard8+ice-lower",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 11,
+    "simulatedRuns": 24
+   }
+  },
+  {
+   "id": "c02_l50",
+   "number": 100,
+   "chapter": 2,
+   "indexInChapter": 50,
+   "colors": 5,
+   "moves": 21,
+   "difficulty": 0.434,
+   "tier": "HARD",
+   "stages": [
+    {
+     "rows": [
+      "# # . . . . . # #",
+      "# # . . . . . # #",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      ". . . . . . . . .",
+      "i. i. i. i. i. i. i. i. i.",
+      "# # i. i. i. i. i. # #",
+      "# # i. i. i. i. i. # #"
+     ],
+     "goals": [
+      {
+       "type": "CLEAR_ICE",
+       "target": 19
+      },
+      {
+       "type": "COLLECT_COLOR",
+       "target": 32,
+       "color": 2
+      }
+     ]
+    }
+   ],
+   "reward": {
+    "coins": 69,
+    "lootbox": "LEGENDARY"
+   },
+   "template": "cross+ice-bottom",
+   "metrics": {
+    "botWinRate": 0.92,
+    "botMedianMoves": 12,
+    "simulatedRuns": 24
+   }
+  }
+ ]
+}

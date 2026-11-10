@@ -16,3 +16,13 @@ tasks.test {
     maxHeapSize = "2g"
     testLogging { events("failed"); exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL; showStandardStreams = false }
 }
+
+tasks.register<JavaExec>("generateLevels") {
+    group = "content"
+    description = "Generates, calibrates and validates all 1000 levels into app assets."
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.cozycards.levels.GenerateLevelsKt")
+    workingDir = rootProject.projectDir
+    maxHeapSize = "3g"
+    args = listOf("app/src/main/assets/levels")
+}
