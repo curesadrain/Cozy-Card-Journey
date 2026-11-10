@@ -285,7 +285,7 @@ object CardArt {
         val layout = StaticLayout.Builder.obtain(card.description, 0, card.description.length, body, (l.textBox.width() - w * 0.06f).toInt())
             .setAlignment(Layout.Alignment.ALIGN_NORMAL).setMaxLines(5).setEllipsize(android.text.TextUtils.TruncateAt.END).build()
         c.save(); c.translate(l.textBox.left + w * 0.03f, l.textBox.top + h * 0.05f); layout.draw(c); c.restore()
-        // Footer: honesty badge + collection
+        // Footer: honesty badge + number
         val badge = when {
             userImage -> "YOUR IMAGE"
             card.verification == VerificationStatus.VERIFIED -> "VERIFIED"
@@ -295,9 +295,8 @@ object CardArt {
         }
         val foot = TextPaint(Paint.ANTI_ALIAS_FLAG).apply { textSize = h * 0.022f; color = cols[2]; typeface = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD) }
         c.drawText(badge, l.footer.left + w * 0.01f, l.footer.centerY() + foot.textSize * 0.35f, foot)
-        val coll = collection?.name ?: card.collectionId
-        val number = card.cardNumber?.let { "#$it" } ?: card.id.substringAfterLast('_')
-        val right = "$coll · $number"
+        // Game catalogue number; a real card number is shown only when verified data exists.
+        val right = card.cardNumber?.let { "No. $it" } ?: "#${card.id.substringAfterLast('_')}"
         c.drawText(right, l.footer.right - foot.measureText(right) - w * 0.01f, l.footer.centerY() + foot.textSize * 0.35f, foot)
         // Rounded card corners: clear outside
         clearCorners(c, w, h, l.corner)
@@ -335,7 +334,12 @@ object CardArt {
         val rng = Rng(back.ordinal * 101L + 3)
         when (back) {
             Cosmetic.BACK_SAKURA -> repeat(40) { drawPetal(c, rng.nextInt(w).toFloat(), rng.nextInt(h).toFloat(), w * 0.035f, rng.nextInt(360).toFloat(), withAlpha(ink, 120)) }
-            Cosmetic.BACK_LANTERN -> repeat(14) { i -> drawLantern(c, (i % 4 + 0.5f) * w / 4f, (i / 4 + 0.5f) * h / 4f, w * 0.06f, withAlpha(ink, 200)) }
+            Cosmetic.BACK_LANTERN -> repeat(16) { i ->
+                val x = (i % 4 + 0.5f) * w / 4f
+                val y = (i / 4 + 0.5f) * h / 4f
+                // Keep the centre clear for the emblem.
+                if (Math.hypot((x - w / 2f).toDouble(), (y - h / 2f).toDouble()) > w * 0.3) drawLantern(c, x, y, w * 0.06f, withAlpha(ink, 200))
+            }
             Cosmetic.BACK_WAVE -> drawWaves(c, RectF(0f, 0f, w.toFloat(), h.toFloat()), withAlpha(ink, 90), withAlpha(ink, 160))
             Cosmetic.BACK_GOLD -> {
                 p.style = Paint.Style.STROKE; p.strokeWidth = w * 0.004f; p.color = withAlpha(ink, 140)
@@ -400,8 +404,9 @@ object CardArt {
     }
 
     private inline fun corners(c: Canvas, l: CardLayout, col: Int, s: Float, draw: (Float, Float, Float, Int) -> Unit) {
-        val m = l.w * 0.06f
-        draw(m, m, s, col); draw(l.w - m, m, s, col); draw(m, l.h - m, s, col); draw(l.w - m, l.h - m, s, col)
+        // Bottom corners only: the top ones would cover the name plate.
+        val m = l.w * 0.045f
+        draw(m, l.h - m, s * 0.8f, col); draw(l.w - m, l.h - m, s * 0.8f, col)
     }
 
     fun drawStar(c: Canvas, x: Float, y: Float, r: Float, color: Int) {

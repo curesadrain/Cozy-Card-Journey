@@ -99,7 +99,12 @@ fun LevelScreen(
     val state by vm.state.collectAsState()
     val player by container.repository.state.collectAsState()
     val settings by container.settings.settings.collectAsState(initial = AppSettings())
-    val look = ChapterLooks.of(def.chapter)
+    val look = when (player.equippedOrDefault(com.cozycards.game.economy.CosmeticSlot.BOARD_THEME)) {
+        com.cozycards.game.economy.Cosmetic.BOARD_PAPER -> ChapterLooks.washiPaper
+        com.cozycards.game.economy.Cosmetic.BOARD_NIGHT -> ChapterLooks.nightMarket
+        com.cozycards.game.economy.Cosmetic.BOARD_PASTEL -> ChapterLooks.pastelCafe
+        else -> ChapterLooks.of(def.chapter)
+    }
     val stageSpec = def.stages.getOrNull(state.stageIndex) ?: def.stages.first()
     val portals = remember(state.stageIndex) { stageSpec.portals.map { com.cozycards.engine.Portal(it.entrance.toPos(), it.exit.toPos()) } }
     val conveyors = remember(state.stageIndex) { stageSpec.conveyors.map { l -> l.map { it.toPos() } } }

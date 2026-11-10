@@ -102,6 +102,9 @@ class LevelViewModel(
         gravity = game.gravity,
     )
 
+    /** Test hook: legal moves on the current board. */
+    internal fun validMovesForTest() = game.validMoves()
+
     val busy get() = _state.value.anim != null || pending.isNotEmpty() || _state.value.finished
 
     // ------------------------------------------------------------------ input

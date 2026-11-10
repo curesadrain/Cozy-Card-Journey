@@ -63,6 +63,8 @@ fun lookFor(card: CardDef, back: Cosmetic): CardLook {
         },
         backSheen = if (back == Cosmetic.BACK_GOLD) 0.8f else if (back == Cosmetic.BACK_LANTERN) 0.3f else 0f,
         artRect = floatArrayOf(l.art.left / 1000f, l.art.top / 1400f, l.art.right / 1000f, l.art.bottom / 1400f),
+        textRect = floatArrayOf(l.textBox.left / 1000f, l.textBox.top / 1400f, l.textBox.right / 1000f, l.textBox.bottom / 1400f),
+        nameRect = floatArrayOf(l.nameBar.left / 1000f, l.nameBar.top / 1400f, l.nameBar.right / 1000f, l.nameBar.bottom / 1400f),
     )
 }
 

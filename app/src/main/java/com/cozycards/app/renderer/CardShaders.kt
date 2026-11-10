@@ -52,6 +52,8 @@ uniform float uQuality;
 uniform float uBackSheen;
 uniform vec3 uEdgeColor;
 uniform vec4 uArtRect;
+uniform vec4 uTextRect;
+uniform vec4 uNameRect;
 uniform float uDepth;
 varying vec3 vWorldPos;
 varying vec3 vLocalPos;
@@ -103,6 +105,10 @@ void main() {
         color = fr.rgb + art * (1.0 - fr.a);
         float frameMask = fr.a;
         foil = mix(uArtFoil, uFrameFoil, frameMask);
+        // Printed text plates are matte: only a faint sheen there.
+        float inText = step(uTextRect.x, vUv.x) * step(vUv.x, uTextRect.z) * step(uTextRect.y, vUv.y) * step(vUv.y, uTextRect.w);
+        float inName = step(uNameRect.x, vUv.x) * step(vUv.x, uNameRect.z) * step(uNameRect.y, vUv.y) * step(vUv.y, uNameRect.w);
+        foil *= 1.0 - 0.85 * max(inText, inName);
         metal = frameMask * step(0.5, uRarity);
     } else if (vFace < 1.5) {
         color = texture2D(uBack, vUv).rgb;
@@ -121,18 +127,20 @@ void main() {
     // Metallic sheen on foil frames (follows the light like real foil stamping).
     if (metal > 0.0) {
         float sheen = pow(ndh, 10.0);
-        lit = mix(lit, color * (0.45 + 1.3 * sheen) + vec3(sheen * 0.35), 0.75 * metal);
+        lit = mix(lit, color * (0.5 + 1.0 * sheen) + vec3(sheen * 0.22), 0.7 * metal);
     }
 
-    // Holographic iridescence: hue depends on viewing angle and position.
+    // Holographic iridescence: diagonal rainbow bands that slide with the viewing angle,
+    // strongest where the light glints. Saturated ink keeps more colour than white paper.
     if (foil > 0.0) {
-        float h = dot(V.xy, vec2(1.6, 1.1)) * 1.3 + (vUv.x * 1.4 + vUv.y * 0.9) + uTime * 0.02;
-        if (uQuality > 0.5) h += noise(vUv * 9.0) * 0.35;
+        float h = dot(V.xy, vec2(1.6, 1.1)) * 1.3 + (vUv.x * 1.4 + vUv.y * 0.9);
+        if (uQuality > 0.5) h += noise(vUv * 9.0) * 0.3;
         vec3 holo = spectrum(h);
-        float angle = 0.35 + 0.65 * pow(1.0 - ndv, 1.5) + 0.5 * pow(ndh, 6.0);
-        float bands = 0.6 + 0.4 * sin((vUv.x - vUv.y) * 40.0 + dot(V.xy, vec2(9.0, 6.0)));
-        float amount = foil * angle * mix(1.0, bands, 0.5) * (0.55 + 0.45 * lum);
-        lit = mix(lit, lit * 0.55 + holo * 0.8 * (0.6 + lum), clamp(amount, 0.0, 0.85));
+        float band = 0.5 + 0.5 * sin((vUv.x * 1.2 + vUv.y * 0.8) * 9.0 + dot(V.xy, vec2(14.0, 10.0)));
+        float glint = pow(ndh, 8.0);
+        float sat = max(max(color.r, color.g), color.b) - min(min(color.r, color.g), color.b);
+        float amount = foil * (0.12 + 0.55 * band * band + 0.45 * glint) * mix(0.45, 1.0, sat);
+        lit = mix(lit, lit * 0.75 + holo * 0.55 * (0.45 + lum), clamp(amount, 0.0, 0.55));
     }
 
     // Sparkles (glitter foil) on Epic and Legendary cards.

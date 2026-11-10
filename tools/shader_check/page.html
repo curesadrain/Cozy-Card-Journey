@@ -1,0 +1,55 @@
+<html><body style="margin:0;background:#000"><canvas id=c width=520 height=700></canvas>
+<script>
+async function load(src){const i=new Image();i.src=src;await i.decode();const c=document.createElement('canvas');c.width=1024;c.height=1024;const x=c.getContext('2d');x.drawImage(i,0,0,1024,1024);return c;}
+window.render = async function(sh, rx, ry, rarity, frameFoil, artFoil, flip, files){
+ const gl=document.getElementById('c').getContext('webgl',{antialias:true,premultipliedAlpha:false,preserveDrawingBuffer:true});
+ function prog(v,f){const p=gl.createProgram();for(const [t,s] of [[gl.VERTEX_SHADER,v],[gl.FRAGMENT_SHADER,f]]){const x=gl.createShader(t);gl.shaderSource(x,s);gl.compileShader(x);if(!gl.getShaderParameter(x,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(x);gl.attachShader(p,x);}gl.linkProgram(p);return p;}
+ const cp=prog(sh.CARD_VERTEX,sh.CARD_FRAGMENT), bp=prog(sh.BG_VERTEX,sh.BG_FRAGMENT);
+ // mesh (port of CardMesh.kt)
+ const aspect=0.714,W=1,H=1/aspect,r=0.055,T=0.014,seg=10; const out=[];
+ const centers=[[[W/2-r,H/2-r],0],[[-W/2+r,H/2-r],90],[[-W/2+r,-H/2+r],180],[[W/2-r,-H/2+r],270]];
+ for(const [c,st] of centers) for(let s=0;s<=seg;s++){const a=(st+90*s/seg)*Math.PI/180; out.push([c[0]+Math.cos(a)*r,c[1]+Math.sin(a)*r]);}
+ const d=[]; const v=(x,y,z,nx,ny,nz,u,t,f)=>d.push(x,y,z,nx,ny,nz,u,t,f);
+ const uf=(x,y)=>[x/W+0.5,0.5-y/H], ub=(x,y)=>[0.5-x/W,0.5-y/H]; const zf=T/2,zb=-T/2;
+ for(let i=0;i<out.length;i++){const a=out[i],b=out[(i+1)%out.length];let p=uf(0,0),q=uf(...a),w=uf(...b);v(0,0,zf,0,0,1,...p,0);v(a[0],a[1],zf,0,0,1,...q,0);v(b[0],b[1],zf,0,0,1,...w,0);}
+ for(let i=0;i<out.length;i++){const a=out[i],b=out[(i+1)%out.length];let p=ub(0,0),q=ub(...a),w=ub(...b);v(0,0,zb,0,0,-1,...p,1);v(b[0],b[1],zb,0,0,-1,...w,1);v(a[0],a[1],zb,0,0,-1,...q,1);}
+ const nr=out.map((_,i)=>{const p=out[(i-1+out.length)%out.length],n=out[(i+1)%out.length];const dx=n[0]-p[0],dy=n[1]-p[1],l=Math.hypot(dx,dy);return [dy/l,-dx/l];});
+ for(let i=0;i<out.length;i++){const j=(i+1)%out.length,a=out[i],b=out[j],na=nr[i],nb=nr[j],ua=i/out.length,ubv=(i+1)/out.length;
+  v(a[0],a[1],zf,na[0],na[1],0,ua,0,2);v(a[0],a[1],zb,na[0],na[1],0,ua,1,2);v(b[0],b[1],zf,nb[0],nb[1],0,ubv,0,2);v(b[0],b[1],zf,nb[0],nb[1],0,ubv,0,2);v(a[0],a[1],zb,na[0],na[1],0,ua,1,2);v(b[0],b[1],zb,nb[0],nb[1],0,ubv,1,2);}
+ const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(d),gl.STATIC_DRAW);
+ // matrices
+ const m4=()=>[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1];
+ function mul(a,b){const o=new Array(16).fill(0);for(let c=0;c<4;c++)for(let r_=0;r_<4;r_++)for(let k=0;k<4;k++)o[c*4+r_]+=a[k*4+r_]*b[c*4+k];return o;}
+ function rotX(t){t*=Math.PI/180;const c=Math.cos(t),s=Math.sin(t);return [1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1];}
+ function rotY(t){t*=Math.PI/180;const c=Math.cos(t),s=Math.sin(t);return [c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1];}
+ const asp=520/700, f=1/Math.tan(15*Math.PI/180), n=0.1, fa=20;
+ const proj=[f/asp,0,0,0,0,f,0,0,0,0,(fa+n)/(n-fa),-1,0,0,2*fa*n/(n-fa),0];
+ const camZ=3.6*Math.min(1.6,0.8/asp); const view=m4(); view[14]=-camZ;
+ const model=mul(rotX(rx),rotY(ry+flip*180));
+ const mvp=mul(proj,mul(view,model));
+ // inverse of rotation-only model = transpose
+ const inv=[model[0],model[4],model[8],0,model[1],model[5],model[9],0,model[2],model[6],model[10],0,0,0,0,1];
+ const cl=[inv[8]*camZ,inv[9]*camZ,inv[10]*camZ];
+ const nm=[model[0],model[1],model[2],model[4],model[5],model[6],model[8],model[9],model[10]];
+ gl.viewport(0,0,520,700);gl.clearColor(0.07,0.06,0.11,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+ // bg
+ gl.useProgram(bp); const q=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,q);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ const bl=gl.getAttribLocation(bp,'aPos');gl.vertexAttribPointer(bl,2,gl.FLOAT,false,8,0);gl.enableVertexAttribArray(bl);
+ const U=(p,nme)=>gl.getUniformLocation(p,nme);
+ gl.uniform3f(U(bp,'uTop'),0.2,0.16,0.28);gl.uniform3f(U(bp,'uBottom'),0.07,0.06,0.11);gl.uniform2f(U(bp,'uShadow'),0.5-ry/900,0.42+rx/900);gl.uniform2f(U(bp,'uShadowSize'),0.32/asp*0.6,0.36);gl.uniform1f(U(bp,'uShadowAlpha'),0.55);gl.uniform1f(U(bp,'uAspect'),asp);
+ gl.drawArrays(gl.TRIANGLE_STRIP,0,4); gl.disableVertexAttribArray(bl);
+ gl.enable(gl.DEPTH_TEST);
+ gl.useProgram(cp); gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+ for(const [nme,size,off] of [['aPos',3,0],['aNormal',3,3],['aUv',2,6],['aFace',1,8]]){const l=gl.getAttribLocation(cp,nme);if(l<0)continue;gl.vertexAttribPointer(l,size,gl.FLOAT,false,36,off*4);gl.enableVertexAttribArray(l);}
+ gl.uniformMatrix4fv(U(cp,'uMvp'),false,new Float32Array(mvp));gl.uniformMatrix4fv(U(cp,'uModel'),false,new Float32Array(model));gl.uniformMatrix3fv(U(cp,'uNormalMatrix'),false,new Float32Array(nm));
+ gl.uniform3f(U(cp,'uCamPos'),0,0,camZ);gl.uniform3f(U(cp,'uCamLocal'),...cl);gl.uniform3f(U(cp,'uLightDir'),-0.45,0.7,0.9);gl.uniform1f(U(cp,'uTime'),1.0);
+ gl.uniform1f(U(cp,'uFrameFoil'),frameFoil);gl.uniform1f(U(cp,'uArtFoil'),artFoil);gl.uniform1f(U(cp,'uRarity'),rarity);gl.uniform1f(U(cp,'uQuality'),2);gl.uniform1f(U(cp,'uBackSheen'),0);gl.uniform1f(U(cp,'uDepth'),0.035);
+ gl.uniform3f(U(cp,'uEdgeColor'),0xE2/255,0xB8/255,0x57/255);gl.uniform4f(U(cp,'uArtRect'),0.07,0.125,0.93,0.64);gl.uniform4f(U(cp,'uTextRect'),0.07,0.655,0.93,0.9);gl.uniform4f(U(cp,'uNameRect'),0.06,0.035,0.94,0.115);
+ const imgs=[await load(files[0]),await load(files[1]),await load('back.png')];
+ // Android uploads premultiplied bitmaps: emulate
+ gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,true);
+ ['uFrame','uArt','uBack'].forEach((nme,i)=>{const t=gl.createTexture();gl.activeTexture(gl.TEXTURE0+i);gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,imgs[i]);gl.generateMipmap(gl.TEXTURE_2D);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);gl.uniform1i(U(cp,nme),i);});
+ gl.drawArrays(gl.TRIANGLES,0,d.length/9);
+ return gl.getError();
+};
+</script></body></html>

@@ -64,6 +64,11 @@ object ChapterLooks {
     )
 
     fun of(chapter: Int) = all[(chapter - 1).coerceIn(0, all.lastIndex)]
+
+    /** Board theme cosmetics override the chapter look on the level screen. */
+    val washiPaper = ChapterLook(c(0xFFF6EEDF), c(0xFFFFFBF2), c(0xFFD8C6A8), c(0xFFB0412E), false, Skyline.ALLEY, Particles.NONE)
+    val nightMarket = ChapterLook(c(0xFF120F26), c(0xFF2E2950), c(0xFF1C1836), c(0xFFFFB04A), true, Skyline.MARKET, Particles.FIREFLIES)
+    val pastelCafe = ChapterLook(c(0xFFFDE2E4), c(0xFFE2ECE9), c(0xFFCDB4DB), c(0xFF9A6FB0), false, Skyline.CAFE, Particles.PETALS)
 }
 
 /** Animated, procedurally drawn scene background. Cheap: a single Canvas. */

@@ -25,6 +25,9 @@ data class CardLook(
     val backSheen: Float,
     /** Art window in UV space (left, top, right, bottom). */
     val artRect: FloatArray,
+    /** Matte printed plates (text box, name plate) in UV space. */
+    val textRect: FloatArray,
+    val nameRect: FloatArray,
 )
 
 enum class RenderQuality(val level: Float, val textureSize: Int) { LOW(0f, 512), MEDIUM(1f, 1024), HIGH(2f, 1024) }
@@ -168,6 +171,8 @@ class CardRenderer(private val onError: (String) -> Unit) : GLSurfaceView.Render
         val ec = l.edgeColor
         GLES20.glUniform3f(GLES20.glGetUniformLocation(p, "uEdgeColor"), ((ec shr 16) and 255) / 255f, ((ec shr 8) and 255) / 255f, (ec and 255) / 255f)
         GLES20.glUniform4f(GLES20.glGetUniformLocation(p, "uArtRect"), l.artRect[0], l.artRect[1], l.artRect[2], l.artRect[3])
+        GLES20.glUniform4f(GLES20.glGetUniformLocation(p, "uTextRect"), l.textRect[0], l.textRect[1], l.textRect[2], l.textRect[3])
+        GLES20.glUniform4f(GLES20.glGetUniformLocation(p, "uNameRect"), l.nameRect[0], l.nameRect[1], l.nameRect[2], l.nameRect[3])
         bindTex(0, tex[0], "uFrame")
         bindTex(1, tex[1], "uArt")
         bindTex(2, tex[2], "uBack")

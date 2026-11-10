@@ -72,7 +72,9 @@ import com.cozycards.levels.ChapterInfo
 import com.cozycards.levels.Chapters
 import com.cozycards.levels.LevelDefinition
 import com.cozycards.levels.LootboxTier
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private const val PER_ROW = 5
 
@@ -121,9 +123,12 @@ fun MapScreen(onPlay: (String, Set<BoosterType>) -> Unit, onOpenProfile: () -> U
         selected?.let { def ->
             PreLevelDialog(def, player, onDismiss = { selected = null }, onPlay = { boosters ->
                 scope.launch {
-                    runCatching { service.startLevel(def.id, boosters) }
-                        .onSuccess { selected = null; onPlay(def.id, boosters) }
-                        .onFailure { dailyResult = it.message }
+                    val result = runCatching { service.startLevel(def.id, boosters) }
+                    // Navigation must happen on the main thread.
+                    withContext(Dispatchers.Main.immediate) {
+                        result.onSuccess { selected = null; onPlay(def.id, boosters) }
+                            .onFailure { dailyResult = it.message }
+                    }
                 }
             })
         }
@@ -265,7 +270,11 @@ private fun LevelNode(number: Int, player: PlayerState, accent: Color, onClick: 
             }
         }
         if (cleared) StarRow(progress?.bestStars ?: 0, 13.dp)
-        else if (number % 5 == 0) Text(if (number % 50 == 0) "Legendary" else if (number % 10 == 0) "Epic" else "Rare", fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.Bold)
+        else if (number % 5 == 0) Text(
+            if (number % 50 == 0) "Legendary" else if (number % 10 == 0) "Epic" else "Rare",
+            fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 2.dp).clip(RoundedCornerShape(50)).background(Palette.Ink.copy(alpha = 0.55f)).padding(horizontal = 5.dp),
+        )
     }
 }
 
