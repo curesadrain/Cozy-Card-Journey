@@ -1,0 +1,941 @@
+{
+ "schemaVersion": 1,
+ "collection": {
+  "id": "spiderman",
+  "name": "Spider-Man",
+  "description": "Original illustrations inspired by Spider-Man, his allies and his rogues gallery.",
+  "disclaimer": "Fan tribute with original artwork. Not affiliated with or endorsed by Marvel or Sony. Not real trading cards.",
+  "accentColor": "#E63946",
+  "albums": [
+   {
+    "id": "spiderman_heroes",
+    "name": "Heroes of New York",
+    "description": "Friendly neighbourhood heroes and the people who keep them going.",
+    "cardIds": [
+     "spiderman_001",
+     "spiderman_002",
+     "spiderman_003",
+     "spiderman_004",
+     "spiderman_005",
+     "spiderman_006",
+     "spiderman_007",
+     "spiderman_008",
+     "spiderman_009"
+    ]
+   },
+   {
+    "id": "spiderman_rogues",
+    "name": "Rogues Gallery",
+    "description": "Villains of the city.",
+    "cardIds": [
+     "spiderman_010",
+     "spiderman_011",
+     "spiderman_012",
+     "spiderman_013",
+     "spiderman_014",
+     "spiderman_015",
+     "spiderman_016",
+     "spiderman_017",
+     "spiderman_018",
+     "spiderman_019",
+     "spiderman_020",
+     "spiderman_021"
+    ]
+   },
+   {
+    "id": "spiderman_city",
+    "name": "City Nights",
+    "description": "Scenes over the skyline.",
+    "cardIds": [
+     "spiderman_022",
+     "spiderman_023",
+     "spiderman_024",
+     "spiderman_025",
+     "spiderman_026",
+     "spiderman_027"
+    ]
+   },
+   {
+    "id": "spiderman_classics",
+    "name": "Web Classics",
+    "description": "Rare holographic designs.",
+    "cardIds": [
+     "spiderman_028",
+     "spiderman_029",
+     "spiderman_030",
+     "spiderman_031"
+    ]
+   }
+  ]
+ },
+ "cards": [
+  {
+   "id": "spiderman_001",
+   "name": "Spider-Man (Peter Parker)",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Spider-Man (Peter Parker) (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1B0F14",
+     "#B3122E",
+     "#E94560",
+     "#F5F5F5"
+    ],
+    "motif": "SPIDER",
+    "seed": 37,
+    "glyph": "PP"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_002",
+   "name": "Miles Morales",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Miles Morales (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0D0D0D",
+     "#B5179E",
+     "#F72585",
+     "#FFD60A"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 74,
+    "glyph": "MM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_003",
+   "name": "Ghost-Spider (Gwen Stacy)",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Ghost-Spider (Gwen Stacy) (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#101820",
+     "#F4F4F4",
+     "#F15BB5",
+     "#00BBF9"
+    ],
+    "motif": "SPIDER",
+    "seed": 111,
+    "glyph": "GS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_004",
+   "name": "Mary Jane Watson",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Mary Jane Watson (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3D1D3A",
+     "#C8507A",
+     "#F7A072",
+     "#FFF1C9"
+    ],
+    "motif": "HEART",
+    "seed": 148,
+    "glyph": "MJ"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_005",
+   "name": "Aunt May",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Aunt May (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2F1B12",
+     "#A0522D",
+     "#F4A261",
+     "#FFF3E0"
+    ],
+    "motif": "LANTERN",
+    "seed": 185,
+    "glyph": "AM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_006",
+   "name": "J. Jonah Jameson",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by J. Jonah Jameson (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1C1C1C",
+     "#5C5C5C",
+     "#E9C46A",
+     "#FFFFFF"
+    ],
+    "motif": "CITY",
+    "seed": 222,
+    "glyph": "JJ"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_007",
+   "name": "Silk",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Silk (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1A2E",
+     "#E43F5A",
+     "#F6F5F5",
+     "#162447"
+    ],
+    "motif": "WEB",
+    "seed": 259,
+    "glyph": "SK"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_008",
+   "name": "Spider-Woman",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Spider-Woman (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1B0B0B",
+     "#C1121F",
+     "#FDF0D5",
+     "#FFD60A"
+    ],
+    "motif": "SPIDER",
+    "seed": 296,
+    "glyph": "SW"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_009",
+   "name": "Spider-Man 2099",
+   "collectionId": "spiderman",
+   "series": "Heroes of New York",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Spider-Man 2099 (hero). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#050A30",
+     "#000C66",
+     "#E63946",
+     "#7EC8E3"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 333,
+    "glyph": "99"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_010",
+   "name": "Green Goblin",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Green Goblin (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0F1F14",
+     "#2D6A4F",
+     "#95D5B2",
+     "#F1FAEE"
+    ],
+    "motif": "MASK",
+    "seed": 370,
+    "glyph": "GG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_011",
+   "name": "Doctor Octopus",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Doctor Octopus (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#13221B",
+     "#4F772D",
+     "#ECF39E",
+     "#FFFFFF"
+    ],
+    "motif": "MASK",
+    "seed": 407,
+    "glyph": "DO"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_012",
+   "name": "Venom",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Venom (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#050505",
+     "#1E1E2E",
+     "#E0E0E0",
+     "#8D99AE"
+    ],
+    "motif": "SPIDER",
+    "seed": 444,
+    "glyph": "VN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_013",
+   "name": "Carnage",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Carnage (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A0000",
+     "#9B0000",
+     "#FF2E2E",
+     "#FFD6D6"
+    ],
+    "motif": "SPIDER",
+    "seed": 481,
+    "glyph": "CG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_014",
+   "name": "Sandman",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Sandman (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2E2414",
+     "#C2A878",
+     "#F2E8CF",
+     "#FFFFFF"
+    ],
+    "motif": "WAVE",
+    "seed": 518,
+    "glyph": "SM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_015",
+   "name": "Electro",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Electro (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0B132B",
+     "#1C2541",
+     "#F2E205",
+     "#5BC0BE"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 555,
+    "glyph": "EL"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_016",
+   "name": "Vulture",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Vulture (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#132A13",
+     "#31572C",
+     "#90A955",
+     "#ECF39E"
+    ],
+    "motif": "MASK",
+    "seed": 592,
+    "glyph": "VU"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_017",
+   "name": "Mysterio",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Mysterio (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#10002B",
+     "#5A189A",
+     "#C77DFF",
+     "#E0AAFF"
+    ],
+    "motif": "STARS",
+    "seed": 629,
+    "glyph": "MY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_018",
+   "name": "Kraven the Hunter",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Kraven the Hunter (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1D0E",
+     "#7F5539",
+     "#DDB892",
+     "#EDE0D4"
+    ],
+    "motif": "MASK",
+    "seed": 666,
+    "glyph": "KH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_019",
+   "name": "The Lizard",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by The Lizard (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0F1F14",
+     "#2D6A4F",
+     "#95D5B2",
+     "#F1FAEE"
+    ],
+    "motif": "MASK",
+    "seed": 703,
+    "glyph": "LZ"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_020",
+   "name": "Rhino",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Rhino (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1F1F1F",
+     "#6C757D",
+     "#ADB5BD",
+     "#F8F9FA"
+    ],
+    "motif": "MASK",
+    "seed": 740,
+    "glyph": "RH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_021",
+   "name": "Scorpion",
+   "collectionId": "spiderman",
+   "series": "Rogues Gallery",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Scorpion (villain). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1B2E0B",
+     "#606C38",
+     "#DDA15E",
+     "#FEFAE0"
+    ],
+    "motif": "MASK",
+    "seed": 777,
+    "glyph": "SC"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_022",
+   "name": "Rooftop Swing",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Rooftop Swing (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0A0F1F",
+     "#22305C",
+     "#4CC9F0",
+     "#F72585"
+    ],
+    "motif": "CITY",
+    "seed": 814,
+    "glyph": "NY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_023",
+   "name": "Midnight Patrol",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Midnight Patrol (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0A0F1F",
+     "#22305C",
+     "#4CC9F0",
+     "#F72585"
+    ],
+    "motif": "MOON",
+    "seed": 851,
+    "glyph": "NY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_024",
+   "name": "Rainy Web Line",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Rainy Web Line (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0B1630",
+     "#1F4E99",
+     "#E63946",
+     "#F1FAEE"
+    ],
+    "motif": "WEB",
+    "seed": 888,
+    "glyph": "NY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_025",
+   "name": "Daily Bugle Headline",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Daily Bugle Headline (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1C1C1C",
+     "#F8F9FA",
+     "#D00000",
+     "#FFBA08"
+    ],
+    "motif": "CITY",
+    "seed": 925,
+    "glyph": "DB"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_026",
+   "name": "Bridge Rescue",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Bridge Rescue (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0B1630",
+     "#1F4E99",
+     "#E63946",
+     "#F1FAEE"
+    ],
+    "motif": "WAVE",
+    "seed": 962,
+    "glyph": "BR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_027",
+   "name": "Neon Times Square",
+   "collectionId": "spiderman",
+   "series": "City Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Neon Times Square (city scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0B090A",
+     "#7209B7",
+     "#F72585",
+     "#4CC9F0"
+    ],
+    "motif": "STARS",
+    "seed": 999,
+    "glyph": "TS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_028",
+   "name": "Web of Many Worlds",
+   "collectionId": "spiderman",
+   "series": "Web Classics",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original alternate illustration inspired by Web of Many Worlds (special). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#03071E",
+     "#370617",
+     "#E85D04",
+     "#FFBA08"
+    ],
+    "motif": "WEB",
+    "seed": 1036,
+    "glyph": "MV"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_029",
+   "name": "Symbiote Night",
+   "collectionId": "spiderman",
+   "series": "Web Classics",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Symbiote Night (special). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#050505",
+     "#1E1E2E",
+     "#E0E0E0",
+     "#8D99AE"
+    ],
+    "motif": "SPIDER",
+    "seed": 1073,
+    "glyph": "SY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_030",
+   "name": "Spider-Sense",
+   "collectionId": "spiderman",
+   "series": "Web Classics",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Spider-Sense (special). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1B0F14",
+     "#B3122E",
+     "#E94560",
+     "#F5F5F5"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 1110,
+    "glyph": "SS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "spiderman_031",
+   "name": "Great Responsibility",
+   "collectionId": "spiderman",
+   "series": "Web Classics",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original alternate illustration inspired by Great Responsibility (special). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#14080E",
+     "#9D0208",
+     "#F48C06",
+     "#FFFFFF"
+    ],
+    "motif": "HEART",
+    "seed": 1147,
+    "glyph": "GR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  }
+ ]
+}

@@ -1,0 +1,854 @@
+{
+ "schemaVersion": 1,
+ "collection": {
+  "id": "tmnt",
+  "name": "Teenage Mutant Ninja Turtles",
+  "description": "Original illustrations inspired by the four brothers, their allies and their foes.",
+  "disclaimer": "Fan tribute with original artwork. Not affiliated with or endorsed by Paramount/Nickelodeon. Not real trading cards.",
+  "accentColor": "#3A7D44",
+  "albums": [
+   {
+    "id": "tmnt_brothers",
+    "name": "Brothers in the Sewer",
+    "description": "Leo, Raph, Donnie and Mikey.",
+    "cardIds": [
+     "tmnt_001",
+     "tmnt_002",
+     "tmnt_003",
+     "tmnt_004",
+     "tmnt_005",
+     "tmnt_006",
+     "tmnt_007",
+     "tmnt_008"
+    ]
+   },
+   {
+    "id": "tmnt_allies",
+    "name": "Allies",
+    "description": "Friends above and below the streets.",
+    "cardIds": [
+     "tmnt_009",
+     "tmnt_010",
+     "tmnt_011",
+     "tmnt_012",
+     "tmnt_013",
+     "tmnt_014"
+    ]
+   },
+   {
+    "id": "tmnt_foes",
+    "name": "Foot Clan & Foes",
+    "description": "Rivals of the turtles.",
+    "cardIds": [
+     "tmnt_015",
+     "tmnt_016",
+     "tmnt_017",
+     "tmnt_018",
+     "tmnt_019",
+     "tmnt_020",
+     "tmnt_021",
+     "tmnt_022"
+    ]
+   },
+   {
+    "id": "tmnt_nights",
+    "name": "Pizza Nights",
+    "description": "Scenes from the city.",
+    "cardIds": [
+     "tmnt_023",
+     "tmnt_024",
+     "tmnt_025",
+     "tmnt_026",
+     "tmnt_027",
+     "tmnt_028"
+    ]
+   }
+  ]
+ },
+ "cards": [
+  {
+   "id": "tmnt_001",
+   "name": "Leonardo",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Leonardo (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#2F80ED",
+     "#F1F7ED"
+    ],
+    "motif": "KATANA",
+    "seed": 37,
+    "glyph": "LEO"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_002",
+   "name": "Raphael",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Raphael (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#EB5757",
+     "#F1F7ED"
+    ],
+    "motif": "SHELL",
+    "seed": 74,
+    "glyph": "RAPH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_003",
+   "name": "Donatello",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Donatello (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#9B51E0",
+     "#F1F7ED"
+    ],
+    "motif": "SHELL",
+    "seed": 111,
+    "glyph": "DON"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_004",
+   "name": "Michelangelo",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Michelangelo (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#F2994A",
+     "#F1F7ED"
+    ],
+    "motif": "PIZZA",
+    "seed": 148,
+    "glyph": "MIKEY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_005",
+   "name": "Leonardo — Training Day",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Leonardo — Training Day (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#2F80ED",
+     "#F1F7ED"
+    ],
+    "motif": "KATANA",
+    "seed": 185,
+    "glyph": "LEO"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_006",
+   "name": "Raphael — Street Brawl",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Raphael — Street Brawl (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#EB5757",
+     "#F1F7ED"
+    ],
+    "motif": "SHELL",
+    "seed": 222,
+    "glyph": "RAPH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_007",
+   "name": "Donatello — Lab Night",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Donatello — Lab Night (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#9B51E0",
+     "#F1F7ED"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 259,
+    "glyph": "DON"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_008",
+   "name": "Michelangelo — Skate Run",
+   "collectionId": "tmnt",
+   "series": "Brothers in the Sewer",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Michelangelo — Skate Run (turtle). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#F2994A",
+     "#F1F7ED"
+    ],
+    "motif": "WAVE",
+    "seed": 296,
+    "glyph": "MIKEY"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_009",
+   "name": "Master Splinter",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Master Splinter (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1E16",
+     "#7F5539",
+     "#E6CCB2",
+     "#FFFFFF"
+    ],
+    "motif": "LANTERN",
+    "seed": 333,
+    "glyph": "SPL"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_010",
+   "name": "April O'Neil",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by April O'Neil (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1E1E24",
+     "#F4D35E",
+     "#EE964B",
+     "#FAF0CA"
+    ],
+    "motif": "CITY",
+    "seed": 370,
+    "glyph": "APR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_011",
+   "name": "Casey Jones",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Casey Jones (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1A1A",
+     "#4A4E69",
+     "#C9ADA7",
+     "#F2E9E4"
+    ],
+    "motif": "MASK",
+    "seed": 407,
+    "glyph": "CJ"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_012",
+   "name": "Mondo Gecko",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Mondo Gecko (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#102A12",
+     "#5FAD56",
+     "#F2C14E",
+     "#FFFFFF"
+    ],
+    "motif": "WAVE",
+    "seed": 444,
+    "glyph": "MG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_013",
+   "name": "Leatherhead",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Leatherhead (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1B2A1B",
+     "#4F6D3A",
+     "#A3B18A",
+     "#FFFFFF"
+    ],
+    "motif": "SEWER",
+    "seed": 481,
+    "glyph": "LH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_014",
+   "name": "Mona Lisa",
+   "collectionId": "tmnt",
+   "series": "Allies",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Mona Lisa (ally). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1D1A2F",
+     "#3F8C5A",
+     "#F28482",
+     "#FFFFFF"
+    ],
+    "motif": "HEART",
+    "seed": 518,
+    "glyph": "ML"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_015",
+   "name": "Shredder",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Shredder (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120D0D",
+     "#5C5C5C",
+     "#C0C0C0",
+     "#9D0208"
+    ],
+    "motif": "KATANA",
+    "seed": 555,
+    "glyph": "SHR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_016",
+   "name": "Krang",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Krang (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A0B1F",
+     "#E85D9E",
+     "#F9C6D9",
+     "#FFFFFF"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 592,
+    "glyph": "KR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_017",
+   "name": "Bebop",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Bebop (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1A1A",
+     "#7F4F24",
+     "#B5E48C",
+     "#FFFFFF"
+    ],
+    "motif": "MASK",
+    "seed": 629,
+    "glyph": "BB"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_018",
+   "name": "Rocksteady",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Rocksteady (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#222222",
+     "#6C757D",
+     "#FFB703",
+     "#FFFFFF"
+    ],
+    "motif": "MASK",
+    "seed": 666,
+    "glyph": "RS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_019",
+   "name": "Baxter Stockman",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Baxter Stockman (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0B132B",
+     "#3A506B",
+     "#5BC0BE",
+     "#FFFFFF"
+    ],
+    "motif": "LIGHTNING",
+    "seed": 703,
+    "glyph": "BX"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_020",
+   "name": "Karai",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Karai (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#140B0B",
+     "#7D1128",
+     "#F3A712",
+     "#FFFFFF"
+    ],
+    "motif": "KATANA",
+    "seed": 740,
+    "glyph": "KAR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_021",
+   "name": "Foot Clan Ninja",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Foot Clan Ninja (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0D0D0D",
+     "#3D3D3D",
+     "#C1121F",
+     "#F5F5F5"
+    ],
+    "motif": "KATANA",
+    "seed": 777,
+    "glyph": "FT"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_022",
+   "name": "Tiger Claw",
+   "collectionId": "tmnt",
+   "series": "Foot Clan & Foes",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Tiger Claw (foe). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1308",
+     "#DD6E0F",
+     "#F6BD60",
+     "#FFFFFF"
+    ],
+    "motif": "MASK",
+    "seed": 814,
+    "glyph": "TC"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_023",
+   "name": "Pizza Rooftop",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Pizza Rooftop (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1F0F0A",
+     "#E76F51",
+     "#F4A261",
+     "#FFE8D6"
+    ],
+    "motif": "PIZZA",
+    "seed": 851,
+    "glyph": "PZ"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_024",
+   "name": "Sewer Lair",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by Sewer Lair (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#0E1C10",
+     "#3A7D44",
+     "#9DC88D",
+     "#F1F7ED"
+    ],
+    "motif": "SEWER",
+    "seed": 888,
+    "glyph": "LR"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_025",
+   "name": "Turtle Van Ride",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original alternate illustration inspired by Turtle Van Ride (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#132A13",
+     "#4F772D",
+     "#ECF39E",
+     "#FFD166"
+    ],
+    "motif": "CITY",
+    "seed": 925,
+    "glyph": "VAN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_026",
+   "name": "Cowabunga Wave",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original alternate illustration inspired by Cowabunga Wave (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#03045E",
+     "#0077B6",
+     "#90E0EF",
+     "#CAF0F8"
+    ],
+    "motif": "WAVE",
+    "seed": 962,
+    "glyph": "CWB"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_027",
+   "name": "Four Brothers",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original alternate illustration inspired by Four Brothers (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#081C15",
+     "#1B4332",
+     "#52B788",
+     "#FFD60A"
+    ],
+    "motif": "SHELL",
+    "seed": 999,
+    "glyph": "TMNT"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "tmnt_028",
+   "name": "Ninja Moonlight",
+   "collectionId": "tmnt",
+   "series": "Pizza Nights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original alternate illustration inspired by Ninja Moonlight (scene). Not an official trading card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#03071E",
+     "#1B263B",
+     "#E0E1DD",
+     "#80ED99"
+    ],
+    "motif": "MOON",
+    "seed": 1036,
+    "glyph": "NIN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  }
+ ]
+}

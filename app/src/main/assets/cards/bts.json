@@ -1,0 +1,883 @@
+{
+ "schemaVersion": 1,
+ "collection": {
+  "id": "bts",
+  "name": "BTS",
+  "description": "A fan tribute collection of original illustrations inspired by the seven members of BTS.",
+  "disclaimer": "Fan tribute with original artwork. Not affiliated with or endorsed by BTS, BIGHIT MUSIC or HYBE. Not real photocards.",
+  "accentColor": "#8E6CCB",
+  "albums": [
+   {
+    "id": "bts_portraits",
+    "name": "Lavender Portraits",
+    "description": "Soft portrait frames, one per member.",
+    "cardIds": [
+     "bts_001",
+     "bts_002",
+     "bts_003",
+     "bts_004",
+     "bts_005",
+     "bts_006",
+     "bts_007"
+    ]
+   },
+   {
+    "id": "bts_stage",
+    "name": "Stage Lights",
+    "description": "Spotlight-themed illustrations.",
+    "cardIds": [
+     "bts_008",
+     "bts_009",
+     "bts_010",
+     "bts_011",
+     "bts_012",
+     "bts_013",
+     "bts_014"
+    ]
+   },
+   {
+    "id": "bts_moments",
+    "name": "Purple Moments",
+    "description": "Group mood pieces.",
+    "cardIds": [
+     "bts_015",
+     "bts_016",
+     "bts_017",
+     "bts_018",
+     "bts_019",
+     "bts_020",
+     "bts_021",
+     "bts_022"
+    ]
+   },
+   {
+    "id": "bts_holo",
+    "name": "Holo Signatures",
+    "description": "Rare holographic designs.",
+    "cardIds": [
+     "bts_023",
+     "bts_024",
+     "bts_025",
+     "bts_026",
+     "bts_027",
+     "bts_028",
+     "bts_029"
+    ]
+   }
+  ]
+ },
+ "cards": [
+  {
+   "id": "bts_001",
+   "name": "RM — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member RM: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 37,
+    "glyph": "RM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_002",
+   "name": "Jin — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member Jin: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 74,
+    "glyph": "JN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_003",
+   "name": "SUGA — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member SUGA: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 111,
+    "glyph": "SG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_004",
+   "name": "j-hope — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member j-hope: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 148,
+    "glyph": "JH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_005",
+   "name": "Jimin — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member Jimin: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 185,
+    "glyph": "JM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_006",
+   "name": "V — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member V: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 222,
+    "glyph": "V"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_007",
+   "name": "Jung Kook — Lavender Portrait",
+   "collectionId": "bts",
+   "series": "Lavender Portraits",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original alternate illustration inspired by BTS member Jung Kook: a soft lavender portrait frame. Not an official photocard.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#2B1B4A",
+     "#6C4AB6",
+     "#B9A2F0",
+     "#FFE3F1"
+    ],
+    "motif": "MICROPHONE",
+    "seed": 259,
+    "glyph": "JK"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_008",
+   "name": "RM — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original stage-light illustration inspired by RM's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 296,
+    "glyph": "RM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_009",
+   "name": "Jin — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original stage-light illustration inspired by Jin's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 333,
+    "glyph": "JN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_010",
+   "name": "SUGA — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original stage-light illustration inspired by SUGA's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 370,
+    "glyph": "SG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_011",
+   "name": "j-hope — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original stage-light illustration inspired by j-hope's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 407,
+    "glyph": "JH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_012",
+   "name": "Jimin — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original stage-light illustration inspired by Jimin's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 444,
+    "glyph": "JM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_013",
+   "name": "V — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original stage-light illustration inspired by V's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 481,
+    "glyph": "V"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_014",
+   "name": "Jung Kook — Stage Lights",
+   "collectionId": "bts",
+   "series": "Stage Lights",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original stage-light illustration inspired by Jung Kook's performances. Abstract art, no photo likeness.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#120E2A",
+     "#3B2F7A",
+     "#F06EAA",
+     "#FFE08A"
+    ],
+    "motif": "STAGE",
+    "seed": 518,
+    "glyph": "JK"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_015",
+   "name": "Purple Ribbon",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original group-themed illustration 'Purple Ribbon'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3A2459",
+     "#8E6CCB",
+     "#D7C6FF",
+     "#FFFFFF"
+    ],
+    "motif": "HEART",
+    "seed": 555,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_016",
+   "name": "Seven Stars",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original group-themed illustration 'Seven Stars'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3D1D3A",
+     "#C8507A",
+     "#F7A072",
+     "#FFF1C9"
+    ],
+    "motif": "STARS",
+    "seed": 592,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_017",
+   "name": "Encore Night",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original group-themed illustration 'Encore Night'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3A2459",
+     "#8E6CCB",
+     "#D7C6FF",
+     "#FFFFFF"
+    ],
+    "motif": "NOTE",
+    "seed": 629,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_018",
+   "name": "Fan Chant Wave",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original group-themed illustration 'Fan Chant Wave'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3D1D3A",
+     "#C8507A",
+     "#F7A072",
+     "#FFF1C9"
+    ],
+    "motif": "WAVE",
+    "seed": 666,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_019",
+   "name": "Lilac Skyline",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original group-themed illustration 'Lilac Skyline'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3A2459",
+     "#8E6CCB",
+     "#D7C6FF",
+     "#FFFFFF"
+    ],
+    "motif": "CITY",
+    "seed": 703,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_020",
+   "name": "Moonlit Dorm",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "RARE",
+   "description": "Original group-themed illustration 'Moonlit Dorm'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3D1D3A",
+     "#C8507A",
+     "#F7A072",
+     "#FFF1C9"
+    ],
+    "motif": "MOON",
+    "seed": 740,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_021",
+   "name": "Cherry Concert",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original group-themed illustration 'Cherry Concert'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3A2459",
+     "#8E6CCB",
+     "#D7C6FF",
+     "#FFFFFF"
+    ],
+    "motif": "SAKURA",
+    "seed": 777,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_022",
+   "name": "Golden Hour",
+   "collectionId": "bts",
+   "series": "Purple Moments",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "COMMON",
+   "description": "Original group-themed illustration 'Golden Hour'. Celebrates the fandom mood; not an official card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#3D1D3A",
+     "#C8507A",
+     "#F7A072",
+     "#FFF1C9"
+    ],
+    "motif": "LANTERN",
+    "seed": 814,
+    "glyph": "BTS"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_023",
+   "name": "RM — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original holographic illustration inspired by RM. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 851,
+    "glyph": "RM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_024",
+   "name": "Jin — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original holographic illustration inspired by Jin. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 888,
+    "glyph": "JN"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_025",
+   "name": "SUGA — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original holographic illustration inspired by SUGA. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 925,
+    "glyph": "SG"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_026",
+   "name": "j-hope — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original holographic illustration inspired by j-hope. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 962,
+    "glyph": "JH"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_027",
+   "name": "Jimin — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "EPIC",
+   "description": "Original holographic illustration inspired by Jimin. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 999,
+    "glyph": "JM"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_028",
+   "name": "V — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original holographic illustration inspired by V. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 1036,
+    "glyph": "V"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  },
+  {
+   "id": "bts_029",
+   "name": "Jung Kook — Holo Signature",
+   "collectionId": "bts",
+   "series": "Holo Signatures",
+   "manufacturer": null,
+   "year": null,
+   "cardNumber": null,
+   "originalRarity": null,
+   "gameRarity": "LEGENDARY",
+   "description": "Original holographic illustration inspired by Jung Kook. Game-exclusive design, not a reproduction of a real autograph card.",
+   "frontImage": null,
+   "backImage": null,
+   "art": {
+    "palette": [
+     "#1A1033",
+     "#7F5AF0",
+     "#2CB1BC",
+     "#FDE68A"
+    ],
+    "motif": "STARS",
+    "seed": 1073,
+    "glyph": "JK"
+   },
+   "source": null,
+   "verification": "ORIGINAL_ART",
+   "imageRights": "ORIGINAL_ARTWORK"
+  }
+ ]
+}
