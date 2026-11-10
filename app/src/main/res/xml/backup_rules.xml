@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="database" path="cozy_cards.db" />
+    <include domain="file" path="backups/" />
+    <include domain="sharedpref" path="." />
+</full-backup-content>
