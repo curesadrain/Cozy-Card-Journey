@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.1.0 — 2026-11-11
+Visual and game-feel overhaul.
+
+### Added
+* Generated art set (tiles, specials, obstacles, board cells, portal, conveyor, particles, UI parts) and
+  20 painted chapter backgrounds; sources in `art/source`, processed by `tools/process_art.py`
+  (chroma key with colour un-mixing, sheet splitting, WebP export).
+* Animation director (`StepPlanner`): per-piece timing instead of whole-board phases — rockets sweep
+  their line cell by cell, bombs ripple outwards, rainbows strike targets one after another, planes hit
+  on landing, matched tiles flash and pop, tiles of a special-creating match slide into it,
+  gravity falls with column stagger and squash-and-stretch landings, invalid swaps wiggle back.
+* Effects layer (`Fx`) independent of board steps: themed particle bursts per tile colour, tumbling
+  debris for crates/stones/ice/chains, smoke, glows, shockwave rings, lightning beams, rocket trails,
+  screen shake, floating cascade words ("Nice!", "Great!", "Amazing!"…), win confetti.
+* Collected tiles and destroyed obstacles fly in an arc to their goal counter; counters drop and bounce
+  on arrival.
+* New level HUD (moves medallion, goal plate), chapter background art on the level and map screens,
+  chapter header art, sprite currency icons, stars and glossy buttons.
+
+### Changed
+* The board renders with sprites in a hardware-accelerated Compose Canvas (particle budget scales with
+  the graphics quality setting) rather than the planned separate OpenGL board renderer: lower risk,
+  same draw path for UI and board, and sufficient for ~700 particles.
+
 ## 1.0.0 — 2026-11-10
 First complete version.
 

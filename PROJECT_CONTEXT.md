@@ -22,7 +22,7 @@ card collections viewed in a 2.5D OpenGL card viewer.
 | UI (Map, Collection, Lootboxes, Shop, Profile, Level) | `app/.../ui/` |
 | Original audio | `tools/synth_audio.py` → `app/src/main/res/raw/` |
 
-## Current status (v1.0.0)
+## Current status (v1.1.0)
 All phases 1–9 implemented. The app builds to an APK; all JVM and Robolectric tests pass
 (see CHANGELOG for counts). Screens are verified by Robolectric screenshot tests; the GL shaders are
 compiled and rendered in a WebGL harness (`tools/shader_check/`). **No physical device or emulator was
@@ -54,6 +54,13 @@ audio latency, real performance) has not been observed directly.
   ES 2.0 was chosen over ES 3.0 for maximum device compatibility; textures are power-of-two.
 * **Audio is synthesised** (numpy + ffmpeg) — original and royalty-free.
 * **Google's Maven Central mirror** is listed before `mavenCentral()` to avoid HTTP 429 rate limits.
+
+* **Art pipeline (1.1)**: AI-generated sheets on chroma backgrounds → `tools/process_art.py` → WebP
+  sprites/backgrounds in assets. Soft glow/sparkle particles are procedural (additive blending looks
+  cleaner than keyed art).
+* **Animation (1.1)**: the engine still resolves a move instantly; `StepPlanner` turns each step into
+  per-piece timings and `Fx` plays particles/flyers independently so phases overlap. A watchdog in
+  the ViewModel still guarantees no animation can block the game.
 
 ## Known limitations
 * Not run on a real device/emulator in this environment (see above).

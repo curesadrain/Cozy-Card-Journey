@@ -47,6 +47,7 @@ class AppContainer(val app: Application) {
     fun start() {
         scope.launch(Dispatchers.IO) {
             _ready.value = try {
+                com.cozycards.app.ui.gfx.Sprites.load(app)
                 repository.start()
                 StartupState.Ready(repository.restoredFromBackup, content.packWarnings.toList())
             } catch (t: Throwable) {

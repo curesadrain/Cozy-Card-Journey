@@ -46,6 +46,8 @@ engine  (JVM)  ← levels (JVM) ← game (JVM) ← app (Android, Compose)
 * `cards/` — procedural card art (android.graphics) and an LRU bitmap cache (async).
 * `renderer/` — `CardMesh`, `CardShaders` (GLSL ES 1.00), `CardRenderer` (GLSurfaceView.Renderer),
   `CardViewer` (Compose wrapper: gestures, gyroscope, lifecycle, quality levels).
+* `ui/gfx/` — `Sprites` / `Backgrounds` (asset loading, caches) and `Fx` (particles, debris, beams, rings,
+  flyers, shake, floating text). `ui/level/StepPlanner` — per-piece animation timings for every engine step.
 * `audio/` — SoundPool SFX + MediaPlayer music, lifecycle-aware.
 * `ui/` — theme, scenes, components; screens: map, level (board/VM), collection, card detail,
   lootboxes, shop, profile; `AppNavigation` (Navigation Compose, bottom bar).

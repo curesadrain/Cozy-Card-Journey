@@ -100,8 +100,17 @@ fun MapScreen(onPlay: (String, Set<BoosterType>) -> Unit, onOpenProfile: () -> U
     }
     val look = ChapterLooks.of(currentChapter)
 
+    val context = LocalContext.current
+    var bg by remember(currentChapter) { mutableStateOf(com.cozycards.app.ui.gfx.Backgrounds.peek(currentChapter, false)) }
+    LaunchedEffect(currentChapter) {
+        if (bg == null) bg = withContext(Dispatchers.IO) { com.cozycards.app.ui.gfx.Backgrounds.load(context, currentChapter, false) }
+    }
     Box(Modifier.fillMaxSize()) {
-        SceneBackground(look)
+        val image = bg
+        if (image != null) {
+            androidx.compose.foundation.Image(image, null, Modifier.fillMaxSize(), contentScale = androidx.compose.ui.layout.ContentScale.Crop)
+            Box(Modifier.fillMaxSize().background(Color(0x55201530)))
+        } else SceneBackground(look)
         Column(Modifier.fillMaxSize()) {
             TopBar(player, daily, onDaily = {
                 scope.launch {
@@ -190,18 +199,29 @@ private fun ChapterHeader(ch: ChapterInfo, player: PlayerState) {
     val stars = (ch.firstLevel..ch.lastLevel).sumOf { player.progress[Chapters.levelId(it)]?.bestStars ?: 0 }
     val unlocked = player.isUnlocked(ch.firstLevel)
     Panel(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 10.dp)) {
+        val context = LocalContext.current
+        var thumb by remember(ch.number) { mutableStateOf(com.cozycards.app.ui.gfx.Backgrounds.peek(ch.number, true)) }
+        LaunchedEffect(ch.number) {
+            if (thumb == null) thumb = withContext(Dispatchers.IO) { com.cozycards.app.ui.gfx.Backgrounds.load(context, ch.number, true) }
+        }
         Box(Modifier.fillMaxWidth().height(168.dp)) {
-            SceneBackground(look, Modifier.fillMaxSize(), animate = false, dim = if (unlocked) 0f else 0.35f)
+            val t = thumb
+            if (t != null) {
+                androidx.compose.foundation.Image(t, null, Modifier.fillMaxSize(), contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                    alignment = androidx.compose.ui.Alignment.TopCenter)
+                Box(Modifier.fillMaxSize().background(androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0x99000000), Color(0x33000000), Color(0xAA000000)))))
+                if (!unlocked) Box(Modifier.fillMaxSize().background(Color(0x77000000)))
+            } else SceneBackground(look, Modifier.fillMaxSize(), animate = false, dim = if (unlocked) 0f else 0.35f)
             Column(Modifier.padding(16.dp)) {
-                Text("Chapter ${ch.number}", style = MaterialTheme.typography.labelLarge, color = if (look.night) Color.White else Palette.InkSoft)
-                Text(ch.title, style = MaterialTheme.typography.headlineSmall, color = if (look.night) Color.White else Palette.Ink)
-                Text(ch.subtitle, style = MaterialTheme.typography.bodySmall, color = if (look.night) Color.White.copy(alpha = 0.85f) else Palette.InkSoft)
+                Text("Chapter ${ch.number}", style = MaterialTheme.typography.labelLarge, color = Color.White.copy(alpha = 0.9f))
+                Text(ch.title, style = MaterialTheme.typography.headlineSmall, color = Color.White)
+                Text(ch.subtitle, style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.85f))
                 if (ch.introduces.isNotEmpty()) Text("New: " + ch.introduces.joinToString { it.title }, style = MaterialTheme.typography.labelMedium, color = look.accent)
                 Spacer(Modifier.height(8.dp))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     ProgressBar(cleared / 50f, Modifier.weight(1f), color = look.accent)
                     Spacer(Modifier.width(8.dp))
-                    Text("$cleared/50", style = MaterialTheme.typography.labelMedium, color = if (look.night) Color.White else Palette.Ink)
+                    Text("$cleared/50", style = MaterialTheme.typography.labelMedium, color = Color.White)
                     Spacer(Modifier.width(8.dp))
                     Text("★ $stars/150", style = MaterialTheme.typography.labelMedium, color = Palette.Gold)
                 }

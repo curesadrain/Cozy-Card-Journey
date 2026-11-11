@@ -2,6 +2,30 @@ package com.cozycards.app.ui.level
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.text.rememberTextMeasurer
+import com.cozycards.app.ui.gfx.Backgrounds
+import com.cozycards.app.ui.gfx.Fx
+import com.cozycards.app.ui.gfx.Sprites
+import com.cozycards.app.ui.gfx.drawImageCentered
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.withContext
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -99,60 +123,122 @@ fun LevelScreen(
     val state by vm.state.collectAsState()
     val player by container.repository.state.collectAsState()
     val settings by container.settings.settings.collectAsState(initial = AppSettings())
-    val look = when (player.equippedOrDefault(com.cozycards.game.economy.CosmeticSlot.BOARD_THEME)) {
-        com.cozycards.game.economy.Cosmetic.BOARD_PAPER -> ChapterLooks.washiPaper
-        com.cozycards.game.economy.Cosmetic.BOARD_NIGHT -> ChapterLooks.nightMarket
-        com.cozycards.game.economy.Cosmetic.BOARD_PASTEL -> ChapterLooks.pastelCafe
-        else -> ChapterLooks.of(def.chapter)
-    }
+    val theme = player.equippedOrDefault(com.cozycards.game.economy.CosmeticSlot.BOARD_THEME)
     val stageSpec = def.stages.getOrNull(state.stageIndex) ?: def.stages.first()
     val portals = remember(state.stageIndex) { stageSpec.portals.map { com.cozycards.engine.Portal(it.entrance.toPos(), it.exit.toPos()) } }
     val conveyors = remember(state.stageIndex) { stageSpec.conveyors.map { l -> l.map { it.toPos() } } }
 
+    // Effects layer + its frame clock (runs only while something is animating).
+    val fx = remember { Fx() }
+    fx.quality = when (settings.quality.let { if (it == com.cozycards.app.data.EffectsQuality.AUTO) container.autoQuality else it }) {
+        com.cozycards.app.data.EffectsQuality.LOW -> 0.5f
+        com.cozycards.app.data.EffectsQuality.MEDIUM -> 0.8f
+        else -> 1f
+    }
+    LaunchedEffect(fx) {
+        var last = 0L
+        while (isActive) {
+            if (fx.busy) {
+                withFrameNanos { now ->
+                    val dt = if (last == 0L) 0.016f else (now - last) / 1e9f
+                    last = now
+                    fx.tick(dt)
+                }
+            } else {
+                last = 0L
+                delay(32)
+            }
+        }
+    }
+    // Goal counters: items still flying to the HUD are not yet subtracted on screen.
+    val inFlight = remember { mutableStateMapOf<GoalKey, Int>() }
+    val bumps = remember { mutableStateMapOf<GoalKey, Int>() }
+    val goalTargets = remember { mutableStateMapOf<GoalKey, Offset>() }
+    var background by remember { mutableStateOf<ImageBitmap?>(Backgrounds.peek(def.chapter, false)) }
+    LaunchedEffect(def.chapter) {
+        if (background == null) background = withContext(Dispatchers.IO) { Backgrounds.load(context, def.chapter, false) }
+    }
+    // Celebration when the level is won.
+    LaunchedEffect(state.finished, state.status) {
+        if (state.finished && state.status == GameStatus.WON) {
+            val m = context.resources.displayMetrics
+            fx.confetti(m.widthPixels.toFloat(), m.heightPixels.toFloat(), m.widthPixels / 9f)
+        }
+    }
+    val text = rememberTextMeasurer()
+
     BackHandler { if (!state.finished) vm.togglePause(!state.paused) else onExit() }
 
-    Box(Modifier.fillMaxSize()) {
-        SceneBackground(look, dim = 0.05f, animate = !settings.reducedMotion)
-        Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-            Hud(def.number, state, onPause = { vm.togglePause(true) })
-            Box(Modifier.weight(1f).fillMaxWidth().padding(horizontal = 8.dp, vertical = 6.dp), contentAlignment = Alignment.Center) {
+    Box(Modifier.fillMaxSize().background(Color(0xFF2A2140))) {
+        val bg = background
+        if (bg != null) {
+            Image(bg, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+        } else {
+            SceneBackground(ChapterLooks.of(def.chapter), animate = !settings.reducedMotion)
+        }
+        // Board theme cosmetics tint the scene.
+        val tint = when (theme) {
+            com.cozycards.game.economy.Cosmetic.BOARD_PAPER -> Color(0x40F6E7C8)
+            com.cozycards.game.economy.Cosmetic.BOARD_NIGHT -> Color(0x660E1030)
+            com.cozycards.game.economy.Cosmetic.BOARD_PASTEL -> Color(0x40FFD6E8)
+            else -> Color.Transparent
+        }
+        Box(Modifier.fillMaxSize().background(tint))
+        // Darken top and bottom so the HUD and boosters read well on any scene.
+        Box(Modifier.fillMaxSize().background(Brush.verticalGradient(0f to Color(0x66000000), 0.2f to Color.Transparent, 0.8f to Color.Transparent, 1f to Color(0x77000000))))
+        Column(
+            Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()
+                .graphicsLayer { fx.frame.longValue; translationX = fx.shakeX; translationY = fx.shakeY },
+        ) {
+            Hud(def.number, state, inFlight, bumps, onPause = { vm.togglePause(true) }, onTarget = { k, o -> goalTargets[k] = o })
+            Box(Modifier.weight(1f).fillMaxWidth().padding(horizontal = 6.dp, vertical = 6.dp), contentAlignment = Alignment.Center) {
                 BoardView(
                     state = state,
                     portals = portals,
                     conveyors = conveyors,
                     reducedMotion = settings.reducedMotion,
                     haptics = settings.haptics,
+                    fx = fx,
+                    goalTargets = goalTargets,
+                    onGoalLaunch = { k -> inFlight[k] = (inFlight[k] ?: 0) + 1 },
+                    onGoalHit = { k ->
+                        inFlight[k] = ((inFlight[k] ?: 1) - 1).coerceAtLeast(0)
+                        bumps[k] = (bumps[k] ?: 0) + 1
+                        container.audio.play(com.cozycards.app.audio.Sfx.TAP, 1.4f)
+                    },
                     onSwap = vm::onSwap,
                     onTap = vm::onTap,
                     onStepDone = vm::stepDone,
                     modifier = Modifier.fillMaxSize(),
+                    wiggle = state.wiggle,
                 )
                 if (state.shuffledNotice) Banner("No moves left – shuffling!")
                 state.message?.let { msg ->
-                    LaunchedEffect(msg) { kotlinx.coroutines.delay(1800); vm.clearMessage() }
+                    LaunchedEffect(msg) { delay(1800); vm.clearMessage() }
                     Banner(msg)
                 }
             }
             BoosterBar(state.activeBooster, player.boosters, onSelect = vm::selectBooster)
         }
+        Canvas(Modifier.fillMaxSize()) { fx.frame.longValue; fx.draw(this, text) }
         if (state.paused && !state.finished) PauseOverlay(
             onResume = { vm.togglePause(false) },
-            onRestart = { vm.togglePause(false); vm.restart() },
+            onRestart = { vm.togglePause(false); fx.clear(); inFlight.clear(); vm.restart() },
             onQuit = onExit,
             settings = settings,
             onToggleMusic = { on -> container.scope.launch { container.settings.update { it.copy(musicVolume = if (on) 0.6f else 0f) } } },
             onToggleSfx = { on -> container.scope.launch { container.settings.update { it.copy(sfxVolume = if (on) 0.8f else 0f) } } },
         )
-        AnimatedVisibility(state.finished && state.anim == null, enter = fadeIn() + scaleIn(initialScale = 0.9f), exit = fadeOut()) {
+        AnimatedVisibility(state.finished && state.anim == null, enter = fadeIn(tween(400, delayMillis = 350)) + scaleIn(tween(450, delayMillis = 350), initialScale = 0.8f), exit = fadeOut()) {
             if (state.status == GameStatus.WON) WinOverlay(def.number, state, onNext = {
                 val nextId = Chapters.levelId(def.number + 1)
                 // The next level goes through the same unlock check as starting from the map.
                 container.scope.launch {
                     runCatching { container.repository.service.startLevel(nextId, emptySet()) }
-                        .onSuccess { kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) { onNextLevel(nextId) } }
+                        .onSuccess { withContext(Dispatchers.Main) { onNextLevel(nextId) } }
                 }
             }, onMap = onExit, onOpenBoxes = onOpenLootboxes)
-            else LoseOverlay(state, player.boosters, onRetry = { vm.restart(it) }, onMap = onExit)
+            else LoseOverlay(state, player.boosters, onRetry = { fx.clear(); inFlight.clear(); vm.restart(it) }, onMap = onExit)
         }
     }
 }
@@ -168,24 +254,57 @@ private fun Banner(text: String) {
 }
 
 @Composable
-private fun Hud(levelNumber: Int, state: LevelUiState, onPause: () -> Unit) {
-    Panel(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 6.dp)) {
-        Row(Modifier.padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(66.dp)) {
-                val low = state.movesLeft <= 3
-                val pulse by animateFloatAsState(if (low) 1.12f else 1f, tween(300), label = "moves")
-                Text("${state.movesLeft}", fontSize = 30.sp, fontWeight = FontWeight.Black, color = if (low) Palette.Danger else Palette.Ink, modifier = Modifier.scale(pulse))
-                Text("moves", style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft)
+private fun Hud(
+    levelNumber: Int,
+    state: LevelUiState,
+    inFlight: Map<GoalKey, Int>,
+    bumps: Map<GoalKey, Int>,
+    onPause: () -> Unit,
+    onTarget: (GoalKey, Offset) -> Unit,
+) {
+    Row(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+        // Moves: a big medallion.
+        val low = state.movesLeft <= 3
+        val t = rememberInfiniteTransition(label = "moves")
+        val beat by t.animateFloat(1f, if (low) 1.12f else 1f, infiniteRepeatable(tween(420), RepeatMode.Reverse), label = "beat")
+        Box(
+            Modifier.size(78.dp).scale(beat).clip(CircleShape)
+                .background(Brush.radialGradient(listOf(Color(0xFFFFF7EC), Color(0xFFF7D8E4))))
+                .border(4.dp, Brush.verticalGradient(listOf(Color(0xFFF7D774), Color(0xFFC8962C))), CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text("${state.movesLeft}", fontSize = 30.sp, fontWeight = FontWeight.Black, color = if (low) Palette.Danger else Palette.Ink)
+                Text("moves", fontSize = 10.sp, color = Palette.InkSoft, fontWeight = FontWeight.Bold)
             }
-            Row(Modifier.weight(1f), horizontalArrangement = Arrangement.SpaceEvenly) {
-                state.goals.forEach { GoalChip(it) }
+        }
+        Spacer(Modifier.width(8.dp))
+        // Goals on a cream plate with a gold rim.
+        Row(
+            Modifier.weight(1f).clip(RoundedCornerShape(22.dp))
+                .background(Color(0xF2FFF7EC))
+                .border(3.dp, Brush.verticalGradient(listOf(Color(0xFFF7D774), Color(0xFFC8962C))), RoundedCornerShape(22.dp))
+                .padding(horizontal = 8.dp, vertical = 6.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            state.goals.forEach { g ->
+                val key = g.key()
+                GoalChip(g, inFlight[key] ?: 0, bumps[key] ?: 0, Modifier.onGloballyPositioned { c ->
+                    val p = c.positionInRoot()
+                    onTarget(key, Offset(p.x + c.size.width / 2f, p.y + c.size.height / 2.6f))
+                })
             }
-            Column(horizontalAlignment = Alignment.End) {
-                IconButton(onClick = onPause, modifier = Modifier.size(36.dp)) { Icon(Icons.Rounded.Pause, "Pause", tint = Palette.Ink) }
-                Text("Lv $levelNumber", style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft)
-                if (state.stageCount > 1) Text("Stage ${state.stageIndex + 1}/${state.stageCount}", style = MaterialTheme.typography.labelSmall, color = Palette.SakuraDeep)
-                if (state.gravity != Dir.DOWN) Text("Gravity ${arrow(state.gravity)}", style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft)
-            }
+        }
+        Spacer(Modifier.width(6.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Box(
+                Modifier.size(42.dp).clip(CircleShape).background(Color(0xE6FFF7EC)).border(2.dp, Color(0xFFC8962C), CircleShape).clickable(onClick = onPause),
+                contentAlignment = Alignment.Center,
+            ) { Icon(Icons.Rounded.Pause, "Pause", tint = Palette.Ink) }
+            Text("Lv $levelNumber", style = MaterialTheme.typography.labelSmall, color = Color.White, fontWeight = FontWeight.Bold)
+            if (state.stageCount > 1) Text("${state.stageIndex + 1}/${state.stageCount}", style = MaterialTheme.typography.labelSmall, color = Color.White)
+            if (state.gravity != Dir.DOWN) Text(arrow(state.gravity), style = MaterialTheme.typography.labelLarge, color = Color.White)
         }
     }
 }
@@ -193,17 +312,25 @@ private fun Hud(levelNumber: Int, state: LevelUiState, onPause: () -> Unit) {
 private fun arrow(d: Dir) = when (d) { Dir.DOWN -> "↓"; Dir.UP -> "↑"; Dir.LEFT -> "←"; Dir.RIGHT -> "→" }
 
 @Composable
-fun GoalChip(g: GoalProgress) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(Modifier.size(38.dp), contentAlignment = Alignment.Center) {
-            GoalIcon(g.goal.type, g.goal.color, Modifier.size(34.dp))
-            if (g.done) Canvas(Modifier.size(18.dp).align(Alignment.BottomEnd)) {
+fun GoalChip(g: GoalProgress, inFlight: Int = 0, bumps: Int = 0, modifier: Modifier = Modifier) {
+    val shown = (g.remaining + inFlight).coerceAtMost(g.goal.target)
+    val bump = remember { Animatable(1f) }
+    LaunchedEffect(bumps) {
+        if (bumps > 0) {
+            bump.snapTo(1.35f)
+            bump.animateTo(1f, spring(dampingRatio = 0.35f, stiffness = 600f))
+        }
+    }
+    Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Box(Modifier.size(42.dp).scale(bump.value), contentAlignment = Alignment.Center) {
+            GoalIcon(g.goal.type, g.goal.color, Modifier.size(38.dp))
+            if (shown == 0) Canvas(Modifier.size(18.dp).align(Alignment.BottomEnd)) {
                 drawCircle(Palette.Matcha)
                 drawLine(Color.White, Offset(size.width * 0.25f, size.height * 0.5f), Offset(size.width * 0.45f, size.height * 0.7f), 4f)
                 drawLine(Color.White, Offset(size.width * 0.45f, size.height * 0.7f), Offset(size.width * 0.78f, size.height * 0.3f), 4f)
             }
         }
-        Text(if (g.done) "✓" else "${g.remaining}", style = MaterialTheme.typography.labelLarge, color = Palette.Ink)
+        Text(if (shown == 0) "✓" else "$shown", fontSize = 15.sp, fontWeight = FontWeight.Black, color = Palette.Ink)
     }
 }
 
@@ -212,18 +339,19 @@ fun GoalIcon(type: GoalType, color: Int, modifier: Modifier = Modifier) {
     Canvas(modifier) {
         val s = size.minDimension
         val c = center
-        val o = Offset(c.x - s / 2, c.y - s / 2)
-        when (type) {
-            GoalType.COLLECT_COLOR -> drawPiece(Piece(0, color), c, s)
-            GoalType.CLEAR_ICE -> drawIce(o, s, 2)
-            GoalType.BREAK_BOXES -> drawBlocker(Blocker(BlockerType.BOX, 2), o, s)
-            GoalType.BREAK_STONES -> drawBlocker(Blocker(BlockerType.STONE, 1), o, s)
-            GoalType.BREAK_CHAINS -> { drawPiece(Piece(0, 4), c, s * 0.8f); drawChain(o, s, 1) }
-            GoalType.CLEAR_WEBS -> { drawCircle(Color(0x33000000), s * 0.45f); drawWeb(o, s) }
-            GoalType.DELIVER_DROPS -> drawPiece(Piece(0, -1, PieceKind.DROP), c, s)
-            GoalType.OPEN_LOCKS -> drawBlocker(Blocker(BlockerType.LOCK, 1), o, s)
-            GoalType.SCORE -> drawCircle(Palette.Gold, s * 0.4f)
+        val name = when (type) {
+            GoalType.COLLECT_COLOR -> "tile_${color.coerceIn(0, 5)}"
+            GoalType.CLEAR_ICE -> "ice_2"
+            GoalType.BREAK_BOXES -> "crate_1"
+            GoalType.BREAK_STONES -> "stone"
+            GoalType.BREAK_CHAINS -> "chain_1"
+            GoalType.CLEAR_WEBS -> "web"
+            GoalType.DELIVER_DROPS -> "charm"
+            GoalType.OPEN_LOCKS -> "lock"
+            GoalType.SCORE -> "ui_star"
         }
+        if (type == GoalType.BREAK_CHAINS) drawImageCentered(Sprites.tile(4), c, s * 0.8f, 1f, null, false)
+        drawImageCentered(Sprites[name], c, s, 1f, null, false)
     }
 }
 

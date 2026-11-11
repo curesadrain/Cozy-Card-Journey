@@ -8,10 +8,13 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipe
 import androidx.test.core.app.ApplicationProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.background
 import com.cozycards.app.cards.CardArt
 import com.cozycards.app.ui.CozyApp
 import com.cozycards.app.ui.theme.CozyTheme
@@ -45,14 +48,15 @@ class ScreenshotTest {
         var left = ms
         while (left > 0) {
             compose.mainClock.advanceTimeBy(50)
+            org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
             Thread.sleep(5)
             left -= 50
         }
     }
 
     /** Software-draws the whole window (Robolectric native graphics) into a PNG. */
-    private fun shot(name: String) {
-        advance(100)
+    private fun shot(name: String, settle: Boolean = true) {
+        if (settle) advance(100) else compose.waitForIdle()
         compose.activityRule.scenario.onActivity { act ->
             val v = act.window.decorView
             val bmp = Bitmap.createBitmap(v.width.coerceAtLeast(1), v.height.coerceAtLeast(1), Bitmap.Config.ARGB_8888)
@@ -89,10 +93,18 @@ class ScreenshotTest {
         clickText("13")
         shot("02_prelevel")
         clickText("Play")
-        advance(1500)
+        advance(3000)
         shot("03_level")
+        // Play a real move on the level screen and capture the animation.
+        // Swipe the first valid move found by trying neighbours through the UI is fragile; use a drag on the board centre instead.
+        compose.onRoot().performTouchInput {
+            val cx = centerX; val cy = centerY - height * 0.02f
+            swipe(androidx.compose.ui.geometry.Offset(cx, cy), androidx.compose.ui.geometry.Offset(cx + width * 0.12f, cy), 120)
+        }
+        for (i in 0 until 10) { shot("03_level_move_%02d".format(i), settle = false); compose.mainClock.advanceTimeBy(80); org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle() }
+        advance(2500)
         compose.activityRule.scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
-        advance(600)
+        advance(1200)
         shot("04_pause")
         clickText("Back to map")
         clickText("Collection")
@@ -116,38 +128,63 @@ class ScreenshotTest {
         shot("12_settings")
     }
 
+    /** Plays engine steps through the real BoardView + effects layer and saves frames. */
     @Test
-    fun boardAnimatesEffectsAndStageChanges() {
-        val spec = { w: Int, h: Int -> com.cozycards.engine.GameSpec(5, 20, listOf(com.cozycards.engine.StageSpec(w, h, List(w * h) { com.cozycards.engine.CellSpec(ice = if (it % 5 == 0) 1 else 0) }, listOf(com.cozycards.engine.Goal(com.cozycards.engine.GoalType.SCORE, 99999))))) }
-        val g = com.cozycards.engine.Match3Game(spec(8, 8), 5)
-        val bombAt = g.placeSpecials(listOf(com.cozycards.engine.Special.BOMB, com.cozycards.engine.Special.ROCKET_H))
-        val before = g.board.copy()
-        val r = g.useHammer(bombAt.first()) as com.cozycards.engine.MoveResult.Applied
-        val big = com.cozycards.engine.Match3Game(spec(9, 9), 6)
-        val steps = listOf(
-            com.cozycards.app.ui.level.StepAnim(1, before, r.steps.first()),
-            com.cozycards.app.ui.level.StepAnim(2, before, com.cozycards.engine.Step(com.cozycards.engine.StepKind.STAGE, big.board.copy())),
-        )
-        var current by androidx.compose.runtime.mutableStateOf(steps[0])
+    fun boardAnimationFrames() {
+        val app = ApplicationProvider.getApplicationContext<CozyApp>()
+        val deadline = System.currentTimeMillis() + 60_000
+        while (app.container.ready.value !is StartupState.Ready && System.currentTimeMillis() < deadline) Thread.sleep(20)
+        val w = 8; val h = 8
+        val cells = List(w * h) { i ->
+            val x = i % w; val y = i / w
+            when {
+                y == 6 && x in 2..5 -> com.cozycards.engine.CellSpec(blocker = com.cozycards.engine.Blocker(com.cozycards.engine.BlockerType.BOX, 1 + x % 3))
+                y == 1 && x in 1..6 -> com.cozycards.engine.CellSpec(ice = 1 + x % 2)
+                y == 4 && (x == 0 || x == 7) -> com.cozycards.engine.CellSpec(chain = 1)
+                else -> com.cozycards.engine.CellSpec()
+            }
+        }
+        val spec = com.cozycards.engine.GameSpec(5, 20, listOf(com.cozycards.engine.StageSpec(w, h, cells,
+            listOf(com.cozycards.engine.Goal(com.cozycards.engine.GoalType.COLLECT_COLOR, 30, 0), com.cozycards.engine.Goal(com.cozycards.engine.GoalType.BREAK_BOXES, 4), com.cozycards.engine.Goal(com.cozycards.engine.GoalType.CLEAR_ICE, 6)))))
+        val game = com.cozycards.engine.Match3Game(spec, 11)
+        val placed = game.placeSpecials(listOf(com.cozycards.engine.Special.BOMB, com.cozycards.engine.Special.ROCKET_H))
+        val start = game.board.copy()
+        val result = game.useHammer(placed.first()) as com.cozycards.engine.MoveResult.Applied
+        val steps = result.steps
+        var index by androidx.compose.runtime.mutableStateOf(0)
+        var shown by androidx.compose.runtime.mutableStateOf(start)
+        val fx = com.cozycards.app.ui.gfx.Fx()
         compose.mainClock.autoAdvance = false
         compose.setContent {
             CozyTheme {
-                com.cozycards.app.ui.level.BoardView(
-                    state = com.cozycards.app.ui.level.LevelUiState(board = current.from, anim = current, movesLeft = 10, score = 0, goals = emptyList(), stageIndex = 0, stageCount = 2, gravity = com.cozycards.engine.Dir.DOWN),
-                    portals = emptyList(), conveyors = emptyList(), reducedMotion = false, haptics = false,
-                    onSwap = { _, _ -> }, onTap = {}, onStepDone = {},
-                    modifier = androidx.compose.ui.Modifier.androidxFill(),
-                )
+                val text = androidx.compose.ui.text.rememberTextMeasurer()
+                androidx.compose.runtime.LaunchedEffect(Unit) {
+                    var last = 0L
+                    while (true) androidx.compose.runtime.withFrameNanos { n -> val dt = if (last == 0L) 0.016f else (n - last) / 1e9f; last = n; fx.tick(dt) }
+                }
+                androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.fillMaxSize().androidxBg()) {
+                    val anim = steps.getOrNull(index)?.let { com.cozycards.app.ui.level.StepAnim(index + 1, shown, it) }
+                    com.cozycards.app.ui.level.BoardView(
+                        state = com.cozycards.app.ui.level.LevelUiState(board = shown, anim = anim, movesLeft = 10, score = 0, goals = game.goals, stageIndex = 0, stageCount = 1, gravity = com.cozycards.engine.Dir.DOWN),
+                        portals = emptyList(), conveyors = emptyList(), reducedMotion = false, haptics = false, fx = fx,
+                        goalTargets = mapOf(com.cozycards.app.ui.level.GoalKey(com.cozycards.engine.GoalType.COLLECT_COLOR, 0) to androidx.compose.ui.geometry.Offset(100f, 40f),
+                            com.cozycards.app.ui.level.GoalKey(com.cozycards.engine.GoalType.BREAK_BOXES, -1) to androidx.compose.ui.geometry.Offset(400f, 40f),
+                            com.cozycards.app.ui.level.GoalKey(com.cozycards.engine.GoalType.CLEAR_ICE, -1) to androidx.compose.ui.geometry.Offset(700f, 40f)),
+                        onGoalLaunch = {}, onGoalHit = {}, onSwap = { _, _ -> }, onTap = {},
+                        onStepDone = { id -> if (id == index + 1) { shown = steps[index].board; index++ } },
+                        modifier = androidx.compose.ui.Modifier.fillMaxSize(),
+                    )
+                    androidx.compose.foundation.Canvas(androidx.compose.ui.Modifier.fillMaxSize()) { fx.frame.longValue; fx.draw(this, text) }
+                }
             }
         }
-        advance(120)
-        shot("13_board_blast_midway")
-        current = steps[1]
-        advance(300)
-        shot("14_board_stage_change")
+        for (i in 0 until 24) {
+            shot("anim_%02d".format(i), settle = false)
+            compose.mainClock.advanceTimeBy(64)
+        }
     }
 
-    private fun androidx.compose.ui.Modifier.androidxFill() = this.fillMaxSize()
+    private fun androidx.compose.ui.Modifier.androidxBg() = this.then(androidx.compose.ui.Modifier.background(androidx.compose.ui.graphics.Color(0xFF6B5A8E)))
 
     @Test
     fun renderCardArt() {

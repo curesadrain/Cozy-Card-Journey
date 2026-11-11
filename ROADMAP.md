@@ -19,7 +19,13 @@
       protection, shop, cosmetics (card backs, frames, board themes), original audio, settings.
 - [x] **Phase 9 – QA**: Room/migration tests, screenshot tests, shader harness, release build.
 
+- [x] **1.1 – Visual overhaul**: generated art set, chapter backgrounds, animation director, effects
+      layer, goal fly-to-counter, new HUD.
+
 ## Current / next
+- [ ] Card redesign (requested by the owner; details pending).
+- [ ] Bonus round on win (remaining moves turn into rockets) and level-start intro animation.
+- [ ] Tune effect timings on real devices.
 - [ ] Run on physical devices (several GPUs) to tune shader performance and gyroscope feel.
 - [ ] Hand-polish a selection of showcase levels (e.g. first 10 of each chapter) on top of the generator.
 - [ ] Add verified real cards when a reliable, citable data source and image licences are available.

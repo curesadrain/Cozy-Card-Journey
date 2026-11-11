@@ -50,6 +50,7 @@ data class LevelUiState(
     val hint: Pair<Pos, Pos>? = null,
     val gravity: com.cozycards.engine.Dir,
     val shuffledNotice: Boolean = false,
+    val wiggle: Wiggle? = null,
 )
 
 class LevelViewModel(
@@ -117,7 +118,7 @@ class LevelViewModel(
         when (val r = game.swap(a, b)) {
             is MoveResult.Invalid -> {
                 container.audio.play(Sfx.INVALID)
-                _state.update { it.copy(selected = null, message = if (r.reason == "No match") null else r.reason) }
+                _state.update { it.copy(selected = null, wiggle = Wiggle(a, b, ++stepCounter), message = if (r.reason == "No match") null else r.reason) }
             }
             is MoveResult.Applied -> enqueue(r)
         }

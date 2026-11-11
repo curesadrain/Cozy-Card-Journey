@@ -39,6 +39,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -59,6 +60,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cozycards.app.cards.CARD_ASPECT
 import com.cozycards.app.container
+import com.cozycards.app.ui.gfx.drawImageCentered
 import com.cozycards.app.ui.theme.Palette
 import com.cozycards.game.cards.CardDef
 import com.cozycards.game.cards.Rarity
@@ -82,18 +84,47 @@ fun CozyButton(
     val pressed by interaction.collectIsPressedAsState()
     val scale by animateFloatAsState(if (pressed) 0.95f else 1f, label = "press")
     val bg = if (enabled) color else Color(0xFFCFC6CF)
+    val sprite = when {
+        color == Palette.SakuraDeep -> com.cozycards.app.ui.gfx.Sprites["btn_pink"]
+        color == Palette.Lavender -> com.cozycards.app.ui.gfx.Sprites["btn_lavender"]
+        else -> null
+    }
+    val look = if (sprite != null) Modifier.drawBehind {
+        drawThreeSlice(sprite, if (enabled) 1f else 0.45f)
+    } else Modifier
+        .clip(RoundedCornerShape(50))
+        .background(Brush.verticalGradient(listOf(bg.copy(alpha = 0.92f), bg)))
+        .border(BorderStroke(2.dp, Color.White.copy(alpha = 0.55f)), RoundedCornerShape(50))
     Box(
         modifier
             .scale(scale)
-            .clip(RoundedCornerShape(50))
-            .background(Brush.verticalGradient(listOf(bg.copy(alpha = 0.92f), bg)))
-            .border(BorderStroke(2.dp, Color.White.copy(alpha = 0.55f)), RoundedCornerShape(50))
+            .then(look)
             .clickable(interaction, null, enabled = enabled, onClick = onClick)
-            .padding(PaddingValues(horizontal = if (small) 14.dp else 22.dp, vertical = if (small) 7.dp else 12.dp)),
+            .padding(PaddingValues(horizontal = if (small) 16.dp else 24.dp, vertical = if (small) 9.dp else 14.dp)),
         contentAlignment = Alignment.Center,
     ) {
-        Text(text, color = textColor, style = if (small) MaterialTheme.typography.labelMedium else MaterialTheme.typography.labelLarge, textAlign = TextAlign.Center)
+        Text(
+            text, color = if (sprite != null && color == Palette.Lavender) Color.White else textColor, textAlign = TextAlign.Center,
+            style = (if (small) MaterialTheme.typography.labelMedium else MaterialTheme.typography.labelLarge).copy(
+                shadow = if (sprite != null) androidx.compose.ui.graphics.Shadow(Color(0x88000000), androidx.compose.ui.geometry.Offset(0f, 2f), 3f) else null,
+            ),
+        )
     }
+}
+
+/** Stretches a pill-shaped sprite horizontally without distorting its rounded ends. */
+fun androidx.compose.ui.graphics.drawscope.DrawScope.drawThreeSlice(img: androidx.compose.ui.graphics.ImageBitmap, alpha: Float) {
+    val sh = img.height
+    val cap = sh / 2
+    val dh = size.height
+    val dcap = (dh * cap / sh).coerceAtMost(size.width / 2)
+    fun part(sx: Int, sw: Int, dx: Float, dw: Float) = drawImage(
+        img, srcOffset = androidx.compose.ui.unit.IntOffset(sx, 0), srcSize = androidx.compose.ui.unit.IntSize(sw, sh),
+        dstOffset = androidx.compose.ui.unit.IntOffset(dx.toInt(), 0), dstSize = androidx.compose.ui.unit.IntSize(dw.toInt().coerceAtLeast(1), dh.toInt()), alpha = alpha,
+    )
+    part(0, cap, 0f, dcap)
+    part(cap, img.width - 2 * cap, dcap, size.width - 2 * dcap)
+    part(img.width - cap, cap, size.width - dcap, dcap)
 }
 
 @Composable
@@ -132,6 +163,11 @@ fun formatAmount(v: Long) = when {
 
 @Composable
 fun CurrencyIcon(kind: Currency, modifier: Modifier = Modifier) {
+    val sprite = com.cozycards.app.ui.gfx.Sprites[if (kind == Currency.COINS) "ui_coin" else "ui_token"]
+    if (sprite != null) {
+        Canvas(modifier) { drawImageCentered(sprite, center, size.minDimension * 1.15f, 1f, null, false) }
+        return
+    }
     Canvas(modifier) {
         val r = size.minDimension / 2
         if (kind == Currency.COINS) {
@@ -162,7 +198,13 @@ fun StarRow(stars: Int, size: Dp = 14.dp, max: Int = 3) {
 
 @Composable
 fun StarIcon(filled: Boolean, modifier: Modifier = Modifier) {
-    Canvas(modifier) { drawStar(center, size.minDimension / 2, if (filled) Palette.Gold else Color.Black.copy(alpha = 0.18f)) }
+    val sprite = com.cozycards.app.ui.gfx.Sprites["ui_star"]
+    Canvas(modifier) {
+        if (sprite != null) {
+            if (filled) drawImageCentered(sprite, center, size.minDimension * 1.15f, 1f, null, false)
+            else drawImageCentered(sprite, center, size.minDimension * 1.05f, 0.35f, Color(0xFF5B5068), false)
+        } else drawStar(center, size.minDimension / 2, if (filled) Palette.Gold else Color.Black.copy(alpha = 0.18f))
+    }
 }
 
 fun DrawScope.drawStar(c: Offset, r: Float, color: Color) {
