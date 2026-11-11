@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0 — 2026-11-11
+Third feedback round.
+
+### Changed
+* Collection filters fit one line without scrolling: three equal dropdowns (rarity, cards, series),
+  an icon-only sort menu and a search toggle.
+* Shop split into tabs (Chests / Boosters / Styles / Exchange). Booster ×1 and ×5 packs share one row;
+  collection boxes are named after their collection; cosmetics show previews (card back, frame on a
+  sample card, board tile swatch).
+* Map: removed the bouncing "Play" marker; the current level is shown by its pulsing medallion.
+
+### Fixed
+* 1px seam on glossy buttons caused by truncated slice edges.
+
 ## 1.3.0 — 2026-11-11
 Second feedback round.
 

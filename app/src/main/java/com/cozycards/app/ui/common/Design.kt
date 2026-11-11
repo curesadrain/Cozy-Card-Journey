@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -129,13 +130,18 @@ fun DrawScope.drawThreeSliceFiltered(img: androidx.compose.ui.graphics.ImageBitm
     val cap = sh / 2
     val dh = size.height
     val dcap = (dh * cap / sh).coerceAtMost(size.width / 2)
-    fun part(sx: Int, sw: Int, dx: Float, dw: Float) = drawImage(
+    // Integer edges so the three parts touch exactly (truncation used to leave a 1px seam);
+    // the middle slice is sampled 1px inside the caps to avoid filtering bleed.
+    val left = kotlin.math.round(dcap).toInt()
+    val right = kotlin.math.round(size.width - dcap).toInt()
+    val w = kotlin.math.round(size.width).toInt()
+    fun part(sx: Int, sw: Int, x0: Int, x1: Int) = drawImage(
         img, srcOffset = IntOffset(sx, 0), srcSize = IntSize(sw, sh),
-        dstOffset = IntOffset(dx.toInt(), 0), dstSize = IntSize(dw.toInt().coerceAtLeast(1), dh.toInt()), alpha = alpha, colorFilter = filter,
+        dstOffset = IntOffset(x0, 0), dstSize = IntSize((x1 - x0).coerceAtLeast(1), dh.toInt()), alpha = alpha, colorFilter = filter,
     )
-    part(0, cap, 0f, dcap)
-    part(cap, img.width - 2 * cap, dcap, size.width - 2 * dcap)
-    part(img.width - cap, cap, size.width - dcap, dcap)
+    part(cap + 1, (img.width - 2 * cap - 2).coerceAtLeast(1), left - 1, right + 1)
+    part(0, cap, 0, left)
+    part(img.width - cap, cap, right, w)
 }
 
 /** Selectable pill used for filters and tabs. */
@@ -145,16 +151,19 @@ fun CozyChip(
     onClick: () -> Unit,
     label: @Composable () -> Unit,
     leadingIcon: (@Composable () -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    compact: Boolean = false,
 ) {
     val shape = RoundedCornerShape(50)
     Row(
-        Modifier
+        modifier
             .clip(shape)
             .background(if (selected) Brush.verticalGradient(listOf(Color(0xFFFF8FB8), Color(0xFFD9467C))) else Brush.verticalGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF6E8D6))))
             .border(2.dp, if (selected) Palette.GoldRim else Brush.verticalGradient(listOf(Color(0xFFE9D3A0), Color(0xFFD7B676))), shape)
             .clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 7.dp),
+            .padding(horizontal = if (compact) 10.dp else 14.dp, vertical = 7.dp),
         verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center,
     ) {
         if (leadingIcon != null) { Box(Modifier.size(16.dp)) { leadingIcon() }; Spacer(Modifier.width(6.dp)) }
         androidx.compose.runtime.CompositionLocalProvider(
@@ -236,12 +245,22 @@ fun CozyProgress(progress: Float, modifier: Modifier = Modifier, color: Color = 
     }
 }
 
-/** Compact one-line dropdown in the chip style. */
+/** Compact one-line dropdown in the chip style. [icon] replaces the text label when given. */
 @Composable
-fun <T> CozyDropdown(label: String, active: Boolean, options: List<Pair<T, String>>, onPick: (T) -> Unit) {
+fun <T> CozyDropdown(
+    label: String,
+    active: Boolean,
+    options: List<Pair<T, String>>,
+    modifier: Modifier = Modifier,
+    icon: androidx.compose.ui.graphics.vector.ImageVector? = null,
+    onPick: (T) -> Unit,
+) {
     var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
-    Box {
-        CozyChip(active, { open = true }, { Text("$label ▾", maxLines = 1) })
+    Box(modifier) {
+        CozyChip(active, { open = true }, {
+            if (icon != null) androidx.compose.material3.Icon(icon, label, Modifier.size(20.dp))
+            else Text("$label ▾", maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+        }, modifier = Modifier.fillMaxWidth(), compact = true)
         androidx.compose.material3.DropdownMenu(open, { open = false }, containerColor = Palette.Paper) {
             options.forEach { (v, text) ->
                 androidx.compose.material3.DropdownMenuItem({ Text(text, color = Palette.Ink) }, { onPick(v); open = false })

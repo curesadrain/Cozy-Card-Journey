@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Sort
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.AlertDialog
@@ -153,21 +154,20 @@ fun CollectionScreen(onCard: (String) -> Unit) {
                     }
                     Text("Completing an album gives ${Economy.ALBUM_COMPLETE_COINS} coins + ${Economy.ALBUM_COMPLETE_TOKENS} tokens; a full collection gives a Legendary box.", style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft, modifier = Modifier.padding(top = 4.dp))
                     Spacer(Modifier.height(8.dp))
-                    // One compact row: dropdown filters + a search toggle.
-                    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 4.dp),
-                        horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
+                    // One compact row that always fits: three dropdowns + sort and search icons.
+                    Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
                         com.cozycards.app.ui.common.CozyDropdown(rarity?.label ?: "Rarity", rarity != null,
-                            listOf<Pair<Rarity?, String>>(null to "Any rarity") + Rarity.entries.map { it to it.label }) { rarity = it }
+                            listOf<Pair<Rarity?, String>>(null to "Any rarity") + Rarity.entries.map { it to it.label }, Modifier.weight(1f)) { rarity = it }
                         com.cozycards.app.ui.common.CozyDropdown(if (favorites) "Favourites" else if (owned == OwnedFilter.ALL) "Cards" else owned.label, owned != OwnedFilter.ALL || favorites,
-                            OwnedFilter.entries.map { it.name to it.label } + ("FAV" to "Favourites")) { v ->
+                            OwnedFilter.entries.map { it.name to it.label } + ("FAV" to "Favourites"), Modifier.weight(1f)) { v ->
                             if (v == "FAV") { favorites = true; owned = OwnedFilter.ALL } else { favorites = false; owned = OwnedFilter.valueOf(v) }
                         }
                         com.cozycards.app.ui.common.CozyDropdown(album?.let { id -> collection.albums.first { it.id == id }.name } ?: "Series", album != null,
-                            listOf<Pair<String?, String>>(null to "All series") + collection.albums.map { it.id to it.name }) { album = it }
-                        com.cozycards.app.ui.common.CozyDropdown(if (sort == CardSort.ALBUM) "Sort" else sort.label, sort != CardSort.ALBUM,
-                            CardSort.entries.map { it to it.label }) { sort = it }
+                            listOf<Pair<String?, String>>(null to "All series") + collection.albums.map { it.id to it.name }, Modifier.weight(1f)) { album = it }
+                        com.cozycards.app.ui.common.CozyDropdown("Sort", sort != CardSort.ALBUM, CardSort.entries.map { it to it.label },
+                            Modifier.width(48.dp), icon = Icons.AutoMirrored.Rounded.Sort) { sort = it }
                         com.cozycards.app.ui.common.CozyChip(searchOpen || query.isNotBlank(), { searchOpen = !searchOpen; if (!searchOpen) query = "" },
-                            { Icon(Icons.Rounded.Search, "Search", Modifier.size(18.dp)) })
+                            { Icon(Icons.Rounded.Search, "Search", Modifier.size(20.dp)) }, modifier = Modifier.width(48.dp), compact = true)
                     }
                     if (searchOpen) {
                         OutlinedTextField(

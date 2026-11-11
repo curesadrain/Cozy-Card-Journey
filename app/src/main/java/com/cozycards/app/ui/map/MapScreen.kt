@@ -400,18 +400,7 @@ private fun LevelNode(number: Int, unlocked: Boolean, current: Boolean, cleared:
         if (cleared) Row(Modifier.align(Alignment.BottomCenter).offset(y = 14.dp)) {
             repeat(3) { i -> StarIcon(i < stars, Modifier.size(if (i == 1) 22.dp else 18.dp).offset(y = if (i == 1) 3.dp else 0.dp)) }
         }
-        if (current) {
-            val bob = sin(t * 2 * PI.toFloat()) * 5f
-            Box(Modifier.align(Alignment.TopCenter).offset(y = (-46).dp + bob.dp)) {
-                Text(
-                    "Play", color = Color.White, fontWeight = FontWeight.Black,
-                    modifier = Modifier.clip(RoundedCornerShape(50))
-                        .background(Brush.verticalGradient(listOf(Color(0xFFFF8FB8), Color(0xFFD9467C))))
-                        .border(2.dp, Palette.GoldRim, RoundedCornerShape(50))
-                        .padding(horizontal = 12.dp, vertical = 3.dp),
-                )
-            }
-        }
+
     }
 }
 
