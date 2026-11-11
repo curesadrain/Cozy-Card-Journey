@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.5.0 — 2026-11-11
+Procedural map scenery and new logo.
+
+### Added
+* **Procedural map world** (`ui/map/MapWorld.kt`): a vertically tiling garden ground scrolls with the
+  path, and 30 decoration sprites (trees, bushes, rocks, lanterns, ponds, shrines, fences, flowers) are
+  scattered beside it. Placement is a pure function of the level number (seeded RNG), keeps clear of
+  the path, medallions and milestone chests, and favours chapter-appropriate trees. Rows are depth
+  ordered so nearer scenery overlaps farther scenery.
+* Per-chapter colour grade of the scenery (season / time of day), cross-faded as a chapter gate
+  scrolls through the screen. Chapter illustrations remain on the chapter gates and level screens.
+* New logo: adaptive launcher icon (with themed monochrome layer) and splash screen.
+* `tools/process_art.py`: blob-to-grid-cell assignment for decoration sheets, tileable ground strip
+  with cross-faded wrap seam, luminance-keyed logo.
+
+### Changed
+* The map trail is a sandy path stroked as one continuous curve under the scenery (no joins between
+  rows); cleared stretch shown in gold.
+
 ## 1.4.0 — 2026-11-11
 Third feedback round.
 

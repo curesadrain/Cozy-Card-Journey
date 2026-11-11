@@ -115,6 +115,106 @@ def sheet(file, keycol, names, size, overrides=None, min_gap=25):
         print(f"  {name:16s} {save(part, name, opts.get('size', size), opts.get('rotate', 0.0), opts.get('square', True), opts.get('pad', 0.04))}")
 
 
+def _components(mask: np.ndarray):
+    """4-connected labelling (no scipy). Returns label image (0 = background) and count."""
+    h, w = mask.shape
+    lab = np.zeros((h, w), np.int32)
+    n = 0
+    for y0, x0 in zip(*np.nonzero(mask)):
+        if lab[y0, x0]:
+            continue
+        n += 1
+        stack = [(y0, x0)]
+        lab[y0, x0] = n
+        while stack:
+            y, x = stack.pop()
+            for yy, xx in ((y - 1, x), (y + 1, x), (y, x - 1), (y, x + 1)):
+                if 0 <= yy < h and 0 <= xx < w and mask[yy, xx] and not lab[yy, xx]:
+                    lab[yy, xx] = n
+                    stack.append((yy, xx))
+    return lab, n
+
+
+def grid_sheet(file, keycol, prefix, rows=4, cols=4, size=320, ds=4, grow=3):
+    """Grid sheet whose objects may cross cell borders: connected blobs (on a downsampled,
+    slightly dilated mask so loose petals stick to their object) are assigned to the grid
+    cell containing their centre of mass. Sprites keep their aspect ratio."""
+    rgba = key(Image.open(os.path.join(SRC, file)), keycol)
+    h, w = rgba.shape[:2]
+    small = rgba[::ds, ::ds, 3] > 0.06
+    m = small.copy()
+    for _ in range(grow):
+        m = m | np.roll(m, 1, 0) | np.roll(m, -1, 0) | np.roll(m, 1, 1) | np.roll(m, -1, 1)
+    lab, n = _components(m)
+    owner = np.zeros(n + 1, np.int32) - 1
+    for i in range(1, n + 1):
+        ys, xs = np.nonzero(lab == i)
+        if len(ys) < 6:
+            continue
+        r = min(rows - 1, int(ys.mean() * ds * rows / h))
+        c = min(cols - 1, int(xs.mean() * ds * cols / w))
+        owner[i] = r * cols + c
+    full = np.repeat(np.repeat(owner[lab], ds, 0), ds, 1)[:h, :w]
+    names = []
+    for k in range(rows * cols):
+        sel = full == k
+        part = rgba.copy()
+        part[~sel] = 0
+        m2 = part[..., 3] > 0.06
+        ys, xs = np.where(m2)
+        part = part[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+        name = f"{prefix}_{k:02d}"
+        names.append(name)
+        print(f"  {name:16s} {save(part, name, size, square=False)}")
+    return names
+
+
+def ground(file, name, period=1024, out=768, wash=0.12):
+    """Vertically tileable ground strip: one period, wrap seam cross-faded, lightly washed
+    towards cream so the path and level medallions stay readable."""
+    im = np.asarray(Image.open(os.path.join(SRC, file)).convert("RGB"), np.float32)
+    ov = 96
+    r0 = (im.shape[0] - period - ov) // 2
+    strip = im[r0:r0 + period + ov, :period].copy()
+    t = np.linspace(0, 1, ov, dtype=np.float32)[:, None, None]
+    strip[:ov] = strip[period:period + ov] * (1 - t) + strip[:ov] * t
+    tile = strip[:period]
+    tile = tile * (1 - wash) + np.array([255, 246, 232], np.float32) * wash
+    Image.fromarray(np.clip(tile, 0, 255).astype(np.uint8)).resize((out, out), Image.LANCZOS) \
+        .save(os.path.join(OUT, name + ".webp"), "WEBP", quality=82, method=6)
+    print(f"  {name} {out}x{out}")
+
+
+def logo(file):
+    """App logo painted on a dark vignette: soft luminance key, colour un-mixing against the
+    backdrop, then the in-app sprite and the adaptive launcher icon layers."""
+    im = np.asarray(Image.open(os.path.join(SRC, file)).convert("RGB"), np.float32)
+    bg = np.array([21, 20, 26], np.float32)
+    d = np.abs(im - bg).max(-1)
+    a = np.clip((d - 26) / 34, 0, 1)[..., None]
+    rgb = np.where(a > 0.01, (im - (1 - a) * bg) / np.maximum(a, 0.01), 0)
+    rgba = np.concatenate([np.clip(rgb, 0, 255), a * 255], -1).astype(np.uint8)
+    img = Image.fromarray(rgba, "RGBA")
+    img = img.crop(img.getbbox())
+    w, h = img.size
+    side = max(w, h)
+    sq = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    sq.paste(img, ((side - w) // 2, (side - h) // 2))
+    sq.resize((512, 512), Image.LANCZOS).save(os.path.join(OUT, "logo.webp"), "WEBP", quality=90, method=6)
+    res = os.path.join(ROOT, "app", "src", "main", "res", "mipmap-xxxhdpi")
+    os.makedirs(res, exist_ok=True)
+    # Adaptive icon: 108dp canvas (432px), art kept inside ~74dp so masks only trim petals.
+    fg = Image.new("RGBA", (432, 432), (0, 0, 0, 0))
+    art = sq.resize((330, 330), Image.LANCZOS)
+    fg.paste(art, (51, 51), art)
+    fg.save(os.path.join(res, "ic_launcher_foreground.png"))
+    mono = Image.new("RGBA", (432, 432), (0, 0, 0, 0))
+    alpha = fg.split()[3]
+    mono.paste(Image.new("RGBA", (432, 432), (255, 255, 255, 255)), (0, 0), alpha)
+    mono.save(os.path.join(res, "ic_launcher_monochrome.png"))
+    print("  logo + launcher icon")
+
+
 def main(only=None):
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(BG_OUT, exist_ok=True)
@@ -151,6 +251,12 @@ def main(only=None):
         "icon_area", "icon_moves", "nav_map", "nav_collection",
         "nav_loot", "nav_shop", "nav_profile", "nav_settings",
         "chest_common", "chest_rare", "chest_epic", "chest_legendary"], 160)
+    print("logo")
+    logo("logo_dark.jpg")
+    print("map decor")
+    grid_sheet("decor_garden_a_green.jpg", GREEN, "decor_a")
+    grid_sheet("decor_garden_b_green.jpg", GREEN, "decor_b")
+    ground("ground_garden.jpg", "ground_garden")
     print("backgrounds")
     for n in range(1, 21):
         im = Image.open(os.path.join(SRC, f"bg_chapter_{n:02d}.jpg")).convert("RGB")

@@ -48,6 +48,9 @@ engine  (JVM)  ← levels (JVM) ← game (JVM) ← app (Android, Compose)
   `CardViewer` (Compose wrapper: gestures, gyroscope, lifecycle, quality levels).
 * `ui/gfx/` — `Sprites` / `Backgrounds` (asset loading, caches) and `Fx` (particles, debris, beams, rings,
   flyers, shake, floating text). `ui/level/StepPlanner` — per-piece animation timings for every engine step.
+* `ui/map/MapWorld` — procedural map scenery: tiling ground + decorations placed deterministically
+  from the level number beside the path; per-chapter colour grades. The trail is drawn as one path on
+  the background layer from `LazyListLayoutInfo` (reverse layout: offsets measured from the bottom).
 * `audio/` — SoundPool SFX + MediaPlayer music, lifecycle-aware.
 * `ui/` — theme, scenes, components; screens: map, level (board/VM), collection, card detail,
   lootboxes, shop, profile; `AppNavigation` (Navigation Compose, bottom bar).

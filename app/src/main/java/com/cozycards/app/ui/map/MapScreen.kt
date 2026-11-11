@@ -44,6 +44,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.zIndex
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
@@ -158,19 +159,43 @@ fun MapScreen(onPlay: (String, Set<BoosterType>) -> Unit, onOpenProfile: () -> U
             }
         }
     }
-    Box(Modifier.fillMaxSize().background(Color(0xFF2A2140))) {
-        val artA = rememberChapterArt(scene.first, false)
-        val artB = rememberChapterArt(scene.second, false)
-        if (artA != null) androidx.compose.foundation.Image(artA, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-        if (artB != null && scene.third > 0f) androidx.compose.foundation.Image(artB, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop, alpha = scene.third)
-        Box(Modifier.fillMaxSize().background(Color(0x22150E22)))
+    val density = LocalDensity.current
+    val nodeHpx = with(density) { NODE_H.toPx() }
+    val gateHpx = with(density) { BANNER_H.toPx() }
+    // Colour grade of the scenery, cross-faded between chapters as a gate scrolls by.
+    val groundFilter by remember { androidx.compose.runtime.derivedStateOf { MapWorld.filter(MapWorld.grade(scene.first), MapWorld.grade(scene.second), scene.third) } }
+    val decorFilter = remember { androidx.compose.runtime.derivedStateOf { MapWorld.filter(MapWorld.grade(scene.first), MapWorld.grade(scene.second), scene.third, 0.75f) } }
+    Box(Modifier.fillMaxSize().background(Color(0xFF7DA84A))) {
+        // Ground: a vertically tiling texture that scrolls with the path.
+        val padBottom = with(density) { com.cozycards.app.ui.common.NAV_SPACE.toPx() }
+        Canvas(Modifier.fillMaxSize()) {
+            val ground = Sprites["ground_garden"] ?: return@Canvas
+            val i = listState.firstVisibleItemIndex
+            val gatesBefore = (i + Chapters.LEVELS_PER_CHAPTER) / (Chapters.LEVELS_PER_CHAPTER + 1)
+            val scrolled = (i - gatesBefore) * nodeHpx + gatesBefore * gateHpx + listState.firstVisibleItemScrollOffset
+            val tile = size.width
+            val base = size.height - padBottom
+            var k = kotlin.math.floor((scrolled - padBottom) / tile).toInt()
+            while (true) {
+                val top = base - ((k + 1) * tile - scrolled)
+                if (top > size.height) { k++; continue }
+                if (top + tile < 0f) break
+                drawImage(ground, IntOffset.Zero, IntSize(ground.width, ground.height),
+                    IntOffset(0, kotlin.math.floor(top).toInt()), IntSize(kotlin.math.ceil(tile).toInt(), kotlin.math.ceil(tile).toInt() + 1), colorFilter = groundFilter)
+                k++
+            }
+            drawTrail(listState.layoutInfo, player)
+        }
         BoxWithConstraints(Modifier.fillMaxSize()) {
             val widthPx = constraints.maxWidth.toFloat()
             LazyColumn(state = listState, reverseLayout = true, contentPadding = PaddingValues(top = 90.dp, bottom = com.cozycards.app.ui.common.NAV_SPACE), modifier = Modifier.fillMaxSize()) {
-                itemsIndexed(rows, key = { _, r -> if (r is MapRow.Node) "n${r.number}" else "g${r.chapter}" }) { _, row ->
+                itemsIndexed(rows, key = { _, r -> if (r is MapRow.Node) "n${r.number}" else "g${r.chapter}" }) { index, row ->
                     when (row) {
-                        is MapRow.Gate -> ChapterGate(Chapters.all[row.chapter - 1], player) { y -> gateY[row.chapter] = y }
-                        is MapRow.Node -> LevelRow(row.number, player, widthPx, t) { n -> service.level(n)?.let { selected = it } }
+                        // Gates sit above all scenery; lower (nearer) rows draw over higher ones.
+                        is MapRow.Gate -> Box(Modifier.zIndex(1f)) { ChapterGate(Chapters.all[row.chapter - 1], player) { y -> gateY[row.chapter] = y } }
+                        is MapRow.Node -> Box(Modifier.zIndex(-index.toFloat())) {
+                            LevelRow(row.number, player, widthPx, t, decorFilter) { n -> service.level(n)?.let { selected = it } }
+                        }
                     }
                 }
             }
@@ -328,12 +353,54 @@ private fun ChapterGate(ch: ChapterInfo, player: PlayerState, onY: (Float) -> Un
     }
 }
 
+/**
+ * The trail through all visible level rows, stroked as one continuous path (per-row segments
+ * left visible joins). Drawn under the scenery so trees standing in front of it overlap it.
+ */
+private fun DrawScope.drawTrail(info: androidx.compose.foundation.lazy.LazyListLayoutInfo, player: PlayerState) {
+    val w = size.width
+    val u = density
+    // Reverse layout: item offsets are measured from the bottom edge of the viewport.
+    val items = info.visibleItemsInfo.sortedBy { it.index }
+    val runs = mutableListOf<MutableList<Pair<Int, Float>>>() // (level number, row top y)
+    var last = -2
+    for (it in items) {
+        val row = rows[it.index]
+        if (row !is MapRow.Node) { last = -2; continue }
+        val top = info.viewportEndOffset - it.offset - it.size.toFloat()
+        if (it.index != last + 1 || runs.isEmpty()) runs.add(mutableListOf())
+        runs.last().add(row.number to top)
+        last = it.index
+    }
+    val rowH = NODE_H.toPx()
+    fun segment(path: Path, n: Int, top: Float, first: Boolean) {
+        val x = pathX(n) * w
+        val ax = (x + pathX(n - 1) * w) / 2
+        val bx = (x + pathX(n + 1) * w) / 2
+        if (first) path.moveTo(ax, top + rowH)
+        path.quadraticBezierTo(x, top + rowH / 2, bx, top)
+    }
+    for (run in runs) {
+        val trail = Path()
+        run.forEachIndexed { i, (n, top) -> segment(trail, n, top, i == 0) }
+        drawPath(trail, Color(0xFFB99B6A), style = Stroke(30f * u, cap = StrokeCap.Round))
+        drawPath(trail, Color(0xFFEBD6A8), style = Stroke(24f * u, cap = StrokeCap.Round))
+        drawPath(trail, Color(0xFFF2E3C0), style = Stroke(12f * u, cap = StrokeCap.Round))
+        // Gold up to the current level.
+        val done = run.filter { (n, _) -> n < player.currentLevel }
+        if (done.isNotEmpty()) {
+            val gold = Path()
+            done.forEachIndexed { i, (n, top) -> segment(gold, n, top, i == 0) }
+            drawPath(gold, Color(0xFFF7D774), style = Stroke(16f * u, cap = StrokeCap.Round))
+        }
+        drawPath(trail, Color(0xFFFFF7EA), style = Stroke(6f * u, cap = StrokeCap.Round, pathEffect = PathEffect.dashPathEffect(floatArrayOf(1f, 13f * u))))
+    }
+}
+
 @Composable
-private fun LevelRow(number: Int, player: PlayerState, widthPx: Float, t: Float, onClick: (Int) -> Unit) {
+private fun LevelRow(number: Int, player: PlayerState, widthPx: Float, t: Float, decorFilter: androidx.compose.runtime.State<androidx.compose.ui.graphics.ColorFilter?>, onClick: (Int) -> Unit) {
     val chapter = (number - 1) / Chapters.LEVELS_PER_CHAPTER + 1
     val idxInChapter = (number - 1) % Chapters.LEVELS_PER_CHAPTER
-    val art = rememberChapterArt(chapter, false)
-    val look = ChapterLooks.of(chapter)
     val density = LocalDensity.current
     val rowH = with(density) { NODE_H.toPx() }
     val bannerH = with(density) { BANNER_H.toPx() }
@@ -344,19 +411,19 @@ private fun LevelRow(number: Int, player: PlayerState, widthPx: Float, t: Float,
     val x = pathX(number) * widthPx
     val xPrev = pathX(number - 1) * widthPx
     val xNext = pathX(number + 1) * widthPx
+    val decor = remember(number, widthPx) {
+        val d = density.density
+        val w = widthPx / d
+        val xs = listOf(x, (x + xPrev) / 2, (x + xNext) / 2).map { it / d }
+        // Clearance: medallion and stars on both sides, the milestone chest on its side.
+        val chestLeft = number % 5 == 0 && pathX(number) > 0.5f
+        val chestRight = number % 5 == 0 && pathX(number) <= 0.5f
+        MapWorld.place(number, chapter, w, NODE_H.value, xs.min() - if (chestLeft) 100f else 50f, xs.max() + if (chestRight) 100f else 50f)
+    }
     Box(Modifier.fillMaxWidth().height(NODE_H)) {
         Canvas(Modifier.fillMaxSize()) {
-            // Scenery continues seamlessly from the chapter gate below.
-            val cy = size.height / 2
-            // Path: smooth curve through this node between the neighbours' midpoints.
-            val path = Path().apply {
-                moveTo((x + xPrev) / 2, size.height)
-                quadraticBezierTo(x, cy, (x + xNext) / 2, 0f)
-            }
-            val doneColor = Color(0xFFF7D774)
-            drawPath(path, Color(0x99302040), style = Stroke(26f, cap = StrokeCap.Round))
-            drawPath(path, if (cleared) doneColor else Color(0xFFFFF3E2), style = Stroke(14f, cap = StrokeCap.Round, pathEffect = PathEffect.dashPathEffect(floatArrayOf(2f, 30f))))
-            if (cleared || current) drawPath(path, doneColor.copy(alpha = 0.35f), style = Stroke(34f, cap = StrokeCap.Round))
+            val f = decorFilter.value
+            with(MapWorld) { decor.forEach { drawPlaced(it, density.density, f) } }
         }
         // Reward chest next to milestone levels.
         if (number % 5 == 0) {

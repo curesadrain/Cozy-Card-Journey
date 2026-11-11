@@ -31,8 +31,8 @@ object Sprites {
         "btn_pink", "btn_lavender", "ui_coin", "ui_token", "ui_panel", "ui_star",
         "icon_hammer", "icon_super_hammer", "icon_glove", "icon_shuffle", "icon_area", "icon_moves",
         "nav_map", "nav_collection", "nav_loot", "nav_shop", "nav_profile", "nav_settings",
-        "chest_common", "chest_rare", "chest_epic", "chest_legendary",
-    )
+        "chest_common", "chest_rare", "chest_epic", "chest_legendary", "logo",
+    ) + com.cozycards.app.ui.map.MapWorld.spriteNames
 
     fun load(context: Context) {
         if (loaded) return

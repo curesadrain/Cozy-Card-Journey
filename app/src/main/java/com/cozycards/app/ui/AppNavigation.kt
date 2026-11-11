@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -105,7 +106,13 @@ fun CozyApp() {
 private fun Splash(error: String?) {
     Box(Modifier.fillMaxSize()) {
         SceneBackground(ChapterLooks.of(1))
+        val context = LocalContext.current
+        val logo = remember {
+            runCatching { context.assets.open("sprites/logo.webp").use { android.graphics.BitmapFactory.decodeStream(it).asImageBitmap() } }.getOrNull()
+        }
         Column(Modifier.align(Alignment.Center).padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            if (logo != null) androidx.compose.foundation.Image(logo, null, Modifier.size(220.dp))
+            Spacer(Modifier.height(8.dp))
             Text("Cozy Card Journey", style = MaterialTheme.typography.displaySmall, color = Palette.Ink, textAlign = TextAlign.Center)
             Spacer(Modifier.height(16.dp))
             if (error == null) CircularProgressIndicator(color = Palette.SakuraDeep)

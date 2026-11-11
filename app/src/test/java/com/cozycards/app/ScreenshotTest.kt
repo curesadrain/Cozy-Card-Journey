@@ -30,6 +30,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 import java.io.File
+import androidx.compose.ui.test.performScrollToKey
 
 /**
  * Renders real screens with Robolectric's native graphics and writes PNGs to
@@ -68,6 +69,24 @@ class ScreenshotTest {
     private fun clickText(text: String) {
         compose.onAllNodesWithText(text)[0].performClick()
         advance(900)
+    }
+
+    @Test
+    fun mapScenery() {
+        val app = ApplicationProvider.getApplicationContext<CozyApp>()
+        val container = app.container
+        compose.mainClock.autoAdvance = false
+        val deadline = System.currentTimeMillis() + 60_000
+        while (container.ready.value !is StartupState.Ready && System.currentTimeMillis() < deadline) Thread.sleep(50)
+        compose.setContent { CozyTheme { CozyApp() } }
+        advance(1500)
+        shot("map_ch1")
+        val list = compose.onNode(androidx.compose.ui.test.hasScrollToKeyAction())
+        for ((key, name) in listOf("n30" to "map_ch1_mid", "g5" to "map_gate5", "n440" to "map_ch9", "g10" to "map_gate10", "n480" to "map_ch10", "n640" to "map_ch13")) {
+            list.performScrollToKey(key)
+            advance(600)
+            shot(name)
+        }
     }
 
     @Test
