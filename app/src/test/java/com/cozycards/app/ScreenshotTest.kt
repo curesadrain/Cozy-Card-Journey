@@ -92,7 +92,7 @@ class ScreenshotTest {
         shot("01_map")
         clickText("13")
         shot("02_prelevel")
-        clickText("Play")
+        compose.onAllNodesWithText("Play").let { it[it.fetchSemanticsNodes().size - 1] }.performClick()
         advance(3000)
         shot("03_level")
         // Play a real move on the level screen and capture the animation.

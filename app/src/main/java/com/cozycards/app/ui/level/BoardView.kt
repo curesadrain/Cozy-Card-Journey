@@ -157,7 +157,7 @@ fun BoardView(
                                 val d = if (abs(acc.x) > abs(acc.y)) (if (acc.x > 0) Dir.RIGHT else Dir.LEFT) else (if (acc.y > 0) Dir.DOWN else Dir.UP)
                                 fired = true
                                 val t = s + d
-                                if (boardForInput.inBounds(s) && boardForInput.inBounds(t)) swap(s, t)
+                                if (boardForInput.inBounds(s)) swap(s, t)
                             }
                         },
                     )
@@ -414,15 +414,12 @@ fun DrawScope.drawPieceSprite(piece: Piece, c: Offset, s: Float, alpha: Float = 
                 rotate(idle * 360f, c) { drawImageCentered(Sprites["rainbow"], c, size, alpha, null, false) }
             }
             piece.special != Special.NONE -> {
-                val col = TileStyle.color(piece.color)
                 val breathe = 1f + 0.05f * sin(idle * 2 * PI.toFloat())
-                drawImageCentered(Sprites["glow"], c, size * 1.35f, alpha * 0.85f, col, false)
+                drawImageCentered(Sprites["glow"], c, size * 1.3f, alpha * (0.45f + 0.25f * sin(idle * 2 * PI.toFloat())), Color(0xFFFFE9B0), true)
                 val name = when (piece.special) {
                     Special.ROCKET_H -> "rocket_h"; Special.ROCKET_V -> "rocket_v"; Special.BOMB -> "bomb"; else -> "plane"
                 }
                 scale(breathe, c) { drawImageCentered(Sprites[name], c, size * 0.95f, alpha, null, false) }
-                // Small colour badge so the special's match colour is always readable.
-                drawImageCentered(Sprites.tile(piece.color), c + Offset(size * 0.3f, size * 0.3f), size * 0.38f, alpha, null, false)
             }
             else -> {
                 drawImageCentered(Sprites.tile(piece.color), c, size, alpha, null, false)

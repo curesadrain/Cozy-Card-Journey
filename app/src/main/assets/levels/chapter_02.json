@@ -38,7 +38,7 @@
    "template": "frame+ice-lower",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -79,7 +79,7 @@
    "template": "plaza9+ice-bottom",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 8,
     "simulatedRuns": 24
    }
   },
@@ -166,7 +166,7 @@
    "template": "mountain+ice-pillars+gift",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 6,
+    "botMedianMoves": 7,
     "simulatedRuns": 24
    }
   },
@@ -206,7 +206,7 @@
    "template": "hourglass+ice-upper",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 6,
+    "botMedianMoves": 5,
     "simulatedRuns": 24
    }
   },
@@ -246,7 +246,7 @@
    },
    "template": "plaza9+ice-checker",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.92,
     "botMedianMoves": 7,
     "simulatedRuns": 24
    }
@@ -286,7 +286,7 @@
    "template": "courtyard7+ice-lower",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 7,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -365,7 +365,7 @@
    "template": "courtyard7+ice-lower",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 7,
     "simulatedRuns": 24
    }
   },
@@ -405,8 +405,8 @@
    },
    "template": "mountain+ice-upper",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 12,
+    "botWinRate": 0.83,
+    "botMedianMoves": 10,
     "simulatedRuns": 24
    }
   },
@@ -447,7 +447,7 @@
    "template": "lantern+ice-checker",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -487,7 +487,7 @@
    "template": "courtyard8+ice-pillars",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 8,
     "simulatedRuns": 24
    }
   },
@@ -567,7 +567,7 @@
    "template": "plaza9+ice-lower+gift",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 6,
+    "botMedianMoves": 8,
     "simulatedRuns": 24
    }
   },
@@ -577,7 +577,7 @@
    "chapter": 2,
    "indexInChapter": 15,
    "colors": 4,
-   "moves": 18,
+   "moves": 29,
    "difficulty": 0.143,
    "tier": "EASY",
    "stages": [
@@ -607,7 +607,7 @@
    "template": "crescent+ice-bottom",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 9,
+    "botMedianMoves": 11,
     "simulatedRuns": 24
    }
   },
@@ -653,7 +653,7 @@
    "template": "plaza9+ice-center",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -734,7 +734,7 @@
    "template": "frame+ice-lower",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 7,
+    "botMedianMoves": 8,
     "simulatedRuns": 24
    }
   },
@@ -815,7 +815,7 @@
    "template": "street8x9+ice-center",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 8,
+    "botMedianMoves": 7,
     "simulatedRuns": 24
    }
   },
@@ -894,7 +894,7 @@
    "template": "heart+ice-stripes",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 5,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -904,7 +904,7 @@
    "chapter": 2,
    "indexInChapter": 23,
    "colors": 5,
-   "moves": 19,
+   "moves": 20,
    "difficulty": 0.182,
    "tier": "EASY",
    "stages": [
@@ -934,7 +934,7 @@
    "template": "fan+ice-band",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 11,
+    "botMedianMoves": 12,
     "simulatedRuns": 24
    }
   },
@@ -944,7 +944,7 @@
    "chapter": 2,
    "indexInChapter": 24,
    "colors": 5,
-   "moves": 32,
+   "moves": 36,
    "difficulty": 0.187,
    "tier": "EASY",
    "stages": [
@@ -974,8 +974,8 @@
    },
    "template": "crescent",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 20,
+    "botWinRate": 1.0,
+    "botMedianMoves": 23,
     "simulatedRuns": 24
    }
   },
@@ -985,7 +985,7 @@
    "chapter": 2,
    "indexInChapter": 25,
    "colors": 5,
-   "moves": 22,
+   "moves": 30,
    "difficulty": 0.192,
    "tier": "EASY",
    "stages": [
@@ -1015,8 +1015,8 @@
    },
    "template": "plaza9+ice-corners",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 12,
+    "botWinRate": 1.0,
+    "botMedianMoves": 15,
     "simulatedRuns": 24
    }
   },
@@ -1057,7 +1057,7 @@
    "template": "street8x9+ice-ring+gift",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 4,
+    "botMedianMoves": 5,
     "simulatedRuns": 24
    }
   },
@@ -1097,8 +1097,8 @@
    },
    "template": "cross+ice-ring",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 8,
+    "botWinRate": 0.92,
+    "botMedianMoves": 10,
     "simulatedRuns": 24
    }
   },
@@ -1142,8 +1142,8 @@
    },
    "template": "courtyard8+ice-stripes+gift",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 9,
+    "botWinRate": 0.92,
+    "botMedianMoves": 11,
     "simulatedRuns": 24
    }
   },
@@ -1193,7 +1193,7 @@
    "chapter": 2,
    "indexInChapter": 30,
    "colors": 5,
-   "moves": 19,
+   "moves": 28,
    "difficulty": 0.336,
    "tier": "HARD",
    "stages": [
@@ -1222,8 +1222,8 @@
    },
    "template": "courtyard8+ice-bottom",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 13,
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
     "simulatedRuns": 24
    }
   },
@@ -1233,7 +1233,7 @@
    "chapter": 2,
    "indexInChapter": 31,
    "colors": 4,
-   "moves": 18,
+   "moves": 19,
    "difficulty": 0.151,
    "tier": "EASY",
    "stages": [
@@ -1264,7 +1264,7 @@
    "template": "ring+ice-corners",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 7,
+    "botMedianMoves": 10,
     "simulatedRuns": 24
    }
   },
@@ -1274,7 +1274,7 @@
    "chapter": 2,
    "indexInChapter": 32,
    "colors": 5,
-   "moves": 19,
+   "moves": 26,
    "difficulty": 0.226,
    "tier": "EASY",
    "stages": [
@@ -1303,8 +1303,8 @@
    },
    "template": "torii+ice-bottom",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 12,
+    "botWinRate": 0.83,
+    "botMedianMoves": 18,
     "simulatedRuns": 24
    }
   },
@@ -1345,7 +1345,7 @@
    "template": "plaza9+ice-upper",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 11,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -1384,7 +1384,7 @@
    },
    "template": "courtyard8+ice-stripes",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.92,
     "botMedianMoves": 8,
     "simulatedRuns": 24
    }
@@ -1395,7 +1395,7 @@
    "chapter": 2,
    "indexInChapter": 35,
    "colors": 5,
-   "moves": 28,
+   "moves": 37,
    "difficulty": 0.241,
    "tier": "EASY",
    "stages": [
@@ -1424,8 +1424,8 @@
    },
    "template": "torii+ice-bottom",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 12,
+    "botWinRate": 1.0,
+    "botMedianMoves": 23,
     "simulatedRuns": 24
    }
   },
@@ -1435,7 +1435,7 @@
    "chapter": 2,
    "indexInChapter": 36,
    "colors": 4,
-   "moves": 21,
+   "moves": 27,
    "difficulty": 0.175,
    "tier": "EASY",
    "stages": [
@@ -1465,7 +1465,7 @@
    "template": "torii+ice-lower",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 8,
+    "botMedianMoves": 11,
     "simulatedRuns": 24
    }
   },
@@ -1475,7 +1475,7 @@
    "chapter": 2,
    "indexInChapter": 37,
    "colors": 5,
-   "moves": 18,
+   "moves": 17,
    "difficulty": 0.25,
    "tier": "NORMAL",
    "stages": [
@@ -1505,7 +1505,7 @@
    },
    "template": "courtyard8",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.92,
     "botMedianMoves": 11,
     "simulatedRuns": 24
    }
@@ -1516,7 +1516,7 @@
    "chapter": 2,
    "indexInChapter": 38,
    "colors": 5,
-   "moves": 17,
+   "moves": 18,
    "difficulty": 0.255,
    "tier": "NORMAL",
    "stages": [
@@ -1552,7 +1552,7 @@
    "template": "street8x9+ice-stripes",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 8,
+    "botMedianMoves": 12,
     "simulatedRuns": 24
    }
   },
@@ -1562,7 +1562,7 @@
    "chapter": 2,
    "indexInChapter": 39,
    "colors": 5,
-   "moves": 23,
+   "moves": 21,
    "difficulty": 0.26,
    "tier": "NORMAL",
    "stages": [
@@ -1592,7 +1592,7 @@
    "template": "tatami+ice-corners",
    "metrics": {
     "botWinRate": 0.83,
-    "botMedianMoves": 12,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -1602,7 +1602,7 @@
    "chapter": 2,
    "indexInChapter": 40,
    "colors": 5,
-   "moves": 18,
+   "moves": 20,
    "difficulty": 0.385,
    "tier": "HARD",
    "stages": [
@@ -1632,8 +1632,8 @@
    },
    "template": "street8x9+ice-corners",
    "metrics": {
-    "botWinRate": 0.67,
-    "botMedianMoves": 13,
+    "botWinRate": 0.92,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -1643,7 +1643,7 @@
    "chapter": 2,
    "indexInChapter": 41,
    "colors": 5,
-   "moves": 19,
+   "moves": 22,
    "difficulty": 0.2,
    "tier": "EASY",
    "stages": [
@@ -1672,7 +1672,7 @@
    },
    "template": "heart+ice-bottom",
    "metrics": {
-    "botWinRate": 0.83,
+    "botWinRate": 0.92,
     "botMedianMoves": 12,
     "simulatedRuns": 24
    }
@@ -1683,7 +1683,7 @@
    "chapter": 2,
    "indexInChapter": 42,
    "colors": 5,
-   "moves": 17,
+   "moves": 23,
    "difficulty": 0.275,
    "tier": "NORMAL",
    "stages": [
@@ -1719,7 +1719,7 @@
    "template": "street8x9+ice-pillars+gift",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 12,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -1729,7 +1729,7 @@
    "chapter": 2,
    "indexInChapter": 43,
    "colors": 5,
-   "moves": 21,
+   "moves": 24,
    "difficulty": 0.28,
    "tier": "NORMAL",
    "stages": [
@@ -1762,8 +1762,8 @@
    },
    "template": "courtyard7+ice-stripes",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 14,
+    "botWinRate": 0.75,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -1773,7 +1773,7 @@
    "chapter": 2,
    "indexInChapter": 44,
    "colors": 5,
-   "moves": 22,
+   "moves": 26,
    "difficulty": 0.285,
    "tier": "NORMAL",
    "stages": [
@@ -1806,7 +1806,7 @@
    },
    "template": "courtyard7+ice-border",
    "metrics": {
-    "botWinRate": 0.83,
+    "botWinRate": 1.0,
     "botMedianMoves": 15,
     "simulatedRuns": 24
    }
@@ -1847,8 +1847,8 @@
    },
    "template": "diamond+ice-border",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 18,
+    "botWinRate": 0.75,
+    "botMedianMoves": 15,
     "simulatedRuns": 24
    }
   },
@@ -1858,7 +1858,7 @@
    "chapter": 2,
    "indexInChapter": 46,
    "colors": 5,
-   "moves": 17,
+   "moves": 19,
    "difficulty": 0.224,
    "tier": "EASY",
    "stages": [
@@ -1888,8 +1888,8 @@
    },
    "template": "plaza9+ice-stripes",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 10,
+    "botWinRate": 0.92,
+    "botMedianMoves": 12,
     "simulatedRuns": 24
    }
   },
@@ -1899,7 +1899,7 @@
    "chapter": 2,
    "indexInChapter": 47,
    "colors": 5,
-   "moves": 24,
+   "moves": 28,
    "difficulty": 0.299,
    "tier": "NORMAL",
    "stages": [
@@ -1935,7 +1935,7 @@
    "template": "street8x9+ice-corners",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 18,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -1945,7 +1945,7 @@
    "chapter": 2,
    "indexInChapter": 48,
    "colors": 5,
-   "moves": 21,
+   "moves": 22,
    "difficulty": 0.304,
    "tier": "NORMAL",
    "stages": [
@@ -1976,7 +1976,7 @@
    "template": "twin_towers+ice-pillars",
    "metrics": {
     "botWinRate": 0.83,
-    "botMedianMoves": 12,
+    "botMedianMoves": 15,
     "simulatedRuns": 24
    }
   },
@@ -1986,7 +1986,7 @@
    "chapter": 2,
    "indexInChapter": 49,
    "colors": 5,
-   "moves": 23,
+   "moves": 22,
    "difficulty": 0.309,
    "tier": "NORMAL",
    "stages": [
@@ -2015,8 +2015,8 @@
    },
    "template": "courtyard8+ice-lower",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 11,
+    "botWinRate": 0.83,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -2026,7 +2026,7 @@
    "chapter": 2,
    "indexInChapter": 50,
    "colors": 5,
-   "moves": 21,
+   "moves": 27,
    "difficulty": 0.434,
    "tier": "HARD",
    "stages": [
@@ -2062,7 +2062,7 @@
    "template": "cross+ice-bottom",
    "metrics": {
     "botWinRate": 0.92,
-    "botMedianMoves": 12,
+    "botMedianMoves": 17,
     "simulatedRuns": 24
    }
   }

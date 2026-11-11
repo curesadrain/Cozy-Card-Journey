@@ -118,7 +118,8 @@ internal class Resolver(
                 if (cell.chain > 0) { hit(p, HitKind.MATCH); continue }
                 if (old.isSpecial && activated.add(old.id)) queue += Activation(p, old)
                 crackIce(p, cell)
-                cell.piece = Piece(nextId(), group.color, old.kind.let { if (it == PieceKind.KEY) PieceKind.NORMAL else it }, newSpecial)
+                // Specials are colourless: they never take part in colour matches, only fire.
+                cell.piece = Piece(nextId(), -1, old.kind.let { if (it == PieceKind.KEY) PieceKind.NORMAL else it }, newSpecial)
                 if (old.kind == PieceKind.KEY) { events += GameEvent.KeyCollected(p); openLockNear(p) }
                 clearedPieces++
                 events += GameEvent.PieceCleared(p, group.color, Special.NONE)
@@ -318,7 +319,7 @@ internal class Resolver(
                 other.special.isRocket -> if (rng.nextInt(2) == 0) Special.ROCKET_H else Special.ROCKET_V
                 else -> other.special
             }
-            val converted = if (piece.isSpecial) piece else piece.copy(special = newSpecial)
+            val converted = if (piece.isSpecial) piece else piece.copy(special = newSpecial, color = -1)
             cell.piece = converted
         }
         for (t in targets) hit(t, HitKind.BLAST)

@@ -70,48 +70,6 @@ import com.cozycards.levels.LootboxTier
 import kotlin.math.cos
 import kotlin.math.sin
 
-@Composable
-fun CozyButton(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    color: Color = Palette.SakuraDeep,
-    textColor: Color = Color.White,
-    small: Boolean = false,
-) {
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val scale by animateFloatAsState(if (pressed) 0.95f else 1f, label = "press")
-    val bg = if (enabled) color else Color(0xFFCFC6CF)
-    val sprite = when {
-        color == Palette.SakuraDeep -> com.cozycards.app.ui.gfx.Sprites["btn_pink"]
-        color == Palette.Lavender -> com.cozycards.app.ui.gfx.Sprites["btn_lavender"]
-        else -> null
-    }
-    val look = if (sprite != null) Modifier.drawBehind {
-        drawThreeSlice(sprite, if (enabled) 1f else 0.45f)
-    } else Modifier
-        .clip(RoundedCornerShape(50))
-        .background(Brush.verticalGradient(listOf(bg.copy(alpha = 0.92f), bg)))
-        .border(BorderStroke(2.dp, Color.White.copy(alpha = 0.55f)), RoundedCornerShape(50))
-    Box(
-        modifier
-            .scale(scale)
-            .then(look)
-            .clickable(interaction, null, enabled = enabled, onClick = onClick)
-            .padding(PaddingValues(horizontal = if (small) 16.dp else 24.dp, vertical = if (small) 9.dp else 14.dp)),
-        contentAlignment = Alignment.Center,
-    ) {
-        Text(
-            text, color = if (sprite != null && color == Palette.Lavender) Color.White else textColor, textAlign = TextAlign.Center,
-            style = (if (small) MaterialTheme.typography.labelMedium else MaterialTheme.typography.labelLarge).copy(
-                shadow = if (sprite != null) androidx.compose.ui.graphics.Shadow(Color(0x88000000), androidx.compose.ui.geometry.Offset(0f, 2f), 3f) else null,
-            ),
-        )
-    }
-}
-
 /** Stretches a pill-shaped sprite horizontally without distorting its rounded ends. */
 fun androidx.compose.ui.graphics.drawscope.DrawScope.drawThreeSlice(img: androidx.compose.ui.graphics.ImageBitmap, alpha: Float) {
     val sh = img.height
@@ -128,22 +86,12 @@ fun androidx.compose.ui.graphics.drawscope.DrawScope.drawThreeSlice(img: android
 }
 
 @Composable
-fun Panel(modifier: Modifier = Modifier, color: Color = Palette.Paper.copy(alpha = 0.94f), content: @Composable () -> Unit) {
-    Surface(
-        modifier = modifier,
-        shape = RoundedCornerShape(22.dp),
-        color = color,
-        shadowElevation = 6.dp,
-        border = BorderStroke(1.dp, Color.White.copy(alpha = 0.7f)),
-    ) { content() }
-}
-
-@Composable
 fun CurrencyChip(kind: Currency, amount: Long, modifier: Modifier = Modifier) {
     Row(
         modifier
             .clip(RoundedCornerShape(50))
-            .background(Color.White.copy(alpha = 0.85f))
+            .background(Palette.CreamPlate)
+            .border(2.dp, Palette.GoldRim, RoundedCornerShape(50))
             .padding(start = 4.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

@@ -3,6 +3,15 @@ package com.cozycards.app.ui
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -117,20 +126,7 @@ private fun MainScaffold() {
     Scaffold(
         containerColor = Palette.Cream,
         bottomBar = {
-            if (showBar) NavigationBar(containerColor = Palette.Paper) {
-                Tab.entries.forEach { tab ->
-                    NavigationBarItem(
-                        selected = route == tab.route,
-                        onClick = { nav.navigateTab(tab.route) },
-                        icon = {
-                            val n = if (tab == Tab.LOOT) player.lootboxes.size else 0
-                            BadgedBox(badge = { if (n > 0) Badge { Text(if (n > 99) "99+" else "$n") } }) { Icon(tab.icon, tab.label) }
-                        },
-                        label = { Text(tab.label, style = MaterialTheme.typography.labelSmall) },
-                        colors = NavigationBarItemDefaults.colors(selectedIconColor = Palette.SakuraDeep, selectedTextColor = Palette.SakuraDeep, indicatorColor = Palette.Sakura.copy(alpha = 0.3f)),
-                    )
-                }
-            }
+            if (showBar) CozyNavBar(route, player.lootboxes.size) { nav.navigateTab(it) }
         },
     ) { padding ->
         NavHost(
@@ -176,5 +172,37 @@ private fun NavHostController.navigateTab(route: String) {
         popUpTo(graph.findStartDestination().id) { saveState = true }
         launchSingleTop = true
         restoreState = true
+    }
+}
+
+@Composable
+private fun CozyNavBar(route: String?, boxes: Int, onTab: (String) -> Unit) {
+    Box(
+        Modifier.fillMaxWidth()
+            .background(androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0xFFFFFAF2), Color(0xFFF6E8D6))))
+            .drawBehind { drawRect(Palette.GoldRim, size = androidx.compose.ui.geometry.Size(size.width, 3.dp.toPx())) }
+            .navigationBarsPadding()
+            .padding(top = 6.dp, bottom = 4.dp),
+    ) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            Tab.entries.forEach { tab ->
+                val selected = route == tab.route
+                val lift by androidx.compose.animation.core.animateFloatAsState(if (selected) 1.15f else 1f, label = "tab")
+                Column(
+                    Modifier.weight(1f).clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onTab(tab.route) },
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        com.cozycards.app.ui.common.Medallion(
+                            if (selected) 46.dp else 40.dp, Modifier.scale(lift), rim = if (selected) 3.dp else 2.dp,
+                            fill = if (selected) androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0xFFFF8FB8), Color(0xFFD9467C)))
+                            else androidx.compose.ui.graphics.Brush.radialGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF2E4D2))),
+                        ) { Icon(tab.icon, tab.label, tint = if (selected) Color.White else Palette.InkSoft, modifier = Modifier.size(22.dp)) }
+                        if (tab == Tab.LOOT && boxes > 0) com.cozycards.app.ui.common.GoldBadge(boxes, Modifier.align(Alignment.TopEnd).offset(x = 10.dp, y = (-4).dp))
+                    }
+                    Text(tab.label, style = MaterialTheme.typography.labelSmall, color = if (selected) Palette.SakuraDeep else Palette.InkSoft, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
+                }
+            }
+        }
     }
 }

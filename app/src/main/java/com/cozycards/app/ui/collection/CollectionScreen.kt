@@ -27,7 +27,7 @@ import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.FilterChip
+import com.cozycards.app.ui.common.CozyChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -159,25 +159,29 @@ fun CollectionScreen(onCard: (String) -> Unit) {
                         placeholder = { Text("Search cards") },
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(50),
+                        colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                            focusedContainerColor = Palette.CreamPlate, unfocusedContainerColor = Palette.CreamPlate,
+                            focusedBorderColor = Palette.GoldDark, unfocusedBorderColor = Palette.GoldLight,
+                        ),
                     )
                     Row(Modifier.horizontalScroll(rememberScrollState()).padding(vertical = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        FilterChip(rarity == null, { rarity = null }, { Text("Any rarity") })
-                        Rarity.entries.forEach { r -> FilterChip(rarity == r, { rarity = if (rarity == r) null else r }, { Text(r.label) }) }
+                        CozyChip(rarity == null, { rarity = null }, { Text("Any rarity") })
+                        Rarity.entries.forEach { r -> CozyChip(rarity == r, { rarity = if (rarity == r) null else r }, { Text(r.label) }) }
                     }
                     Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        OwnedFilter.entries.forEach { f -> FilterChip(owned == f, { owned = f }, { Text(f.label) }) }
-                        FilterChip(favorites, { favorites = !favorites }, { Text("Favourites") }, leadingIcon = { Icon(Icons.Rounded.Favorite, null) })
+                        OwnedFilter.entries.forEach { f -> CozyChip(owned == f, { owned = f }, { Text(f.label) }) }
+                        CozyChip(favorites, { favorites = !favorites }, { Text("Favourites") }, leadingIcon = { Icon(Icons.Rounded.Favorite, null) })
                     }
                     Row(Modifier.padding(top = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                         Box {
-                            FilterChip(album != null, { albumMenu = true }, { Text(album?.let { id -> collection.albums.first { it.id == id }.name } ?: "All series") })
+                            CozyChip(album != null, { albumMenu = true }, { Text(album?.let { id -> collection.albums.first { it.id == id }.name } ?: "All series") })
                             DropdownMenu(albumMenu, { albumMenu = false }) {
                                 DropdownMenuItem({ Text("All series") }, { album = null; albumMenu = false })
                                 collection.albums.forEach { a -> DropdownMenuItem({ Text(a.name) }, { album = a.id; albumMenu = false }) }
                             }
                         }
                         Box {
-                            FilterChip(sort != CardSort.ALBUM, { sortMenu = true }, { Text("Sort: ${sort.label}") })
+                            CozyChip(sort != CardSort.ALBUM, { sortMenu = true }, { Text("Sort: ${sort.label}") })
                             DropdownMenu(sortMenu, { sortMenu = false }) {
                                 CardSort.entries.forEach { s -> DropdownMenuItem({ Text(s.label) }, { sort = s; sortMenu = false }) }
                             }

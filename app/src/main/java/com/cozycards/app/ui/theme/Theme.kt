@@ -28,6 +28,11 @@ object Palette {
     val Coin = Color(0xFFF2C14E)
     val Token = Color(0xFF7FC8C2)
     val Danger = Color(0xFFE05A5A)
+    /** Shared look of every plate, chip and frame: cream paper with a gold rim. */
+    val CreamPlate = Color(0xF7FFF7EC)
+    val GoldLight = Color(0xFFF7D774)
+    val GoldDark = Color(0xFFC8962C)
+    val GoldRim = androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0xFFF7D774), Color(0xFFC8962C)))
 
     fun rarity(r: Rarity) = when (r) {
         Rarity.COMMON -> Color(0xFFB9AE9E)

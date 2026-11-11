@@ -358,31 +358,28 @@ fun GoalIcon(type: GoalType, color: Int, modifier: Modifier = Modifier) {
 @Composable
 private fun BoosterBar(active: BoosterType?, counts: Map<BoosterType, Int>, onSelect: (BoosterType?) -> Unit) {
     val inLevel = BoosterType.entries.filter { it.kind == BoosterKind.IN_LEVEL }
-    Column(Modifier.fillMaxWidth().padding(bottom = 6.dp)) {
+    Column(Modifier.fillMaxWidth().padding(bottom = 8.dp)) {
         if (active != null) {
             Text(
                 when (active) {
                     BoosterType.SWAP_GLOVE -> "Tap two neighbouring tiles to swap them"
                     else -> "Tap a cell to use ${active.title} · tap the booster again to cancel"
                 },
-                Modifier.fillMaxWidth().padding(4.dp), textAlign = TextAlign.Center, color = Palette.Ink, style = MaterialTheme.typography.labelMedium,
+                Modifier.fillMaxWidth().padding(4.dp), textAlign = TextAlign.Center, color = Color.White,
+                style = MaterialTheme.typography.labelLarge.copy(shadow = androidx.compose.ui.graphics.Shadow(Color.Black, Offset(0f, 2f), 4f)),
             )
         }
-        LazyRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally)) {
-            items(inLevel) { b ->
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+            inLevel.forEach { b ->
                 val n = counts[b] ?: 0
                 val selected = active == b
-                Box(
-                    Modifier
-                        .size(58.dp)
-                        .clip(CircleShape)
-                        .background(if (selected) Palette.SakuraDeep.copy(alpha = 0.3f) else Color.White.copy(alpha = 0.75f))
-                        .border(2.dp, if (selected) Palette.SakuraDeep else Color.Transparent, CircleShape)
-                        .clickable { onSelect(b) },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    BoosterIcon(b, Modifier.size(42.dp))
-                    CountBadge(n, Modifier.align(Alignment.TopEnd), color = if (n > 0) Palette.SakuraDeep else Color.Gray)
+                val lift by animateFloatAsState(if (selected) 1.12f else 1f, label = "lift")
+                Box(Modifier.size(66.dp).scale(lift).clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onSelect(b) }) {
+                    com.cozycards.app.ui.common.Medallion(
+                        60.dp, Modifier.align(Alignment.Center),
+                        fill = if (selected) Brush.radialGradient(listOf(Color(0xFFFFE6F0), Color(0xFFFF8FB8))) else Brush.radialGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF7D8E4))),
+                    ) { com.cozycards.app.ui.common.BoosterArt(b, Modifier.size(40.dp)) }
+                    com.cozycards.app.ui.common.GoldBadge(n, Modifier.align(Alignment.TopEnd), enabled = n > 0)
                 }
             }
         }
@@ -508,18 +505,19 @@ fun PreLevelBoosterPicker(counts: Map<BoosterType, Int>, picked: Set<BoosterType
         pre.forEach { b ->
             val n = counts[b] ?: 0
             val sel = b in picked
-            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(56.dp)) {
-                Box(
-                    Modifier.size(48.dp).clip(CircleShape)
-                        .background(if (sel) Palette.SakuraDeep.copy(alpha = 0.25f) else Color.White)
-                        .border(2.dp, if (sel) Palette.SakuraDeep else Color.Black.copy(alpha = 0.08f), CircleShape)
-                        .clickable(enabled = n > 0 || sel) { onToggle(b) },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    BoosterIcon(b, Modifier.size(36.dp))
-                    CountBadge(n, Modifier.align(Alignment.TopEnd), color = if (n > 0) Palette.SakuraDeep else Color.Gray)
+            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(60.dp)) {
+                Box(Modifier.size(56.dp).clickable(enabled = n > 0 || sel, interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onToggle(b) }) {
+                    com.cozycards.app.ui.common.Medallion(
+                        50.dp, Modifier.align(Alignment.Center), rim = if (sel) 4.dp else 3.dp,
+                        fill = if (sel) Brush.radialGradient(listOf(Color(0xFFFFE6F0), Color(0xFFFF8FB8))) else Brush.radialGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF7D8E4))),
+                    ) { com.cozycards.app.ui.common.BoosterArt(b, Modifier.size(34.dp)) }
+                    if (sel) Canvas(Modifier.size(20.dp).align(Alignment.BottomEnd)) {
+                        drawCircle(Palette.Matcha)
+                        drawLine(Color.White, Offset(size.width * 0.25f, size.height * 0.5f), Offset(size.width * 0.45f, size.height * 0.7f), 4f)
+                        drawLine(Color.White, Offset(size.width * 0.45f, size.height * 0.7f), Offset(size.width * 0.78f, size.height * 0.3f), 4f)
+                    } else com.cozycards.app.ui.common.GoldBadge(n, Modifier.align(Alignment.TopEnd), enabled = n > 0)
                 }
-                Text(b.title, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center, maxLines = 2)
+                Text(b.title, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center, maxLines = 2, color = Palette.Ink)
             }
         }
     }

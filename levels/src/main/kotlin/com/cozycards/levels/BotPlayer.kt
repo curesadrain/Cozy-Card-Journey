@@ -66,6 +66,8 @@ class BotPlayer(private val noise: Double = 0.15) {
             val other = if (pa.special == Special.RAINBOW) pb else pa
             return 40 + specialValue(other.special) * 2 + if (other.color in wantsColor) 15 else 0
         }
+        // A single special fires where it is moved: worth more the more obstacles remain.
+        if (pa.isSpecial || pb.isSpecial) return 18 + specialValue(if (pa.isSpecial) pa.special else pb.special) + obstacleGoals.size * 4
 
         // Temporarily swap to inspect the resulting groups.
         board[a].piece = pb; board[b].piece = pa

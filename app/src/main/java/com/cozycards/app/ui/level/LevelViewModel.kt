@@ -115,6 +115,11 @@ class LevelViewModel(
         val booster = _state.value.activeBooster
         if (booster == BoosterType.SWAP_GLOVE) { useGlove(a, b); return }
         if (booster != null) return
+        // Swiping a special towards the edge or a blocked cell fires it in place.
+        if (game.canActivate(a) && !game.canSwap(a, b)) {
+            (game.activate(a) as? MoveResult.Applied)?.let { enqueue(it) }
+            return
+        }
         when (val r = game.swap(a, b)) {
             is MoveResult.Invalid -> {
                 container.audio.play(Sfx.INVALID)
@@ -140,6 +145,14 @@ class LevelViewModel(
             }
             null -> {
                 val sel = s.selected
+                val now = System.currentTimeMillis()
+                val doubleTap = lastTap == p && now - lastTapAt < 450
+                lastTap = p; lastTapAt = now
+                if (doubleTap && game.canActivate(p)) {
+                    _state.update { it.copy(selected = null) }
+                    (game.activate(p) as? MoveResult.Applied)?.let { enqueue(it) }
+                    return
+                }
                 when {
                     sel == null -> _state.update { it.copy(selected = p) }
                     sel == p -> _state.update { it.copy(selected = null) }
@@ -150,6 +163,9 @@ class LevelViewModel(
             else -> Unit
         }
     }
+
+    private var lastTap: Pos? = null
+    private var lastTapAt = 0L
 
     fun selectBooster(type: BoosterType?) {
         if (busy) return

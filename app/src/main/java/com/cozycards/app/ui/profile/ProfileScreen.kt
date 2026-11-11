@@ -17,7 +17,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.FilterChip
+import com.cozycards.app.ui.common.CozyChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
@@ -66,9 +66,10 @@ fun ProfileScreen() {
     val tabs = listOf("Progress", "Quests", "Awards", "Settings")
     Column(Modifier.fillMaxSize().background(Palette.Cream).statusBarsPadding()) {
         Text("Profile", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.padding(12.dp))
-        TabRow(tab, containerColor = Palette.Cream) {
-            tabs.forEachIndexed { i, t -> Tab(tab == i, { tab = i }, text = { Text(t) }) }
+        Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            tabs.forEachIndexed { i, t -> CozyChip(tab == i, { tab = i }, { Text(t) }) }
         }
+        Spacer(Modifier.height(6.dp))
         when (tab) {
             0 -> ProgressTab()
             1 -> QuestsTab()
@@ -280,7 +281,7 @@ private fun SettingsTab() {
                     Text("Graphics & feel", style = MaterialTheme.typography.titleLarge)
                     Text("Card effects quality (Auto picked ${container.autoQuality.label} for this device)", style = MaterialTheme.typography.labelMedium)
                     Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        EffectsQuality.entries.forEach { q -> FilterChip(settings.quality == q, { update { it.copy(quality = q) } }, { Text(q.label) }) }
+                        EffectsQuality.entries.forEach { q -> CozyChip(settings.quality == q, { update { it.copy(quality = q) } }, { Text(q.label) }) }
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) { Text("Tilt cards with gyroscope", Modifier.weight(1f)); Switch(settings.gyroscope, { g -> update { it.copy(gyroscope = g) } }) }
                     Row(verticalAlignment = Alignment.CenterVertically) { Text("Haptic feedback", Modifier.weight(1f)); Switch(settings.haptics, { h -> update { it.copy(haptics = h) } }) }
@@ -296,7 +297,7 @@ private fun SettingsTab() {
                         Text(slot.name.replace('_', ' ').lowercase().replaceFirstChar { it.uppercase() }, style = MaterialTheme.typography.labelMedium, modifier = Modifier.padding(top = 6.dp))
                         Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.fillMaxWidth()) {
                             Cosmetic.entries.filter { it.slot == slot && it in player.ownedCosmetics }.forEach { c ->
-                                FilterChip(player.equippedOrDefault(slot) == c, { scope.launch { runCatching { container.repository.service.equip(c) } } }, { Text(c.title) })
+                                CozyChip(player.equippedOrDefault(slot) == c, { scope.launch { runCatching { container.repository.service.equip(c) } } }, { Text(c.title) })
                             }
                         }
                     }

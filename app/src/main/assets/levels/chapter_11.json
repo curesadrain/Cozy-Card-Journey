@@ -7,7 +7,7 @@
    "chapter": 11,
    "indexInChapter": 1,
    "colors": 5,
-   "moves": 42,
+   "moves": 49,
    "difficulty": 0.38,
    "tier": "NORMAL",
    "stages": [
@@ -44,8 +44,8 @@
    },
    "template": "ring+wind-left+charms",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 28,
+    "botWinRate": 0.67,
+    "botMedianMoves": 36,
     "simulatedRuns": 24
    }
   },
@@ -55,7 +55,7 @@
    "chapter": 11,
    "indexInChapter": 2,
    "colors": 5,
-   "moves": 16,
+   "moves": 17,
    "difficulty": 0.385,
    "tier": "NORMAL",
    "stages": [
@@ -85,8 +85,8 @@
    },
    "template": "tatami+wind-left+stones-center+gift",
    "metrics": {
-    "botWinRate": 0.67,
-    "botMedianMoves": 9,
+    "botWinRate": 0.75,
+    "botMedianMoves": 10,
     "simulatedRuns": 24
    }
   },
@@ -96,7 +96,7 @@
    "chapter": 11,
    "indexInChapter": 3,
    "colors": 5,
-   "moves": 26,
+   "moves": 25,
    "difficulty": 0.39,
    "tier": "NORMAL",
    "stages": [
@@ -133,7 +133,7 @@
    },
    "template": "ring+wind-up",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.83,
     "botMedianMoves": 16,
     "simulatedRuns": 24
    }
@@ -186,7 +186,7 @@
    "chapter": 11,
    "indexInChapter": 5,
    "colors": 5,
-   "moves": 19,
+   "moves": 23,
    "difficulty": 0.4,
    "tier": "NORMAL",
    "stages": [
@@ -223,7 +223,7 @@
    "template": "tatami+wind-up",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 10,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -233,7 +233,7 @@
    "chapter": 11,
    "indexInChapter": 6,
    "colors": 5,
-   "moves": 22,
+   "moves": 24,
    "difficulty": 0.334,
    "tier": "NORMAL",
    "stages": [
@@ -268,8 +268,8 @@
    },
    "template": "courtyard7+wind-right+vault",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 14,
+    "botWinRate": 1.0,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -279,7 +279,7 @@
    "chapter": 11,
    "indexInChapter": 7,
    "colors": 5,
-   "moves": 15,
+   "moves": 20,
    "difficulty": 0.409,
    "tier": "NORMAL",
    "stages": [
@@ -316,8 +316,8 @@
    },
    "template": "frame+wind-up",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 10,
+    "botWinRate": 1.0,
+    "botMedianMoves": 13,
     "simulatedRuns": 24
    }
   },
@@ -357,7 +357,7 @@
    "template": "crescent+ice-border",
    "metrics": {
     "botWinRate": 0.92,
-    "botMedianMoves": 19,
+    "botMedianMoves": 20,
     "simulatedRuns": 24
    }
   },
@@ -409,7 +409,7 @@
    "chapter": 11,
    "indexInChapter": 10,
    "colors": 5,
-   "moves": 28,
+   "moves": 31,
    "difficulty": 0.544,
    "tier": "HARD",
    "stages": [
@@ -442,8 +442,8 @@
    },
    "template": "courtyard8+crates-bottom+ice-band",
    "metrics": {
-    "botWinRate": 0.75,
-    "botMedianMoves": 20,
+    "botWinRate": 0.92,
+    "botMedianMoves": 24,
     "simulatedRuns": 24
    }
   },
@@ -493,7 +493,7 @@
    "chapter": 11,
    "indexInChapter": 12,
    "colors": 5,
-   "moves": 17,
+   "moves": 15,
    "difficulty": 0.434,
    "tier": "NORMAL",
    "stages": [
@@ -523,8 +523,8 @@
    },
    "template": "tatami+wind-right+chains-center+gift",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 8,
+    "botWinRate": 0.92,
+    "botMedianMoves": 10,
     "simulatedRuns": 24
    }
   },
@@ -567,7 +567,7 @@
    "template": "plaza9+wind-right+vault",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 6,
+    "botMedianMoves": 9,
     "simulatedRuns": 24
    }
   },
@@ -609,8 +609,8 @@
    },
    "template": "mountain+wind-right+vault",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 6,
+    "botWinRate": 0.92,
+    "botMedianMoves": 7,
     "simulatedRuns": 24
    }
   },
@@ -620,7 +620,7 @@
    "chapter": 11,
    "indexInChapter": 15,
    "colors": 5,
-   "moves": 23,
+   "moves": 20,
    "difficulty": 0.449,
    "tier": "NORMAL",
    "stages": [
@@ -653,8 +653,8 @@
    },
    "template": "heart+crates-band+webs-bottom",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 16,
+    "botWinRate": 0.67,
+    "botMedianMoves": 14,
     "simulatedRuns": 24
    }
   },
@@ -664,7 +664,7 @@
    "chapter": 11,
    "indexInChapter": 16,
    "colors": 5,
-   "moves": 16,
+   "moves": 23,
    "difficulty": 0.383,
    "tier": "NORMAL",
    "stages": [
@@ -701,8 +701,8 @@
    },
    "template": "street8x9+wind-right",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 11,
+    "botWinRate": 1.0,
+    "botMedianMoves": 15,
     "simulatedRuns": 24
    }
   },
@@ -712,7 +712,7 @@
    "chapter": 11,
    "indexInChapter": 17,
    "colors": 5,
-   "moves": 22,
+   "moves": 21,
    "difficulty": 0.458,
    "tier": "NORMAL",
    "stages": [
@@ -741,8 +741,8 @@
    },
    "template": "courtyard8+stones-center",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 14,
+    "botWinRate": 0.83,
+    "botMedianMoves": 11,
     "simulatedRuns": 24
    }
   },
@@ -752,7 +752,7 @@
    "chapter": 11,
    "indexInChapter": 18,
    "colors": 5,
-   "moves": 15,
+   "moves": 20,
    "difficulty": 0.463,
    "tier": "NORMAL",
    "stages": [
@@ -784,7 +784,7 @@
    "template": "street8x9+wind-up+chains-corners",
    "metrics": {
     "botWinRate": 0.92,
-    "botMedianMoves": 10,
+    "botMedianMoves": 13,
     "simulatedRuns": 24
    }
   },
@@ -826,7 +826,7 @@
    "template": "diamond+wind-left+webs-band",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 3,
+    "botMedianMoves": 6,
     "simulatedRuns": 24
    }
   },
@@ -836,7 +836,7 @@
    "chapter": 11,
    "indexInChapter": 20,
    "colors": 5,
-   "moves": 20,
+   "moves": 25,
    "difficulty": 0.593,
    "tier": "HARD",
    "stages": [
@@ -872,7 +872,7 @@
    "template": "courtyard8+wind-right+ice-stripes+gift",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 15,
+    "botMedianMoves": 18,
     "simulatedRuns": 24
    }
   },
@@ -882,7 +882,7 @@
    "chapter": 11,
    "indexInChapter": 21,
    "colors": 5,
-   "moves": 15,
+   "moves": 17,
    "difficulty": 0.408,
    "tier": "NORMAL",
    "stages": [
@@ -912,8 +912,8 @@
    },
    "template": "courtyard8+wind-left+chains-ring",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 9,
+    "botWinRate": 1.0,
+    "botMedianMoves": 11,
     "simulatedRuns": 24
    }
   },
@@ -923,7 +923,7 @@
    "chapter": 11,
    "indexInChapter": 22,
    "colors": 5,
-   "moves": 24,
+   "moves": 22,
    "difficulty": 0.483,
    "tier": "NORMAL",
    "stages": [
@@ -954,8 +954,8 @@
    },
    "template": "mountain+wind-right+ice-pillars",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 19,
+    "botWinRate": 0.67,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -965,7 +965,7 @@
    "chapter": 11,
    "indexInChapter": 23,
    "colors": 5,
-   "moves": 30,
+   "moves": 34,
    "difficulty": 0.488,
    "tier": "NORMAL",
    "stages": [
@@ -995,7 +995,7 @@
    "template": "bridge+stones-center",
    "metrics": {
     "botWinRate": 0.75,
-    "botMedianMoves": 24,
+    "botMedianMoves": 25,
     "simulatedRuns": 24
    }
   },
@@ -1005,7 +1005,7 @@
    "chapter": 11,
    "indexInChapter": 24,
    "colors": 5,
-   "moves": 21,
+   "moves": 26,
    "difficulty": 0.493,
    "tier": "NORMAL",
    "stages": [
@@ -1034,8 +1034,8 @@
    },
    "template": "courtyard7+wind-right+stones-center",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 13,
+    "botWinRate": 0.67,
+    "botMedianMoves": 15,
     "simulatedRuns": 24
    }
   },
@@ -1045,7 +1045,7 @@
    "chapter": 11,
    "indexInChapter": 25,
    "colors": 5,
-   "moves": 26,
+   "moves": 28,
    "difficulty": 0.498,
    "tier": "NORMAL",
    "stages": [
@@ -1078,8 +1078,8 @@
    },
    "template": "heart+chains-upper+ice-upper+gift",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 17,
+    "botWinRate": 0.83,
+    "botMedianMoves": 20,
     "simulatedRuns": 24
    }
   },
@@ -1125,8 +1125,8 @@
    },
    "template": "twin_towers+wind-up+crates-upper",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 24,
+    "botWinRate": 0.92,
+    "botMedianMoves": 23,
     "simulatedRuns": 24
    }
   },
@@ -1136,7 +1136,7 @@
    "chapter": 11,
    "indexInChapter": 27,
    "colors": 5,
-   "moves": 17,
+   "moves": 16,
    "difficulty": 0.507,
    "tier": "NORMAL",
    "stages": [
@@ -1184,7 +1184,7 @@
    "chapter": 11,
    "indexInChapter": 28,
    "colors": 5,
-   "moves": 21,
+   "moves": 32,
    "difficulty": 0.512,
    "tier": "NORMAL",
    "stages": [
@@ -1216,7 +1216,7 @@
    },
    "template": "lantern+wind-left+charms",
    "metrics": {
-    "botWinRate": 0.75,
+    "botWinRate": 0.67,
     "botMedianMoves": 15,
     "simulatedRuns": 24
    }
@@ -1227,7 +1227,7 @@
    "chapter": 11,
    "indexInChapter": 29,
    "colors": 5,
-   "moves": 31,
+   "moves": 53,
    "difficulty": 0.517,
    "tier": "NORMAL",
    "stages": [
@@ -1258,8 +1258,8 @@
    },
    "template": "tatami+wind-right+charms",
    "metrics": {
-    "botWinRate": 0.75,
-    "botMedianMoves": 24,
+    "botWinRate": 0.83,
+    "botMedianMoves": 44,
     "simulatedRuns": 24
    }
   },
@@ -1269,7 +1269,7 @@
    "chapter": 11,
    "indexInChapter": 30,
    "colors": 5,
-   "moves": 14,
+   "moves": 20,
    "difficulty": 0.642,
    "tier": "HARD",
    "stages": [
@@ -1298,8 +1298,8 @@
    },
    "template": "courtyard7+wind-left+crates-bottom",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 10,
+    "botWinRate": 0.92,
+    "botMedianMoves": 13,
     "simulatedRuns": 24
    }
   },
@@ -1356,7 +1356,7 @@
    "chapter": 11,
    "indexInChapter": 32,
    "colors": 5,
-   "moves": 23,
+   "moves": 27,
    "difficulty": 0.532,
    "tier": "NORMAL",
    "stages": [
@@ -1408,7 +1408,7 @@
    "template": "bridge+tide-portals+stones-band",
    "metrics": {
     "botWinRate": 0.67,
-    "botMedianMoves": 18,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -1448,7 +1448,7 @@
    },
    "template": "tatami+wind-up+ice-center",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.83,
     "botMedianMoves": 7,
     "simulatedRuns": 24
    }
@@ -1459,7 +1459,7 @@
    "chapter": 11,
    "indexInChapter": 34,
    "colors": 5,
-   "moves": 17,
+   "moves": 22,
    "difficulty": 0.542,
    "tier": "NORMAL",
    "stages": [
@@ -1496,7 +1496,7 @@
    "template": "courtyard8+wind-right",
    "metrics": {
     "botWinRate": 0.83,
-    "botMedianMoves": 13,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -1506,7 +1506,7 @@
    "chapter": 11,
    "indexInChapter": 35,
    "colors": 5,
-   "moves": 43,
+   "moves": 42,
    "difficulty": 0.547,
    "tier": "NORMAL",
    "stages": [
@@ -1544,8 +1544,8 @@
    },
    "template": "fan+stones-pillars+ice-corners",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 36,
+    "botWinRate": 0.67,
+    "botMedianMoves": 32,
     "simulatedRuns": 24
    }
   },
@@ -1587,7 +1587,7 @@
    "template": "street8x9+wind-right+crates-band",
    "metrics": {
     "botWinRate": 1.0,
-    "botMedianMoves": 4,
+    "botMedianMoves": 7,
     "simulatedRuns": 24
    }
   },
@@ -1597,7 +1597,7 @@
    "chapter": 11,
    "indexInChapter": 37,
    "colors": 5,
-   "moves": 17,
+   "moves": 26,
    "difficulty": 0.556,
    "tier": "HARD",
    "stages": [
@@ -1628,8 +1628,8 @@
    },
    "template": "plaza9+wind-right+stones-pillars",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 12,
+    "botWinRate": 1.0,
+    "botMedianMoves": 16,
     "simulatedRuns": 24
    }
   },
@@ -1671,7 +1671,7 @@
    },
    "template": "street8x9+wind-left+vault",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.92,
     "botMedianMoves": 6,
     "simulatedRuns": 24
    }
@@ -1714,7 +1714,7 @@
    "template": "twin_towers+wind-up+crates-band",
    "metrics": {
     "botWinRate": 0.75,
-    "botMedianMoves": 7,
+    "botMedianMoves": 9,
     "simulatedRuns": 24
    }
   },
@@ -1724,7 +1724,7 @@
    "chapter": 11,
    "indexInChapter": 40,
    "colors": 5,
-   "moves": 28,
+   "moves": 31,
    "difficulty": 0.691,
    "tier": "HARD",
    "stages": [
@@ -1762,8 +1762,8 @@
    },
    "template": "torii+vault+crates-band+ice-stripes",
    "metrics": {
-    "botWinRate": 0.75,
-    "botMedianMoves": 21,
+    "botWinRate": 0.83,
+    "botMedianMoves": 25,
     "simulatedRuns": 24
    }
   },
@@ -1773,7 +1773,7 @@
    "chapter": 11,
    "indexInChapter": 41,
    "colors": 5,
-   "moves": 21,
+   "moves": 29,
    "difficulty": 0.506,
    "tier": "NORMAL",
    "stages": [
@@ -1809,8 +1809,8 @@
    },
    "template": "diamond+wind-right+crates-upper",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 15,
+    "botWinRate": 1.0,
+    "botMedianMoves": 22,
     "simulatedRuns": 24
    }
   },
@@ -1851,8 +1851,8 @@
    },
    "template": "frame+wind-right+chains-checker",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 7,
+    "botWinRate": 0.92,
+    "botMedianMoves": 9,
     "simulatedRuns": 24
    }
   },
@@ -1891,7 +1891,7 @@
    },
    "template": "heart+ice-pillars+gift",
    "metrics": {
-    "botWinRate": 1.0,
+    "botWinRate": 0.67,
     "botMedianMoves": 12,
     "simulatedRuns": 24
    }
@@ -1932,8 +1932,8 @@
    },
    "template": "courtyard8+wind-right+webs-lower",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 3,
+    "botWinRate": 0.92,
+    "botMedianMoves": 8,
     "simulatedRuns": 24
    }
   },
@@ -1943,7 +1943,7 @@
    "chapter": 11,
    "indexInChapter": 45,
    "colors": 5,
-   "moves": 25,
+   "moves": 26,
    "difficulty": 0.596,
    "tier": "HARD",
    "stages": [
@@ -1976,8 +1976,8 @@
    },
    "template": "courtyard7+vault+crates-upper",
    "metrics": {
-    "botWinRate": 0.92,
-    "botMedianMoves": 20,
+    "botWinRate": 1.0,
+    "botMedianMoves": 18,
     "simulatedRuns": 24
    }
   },
@@ -1987,7 +1987,7 @@
    "chapter": 11,
    "indexInChapter": 46,
    "colors": 5,
-   "moves": 33,
+   "moves": 30,
    "difficulty": 0.53,
    "tier": "NORMAL",
    "stages": [
@@ -2021,8 +2021,8 @@
    },
    "template": "courtyard7+wind-left+crates-border",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 23,
+    "botWinRate": 0.58,
+    "botMedianMoves": 22,
     "simulatedRuns": 24
    }
   },
@@ -2032,7 +2032,7 @@
    "chapter": 11,
    "indexInChapter": 47,
    "colors": 5,
-   "moves": 28,
+   "moves": 34,
    "difficulty": 0.605,
    "tier": "HARD",
    "stages": [
@@ -2065,8 +2065,8 @@
    },
    "template": "courtyard8+crates-border+ice-stripes+gift",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 22,
+    "botWinRate": 0.83,
+    "botMedianMoves": 25,
     "simulatedRuns": 24
    }
   },
@@ -2076,7 +2076,7 @@
    "chapter": 11,
    "indexInChapter": 48,
    "colors": 5,
-   "moves": 28,
+   "moves": 32,
    "difficulty": 0.61,
    "tier": "HARD",
    "stages": [
@@ -2106,8 +2106,8 @@
    },
    "template": "plaza9+crates-border",
    "metrics": {
-    "botWinRate": 1.0,
-    "botMedianMoves": 23,
+    "botWinRate": 0.92,
+    "botMedianMoves": 26,
     "simulatedRuns": 24
    }
   },
@@ -2117,7 +2117,7 @@
    "chapter": 11,
    "indexInChapter": 49,
    "colors": 5,
-   "moves": 18,
+   "moves": 27,
    "difficulty": 0.615,
    "tier": "HARD",
    "stages": [
@@ -2147,8 +2147,8 @@
    },
    "template": "fan+wind-left+crates-lower",
    "metrics": {
-    "botWinRate": 0.58,
-    "botMedianMoves": 13,
+    "botWinRate": 0.83,
+    "botMedianMoves": 18,
     "simulatedRuns": 24
    }
   },
@@ -2158,7 +2158,7 @@
    "chapter": 11,
    "indexInChapter": 50,
    "colors": 5,
-   "moves": 17,
+   "moves": 18,
    "difficulty": 0.74,
    "tier": "HARD",
    "stages": [
@@ -2189,8 +2189,8 @@
    },
    "template": "ring+wind-up+crates-lower",
    "metrics": {
-    "botWinRate": 0.83,
-    "botMedianMoves": 12,
+    "botWinRate": 0.75,
+    "botMedianMoves": 13,
     "simulatedRuns": 24
    }
   }

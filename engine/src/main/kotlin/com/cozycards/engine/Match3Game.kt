@@ -130,12 +130,15 @@ class Match3Game(val spec: GameSpec, seed: Long) {
     fun canSwap(a: Pos, b: Pos): Boolean =
         board.inBounds(a) && board.inBounds(b) && a.isAdjacent(b) && board[a].isMovable && board[b].isMovable
 
-    /** Whether swapping a and b is a legal player move (it creates a match or a combo). */
+    /**
+     * Whether swapping a and b is a legal player move: it creates a match, combines specials, or
+     * moves a special (specials fire wherever they are moved to, even without a match).
+     */
     fun isValidMove(a: Pos, b: Pos): Boolean {
         if (!canSwap(a, b)) return false
         val pa = board[a].piece!!
         val pb = board[b].piece!!
-        if (comboKind(pa, pb)) return true
+        if (comboKind(pa, pb) || pa.isSpecial || pb.isSpecial) return true
         swapPieces(a, b)
         val ok = MatchFinder.hasMatchAt(board, a) || MatchFinder.hasMatchAt(board, b)
         swapPieces(a, b)
@@ -144,10 +147,13 @@ class Match3Game(val spec: GameSpec, seed: Long) {
 
     private fun comboKind(pa: Piece, pb: Piece): Boolean {
         if (pa.isSpecial && pb.isSpecial) return true
-        if (pa.special == Special.RAINBOW && pb.kind != PieceKind.DROP) return true
-        if (pb.special == Special.RAINBOW && pa.kind != PieceKind.DROP) return true
+        if (pa.special == Special.RAINBOW && pb.isColored && pb.kind != PieceKind.DROP) return true
+        if (pb.special == Special.RAINBOW && pa.isColored && pa.kind != PieceKind.DROP) return true
         return false
     }
+
+    /** A special that can be fired by a double tap. */
+    fun canActivate(p: Pos): Boolean = board.inBounds(p) && board[p].isMovable && board[p].piece!!.isSpecial
 
     fun validMoves(): List<Pair<Pos, Pos>> {
         val out = mutableListOf<Pair<Pos, Pos>>()
@@ -159,6 +165,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
     }
 
     fun hasPossibleMove(): Boolean {
+        if (board.positions.any { canActivate(it) }) return true
         for (p in board.positions) for (d in listOf(Dir.RIGHT, Dir.DOWN)) {
             if (isValidMove(p, p + d)) return true
         }
@@ -201,6 +208,17 @@ class Match3Game(val spec: GameSpec, seed: Long) {
             r.combo(a, board[a].piece!!, b, board[b].piece!!)
             commitClear(r, steps, events, cascade = 1)
             cascade(steps, events, emptyList(), startCascade = 1)
+        } else if (pa.isSpecial || pb.isSpecial) {
+            // A single special fires where it was moved to; the other piece may still match.
+            swapPieces(a, b)
+            if (recordSteps) steps += Step(StepKind.SWAP, board.copy())
+            consumeMove()
+            val firePos = if (pa.isSpecial) b else a
+            val r = resolver()
+            r.hit(firePos, HitKind.BLAST)
+            r.drain()
+            commitClear(r, steps, events, cascade = 1)
+            cascade(steps, events, emptyList(), startCascade = 1)
         } else {
             swapPieces(a, b)
             if (MatchFinder.findMatches(board).isEmpty()) {
@@ -211,6 +229,22 @@ class Match3Game(val spec: GameSpec, seed: Long) {
             consumeMove()
             cascade(steps, events, listOf(b, a), startCascade = 0, settleFirst = false)
         }
+        afterPlayerMove(steps, events)
+        return MoveResult.Applied(steps, events, status)
+    }
+
+    /** Double tap on a special: fires it in place. Costs a move. */
+    fun activate(p: Pos): MoveResult {
+        if (status != GameStatus.PLAYING) return MoveResult.Invalid("Game is over")
+        if (!canActivate(p)) return MoveResult.Invalid("Not a special piece")
+        val steps = mutableListOf<Step>()
+        val events = mutableListOf<GameEvent>()
+        consumeMove()
+        val r = resolver()
+        r.hit(p, HitKind.BLAST)
+        r.drain()
+        commitClear(r, steps, events, cascade = 1)
+        cascade(steps, events, emptyList(), startCascade = 1)
         afterPlayerMove(steps, events)
         return MoveResult.Applied(steps, events, status)
     }
@@ -528,7 +562,7 @@ class Match3Game(val spec: GameSpec, seed: Long) {
             if (candidates.isEmpty()) break
             val p = rng.pick(candidates)
             val old = board[p].piece!!
-            board[p].piece = old.copy(special = s, color = if (s == Special.RAINBOW) -1 else old.color)
+            board[p].piece = old.copy(special = s, color = -1)
             used += p
         }
         return used

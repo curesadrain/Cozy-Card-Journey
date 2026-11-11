@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.2.0 — 2026-11-11
+Feedback round after device testing.
+
+### Changed
+* **Specials are colourless and fire on their own**: swiping a rocket/bomb/plane/rainbow in any
+  direction fires it at the cell it was moved to (no match needed); swiping it towards the edge or a
+  blocked cell, or double-tapping it, fires it in place. Specials no longer take part in colour
+  matches, so the colour badge on them is gone. Levels were re-calibrated for the new rules.
+* **Unified design system** (`ui/common/Design.kt`): cream plates with gold rims, glossy sprite buttons
+  (primary pink, secondary lavender, neutral cream), selectable chips, gold-rimmed medallions and
+  badges; used by panels, dialogs, filters, profile tabs, bottom navigation, booster bars.
+* **Map**: bottom-up winding path over a continuous chapter illustration, glossy level medallions
+  (current level pulsing with a "Play" marker, cleared levels gold with stars, locked levels muted),
+  reward chests next to milestone levels, chapter gates with text on an opaque plate.
+* Booster buttons reuse the rocket/bomb/rainbow art; the remaining tool icons are placeholders until
+  dedicated art is supplied.
+
+### Tests
+* engine 60 (+5 activation rules) · levels 21 · game 36 · app 11 — 128 total, all passing.
+
 ## 1.1.0 — 2026-11-11
 Visual and game-feel overhaul.
 
