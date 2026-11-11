@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -80,8 +81,7 @@ fun CollectionScreen(onCard: (String) -> Unit) {
     var album by remember { mutableStateOf<String?>(null) }
     var favorites by remember { mutableStateOf(false) }
     var sort by remember { mutableStateOf(CardSort.ALBUM) }
-    var sortMenu by remember { mutableStateOf(false) }
-    var albumMenu by remember { mutableStateOf(false) }
+    var searchOpen by remember { mutableStateOf(false) }
     var recycleConfirm by remember { mutableStateOf(false) }
     var info by remember { mutableStateOf<String?>(null) }
 
@@ -133,7 +133,7 @@ fun CollectionScreen(onCard: (String) -> Unit) {
         }
         LazyVerticalGrid(
             columns = GridCells.Adaptive(104.dp),
-            contentPadding = PaddingValues(12.dp),
+            contentPadding = com.cozycards.app.ui.common.screenPadding(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier.weight(1f),
@@ -153,39 +153,33 @@ fun CollectionScreen(onCard: (String) -> Unit) {
                     }
                     Text("Completing an album gives ${Economy.ALBUM_COMPLETE_COINS} coins + ${Economy.ALBUM_COMPLETE_TOKENS} tokens; a full collection gives a Legendary box.", style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft, modifier = Modifier.padding(top = 4.dp))
                     Spacer(Modifier.height(8.dp))
-                    OutlinedTextField(
-                        value = query, onValueChange = { query = it }, singleLine = true,
-                        leadingIcon = { Icon(Icons.Rounded.Search, null) },
-                        placeholder = { Text("Search cards") },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(50),
-                        colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
-                            focusedContainerColor = Palette.CreamPlate, unfocusedContainerColor = Palette.CreamPlate,
-                            focusedBorderColor = Palette.GoldDark, unfocusedBorderColor = Palette.GoldLight,
-                        ),
-                    )
-                    Row(Modifier.horizontalScroll(rememberScrollState()).padding(vertical = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        CozyChip(rarity == null, { rarity = null }, { Text("Any rarity") })
-                        Rarity.entries.forEach { r -> CozyChip(rarity == r, { rarity = if (rarity == r) null else r }, { Text(r.label) }) }
-                    }
-                    Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        OwnedFilter.entries.forEach { f -> CozyChip(owned == f, { owned = f }, { Text(f.label) }) }
-                        CozyChip(favorites, { favorites = !favorites }, { Text("Favourites") }, leadingIcon = { Icon(Icons.Rounded.Favorite, null) })
-                    }
-                    Row(Modifier.padding(top = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        Box {
-                            CozyChip(album != null, { albumMenu = true }, { Text(album?.let { id -> collection.albums.first { it.id == id }.name } ?: "All series") })
-                            DropdownMenu(albumMenu, { albumMenu = false }) {
-                                DropdownMenuItem({ Text("All series") }, { album = null; albumMenu = false })
-                                collection.albums.forEach { a -> DropdownMenuItem({ Text(a.name) }, { album = a.id; albumMenu = false }) }
-                            }
+                    // One compact row: dropdown filters + a search toggle.
+                    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 4.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
+                        com.cozycards.app.ui.common.CozyDropdown(rarity?.label ?: "Rarity", rarity != null,
+                            listOf<Pair<Rarity?, String>>(null to "Any rarity") + Rarity.entries.map { it to it.label }) { rarity = it }
+                        com.cozycards.app.ui.common.CozyDropdown(if (favorites) "Favourites" else if (owned == OwnedFilter.ALL) "Cards" else owned.label, owned != OwnedFilter.ALL || favorites,
+                            OwnedFilter.entries.map { it.name to it.label } + ("FAV" to "Favourites")) { v ->
+                            if (v == "FAV") { favorites = true; owned = OwnedFilter.ALL } else { favorites = false; owned = OwnedFilter.valueOf(v) }
                         }
-                        Box {
-                            CozyChip(sort != CardSort.ALBUM, { sortMenu = true }, { Text("Sort: ${sort.label}") })
-                            DropdownMenu(sortMenu, { sortMenu = false }) {
-                                CardSort.entries.forEach { s -> DropdownMenuItem({ Text(s.label) }, { sort = s; sortMenu = false }) }
-                            }
-                        }
+                        com.cozycards.app.ui.common.CozyDropdown(album?.let { id -> collection.albums.first { it.id == id }.name } ?: "Series", album != null,
+                            listOf<Pair<String?, String>>(null to "All series") + collection.albums.map { it.id to it.name }) { album = it }
+                        com.cozycards.app.ui.common.CozyDropdown(if (sort == CardSort.ALBUM) "Sort" else sort.label, sort != CardSort.ALBUM,
+                            CardSort.entries.map { it to it.label }) { sort = it }
+                        com.cozycards.app.ui.common.CozyChip(searchOpen || query.isNotBlank(), { searchOpen = !searchOpen; if (!searchOpen) query = "" },
+                            { Icon(Icons.Rounded.Search, "Search", Modifier.size(18.dp)) })
+                    }
+                    if (searchOpen) {
+                        OutlinedTextField(
+                            value = query, onValueChange = { query = it }, singleLine = true,
+                            placeholder = { Text("Search cards") },
+                            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+                            shape = RoundedCornerShape(50),
+                            colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                                focusedContainerColor = Palette.CreamPlate, unfocusedContainerColor = Palette.CreamPlate,
+                                focusedBorderColor = Palette.GoldDark, unfocusedBorderColor = Palette.GoldLight,
+                            ),
+                        )
                     }
                     if (safeTokens > 0) {
                         Spacer(Modifier.height(6.dp))
@@ -217,7 +211,11 @@ fun CollectionScreen(onCard: (String) -> Unit) {
 @Composable
 private fun CollectionTab(c: CollectionDef, owned: Int, total: Int, selected: Boolean, onClick: () -> Unit) {
     val accent = Color(android.graphics.Color.parseColor(c.accentColor))
-    Panel(Modifier.clickable(onClick = onClick), color = if (selected) accent.copy(alpha = 0.22f) else Color.White) {
+    // No ripple: the shape is rounded and the selected state is shown by the plate itself.
+    Panel(
+        Modifier.clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null, onClick = onClick),
+        color = if (selected) Color(0xFFFFE3EE) else Palette.CreamPlate,
+    ) {
         Column(Modifier.padding(horizontal = 14.dp, vertical = 10.dp).width(120.dp)) {
             Text(c.name, style = MaterialTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Spacer(Modifier.height(4.dp))

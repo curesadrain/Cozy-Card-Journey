@@ -57,6 +57,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.drawscope.scale
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
@@ -140,13 +142,34 @@ fun MapScreen(onPlay: (String, Set<BoosterType>) -> Unit, onOpenProfile: () -> U
     val transition = rememberInfiniteTransition(label = "map")
     val t by transition.animateFloat(0f, 1f, infiniteRepeatable(tween(1600, easing = LinearEasing), RepeatMode.Restart), label = "t")
 
+    val gateY = remember { androidx.compose.runtime.mutableStateMapOf<Int, Float>() }
+    val screenH = with(LocalDensity.current) { androidx.compose.ui.platform.LocalConfiguration.current.screenHeightDp.dp.toPx() }
+    // Which chapter art is behind the path, and how far the next chapter has faded in.
+    val scene by remember {
+        androidx.compose.runtime.derivedStateOf {
+            val visible = listState.layoutInfo.visibleItemsInfo.map { rows[it.index] }
+            val gate = visible.filterIsInstance<MapRow.Gate>().firstOrNull { it.chapter > 1 }
+            if (gate != null) {
+                val y = gateY[gate.chapter] ?: (screenH / 2)
+                Triple(gate.chapter - 1, gate.chapter, (1f - y / screenH).coerceIn(0f, 1f))
+            } else {
+                val ch = visible.firstOrNull()?.chapter ?: ((player.currentLevel - 1) / Chapters.LEVELS_PER_CHAPTER + 1)
+                Triple(ch, ch, 0f)
+            }
+        }
+    }
     Box(Modifier.fillMaxSize().background(Color(0xFF2A2140))) {
+        val artA = rememberChapterArt(scene.first, false)
+        val artB = rememberChapterArt(scene.second, false)
+        if (artA != null) androidx.compose.foundation.Image(artA, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+        if (artB != null && scene.third > 0f) androidx.compose.foundation.Image(artB, null, Modifier.fillMaxSize(), contentScale = ContentScale.Crop, alpha = scene.third)
+        Box(Modifier.fillMaxSize().background(Color(0x22150E22)))
         BoxWithConstraints(Modifier.fillMaxSize()) {
             val widthPx = constraints.maxWidth.toFloat()
-            LazyColumn(state = listState, reverseLayout = true, contentPadding = PaddingValues(top = 90.dp, bottom = 24.dp), modifier = Modifier.fillMaxSize()) {
+            LazyColumn(state = listState, reverseLayout = true, contentPadding = PaddingValues(top = 90.dp, bottom = com.cozycards.app.ui.common.NAV_SPACE), modifier = Modifier.fillMaxSize()) {
                 itemsIndexed(rows, key = { _, r -> if (r is MapRow.Node) "n${r.number}" else "g${r.chapter}" }) { _, row ->
                     when (row) {
-                        is MapRow.Gate -> ChapterGate(Chapters.all[row.chapter - 1], player)
+                        is MapRow.Gate -> ChapterGate(Chapters.all[row.chapter - 1], player) { y -> gateY[row.chapter] = y }
                         is MapRow.Node -> LevelRow(row.number, player, widthPx, t) { n -> service.level(n)?.let { selected = it } }
                     }
                 }
@@ -266,15 +289,14 @@ private fun DrawScope.sceneSlice(img: ImageBitmap?, bottomY: Float, rowH: Float,
 }
 
 @Composable
-private fun ChapterGate(ch: ChapterInfo, player: PlayerState) {
+private fun ChapterGate(ch: ChapterInfo, player: PlayerState, onY: (Float) -> Unit = {}) {
     val art = rememberChapterArt(ch.number, false)
     val thumb = rememberChapterArt(ch.number, true)
     val look = ChapterLooks.of(ch.number)
     val cleared = (ch.firstLevel..ch.lastLevel).count { player.progress[Chapters.levelId(it)]?.firstClearedAt != null }
     val stars = (ch.firstLevel..ch.lastLevel).sumOf { player.progress[Chapters.levelId(it)]?.bestStars ?: 0 }
     val unlocked = player.isUnlocked(ch.firstLevel)
-    Box(Modifier.fillMaxWidth().height(BANNER_H)) {
-        Canvas(Modifier.fillMaxSize()) { sceneSlice(art, 0f, size.height, look.skyTop, look.skyBottom) }
+    Box(Modifier.fillMaxWidth().height(BANNER_H).onGloballyPositioned { onY(it.positionInRoot().y + it.size.height / 2f) }) {
         Panel(Modifier.align(Alignment.Center).padding(horizontal = 18.dp).fillMaxWidth()) {
             Column {
                 // Picture strip on top, text on an opaque cream plate below: always readable.
@@ -325,7 +347,6 @@ private fun LevelRow(number: Int, player: PlayerState, widthPx: Float, t: Float,
     Box(Modifier.fillMaxWidth().height(NODE_H)) {
         Canvas(Modifier.fillMaxSize()) {
             // Scenery continues seamlessly from the chapter gate below.
-            clipRect { sceneSlice(art, bannerH + idxInChapter * rowH, rowH, look.skyTop, look.skyBottom) }
             val cy = size.height / 2
             // Path: smooth curve through this node between the neighbours' midpoints.
             val path = Path().apply {

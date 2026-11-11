@@ -115,7 +115,9 @@ class LevelViewModel(
         val booster = _state.value.activeBooster
         if (booster == BoosterType.SWAP_GLOVE) { useGlove(a, b); return }
         if (booster != null) return
-        // Swiping a special towards the edge or a blocked cell fires it in place.
+        // Moves off the board are simply not a move: nothing happens.
+        if (!state.value.board.inBounds(a) || !state.value.board.inBounds(b)) return
+        // Swiping a special into a blocked cell fires it in place.
         if (game.canActivate(a) && !game.canSwap(a, b)) {
             (game.activate(a) as? MoveResult.Applied)?.let { enqueue(it) }
             return
@@ -123,7 +125,9 @@ class LevelViewModel(
         when (val r = game.swap(a, b)) {
             is MoveResult.Invalid -> {
                 container.audio.play(Sfx.INVALID)
-                _state.update { it.copy(selected = null, wiggle = Wiggle(a, b, ++stepCounter), message = if (r.reason == "No match") null else r.reason) }
+                // Feedback is the wiggle and the sound only; no text for invalid swaps.
+                val movable = game.canSwap(a, b)
+                _state.update { it.copy(selected = null, wiggle = if (movable) Wiggle(a, b, ++stepCounter) else it.wiggle) }
             }
             is MoveResult.Applied -> enqueue(r)
         }

@@ -168,14 +168,7 @@ fun DrawScope.drawStar(c: Offset, r: Float, color: Color) {
 }
 
 @Composable
-fun ProgressBar(progress: Float, modifier: Modifier = Modifier, color: Color = Palette.SakuraDeep) {
-    LinearProgressIndicator(
-        progress = { progress.coerceIn(0f, 1f) },
-        modifier = modifier.height(8.dp).clip(RoundedCornerShape(50)),
-        color = color,
-        trackColor = Color.Black.copy(alpha = 0.08f),
-    )
-}
+fun ProgressBar(progress: Float, modifier: Modifier = Modifier, color: Color = Palette.SakuraDeep) = CozyProgress(progress, modifier, color)
 
 @Composable
 fun RarityBadge(r: Rarity, modifier: Modifier = Modifier) {
@@ -279,30 +272,25 @@ fun DrawScope.drawRainbowGlyph(c: Offset, r: Float) {
     drawCircle(Brush.radialGradient(listOf(Color.White.copy(alpha = 0.9f), Color.Transparent), c - Offset(r * 0.3f, r * 0.3f), r * 0.8f), r, c)
 }
 
+/** Lootbox chest. [lidOpen] adds a burst of light (opening), [glow] a soft aura. */
 @Composable
 fun LootboxArt(tier: LootboxTier, modifier: Modifier = Modifier, lidOpen: Float = 0f, glow: Float = 0f) {
-    val color = when (tier) {
-        LootboxTier.COMMON -> Color(0xFFE7B9C9)
-        LootboxTier.RARE -> Color(0xFF8FB3DE)
-        LootboxTier.EPIC -> Color(0xFFB18AE8)
-        LootboxTier.LEGENDARY -> Color(0xFFF2C94C)
+    val name = when (tier) {
+        LootboxTier.COMMON -> "chest_common"
+        LootboxTier.RARE -> "chest_rare"
+        LootboxTier.EPIC -> "chest_epic"
+        LootboxTier.LEGENDARY -> "chest_legendary"
+    }
+    val aura = when (tier) {
+        LootboxTier.COMMON -> Color(0xFFFFC1D9); LootboxTier.RARE -> Color(0xFF9CC8F0)
+        LootboxTier.EPIC -> Color(0xFFD7B8FF); LootboxTier.LEGENDARY -> Color(0xFFFFE08A)
     }
     Canvas(modifier.aspectRatio(1f)) {
-        val w = size.width
-        if (glow > 0f) drawCircle(Brush.radialGradient(listOf(color.copy(alpha = 0.7f * glow), Color.Transparent)), w * 0.6f)
-        val bodyTop = w * 0.45f
-        drawRoundRect(Brush.verticalGradient(listOf(color, color.copy(red = color.red * 0.75f, green = color.green * 0.75f, blue = color.blue * 0.75f)), bodyTop, w * 0.9f),
-            Offset(w * 0.15f, bodyTop), Size(w * 0.7f, w * 0.42f), androidx.compose.ui.geometry.CornerRadius(w * 0.05f))
-        drawRect(Color.White.copy(alpha = 0.75f), Offset(w * 0.46f, bodyTop), Size(w * 0.08f, w * 0.42f))
-        rotate(-lidOpen * 35f, Offset(w * 0.12f, bodyTop)) {
-            val lidY = bodyTop - w * 0.12f - lidOpen * w * 0.08f
-            drawRoundRect(color, Offset(w * 0.12f, lidY), Size(w * 0.76f, w * 0.14f), androidx.compose.ui.geometry.CornerRadius(w * 0.04f))
-            drawRect(Color.White.copy(alpha = 0.8f), Offset(w * 0.46f, lidY), Size(w * 0.08f, w * 0.14f))
-            // Bow
-            drawOval(Color.White, Offset(w * 0.32f, lidY - w * 0.1f), Size(w * 0.17f, w * 0.12f))
-            drawOval(Color.White, Offset(w * 0.51f, lidY - w * 0.1f), Size(w * 0.17f, w * 0.12f))
-        }
-        drawStar(Offset(w * 0.5f, bodyTop + w * 0.21f), w * 0.07f, Color.White.copy(alpha = 0.9f))
+        val s = size.minDimension
+        val light = maxOf(glow, lidOpen)
+        if (light > 0f) drawImageCentered(com.cozycards.app.ui.gfx.Sprites["glow"], center, s * (1.2f + 0.6f * lidOpen), light, aura, true)
+        drawImageCentered(com.cozycards.app.ui.gfx.Sprites[name], center + Offset(0f, -s * 0.06f * lidOpen), s * (0.95f + 0.1f * lidOpen), 1f, null, false)
+        if (lidOpen > 0f) drawImageCentered(com.cozycards.app.ui.gfx.Sprites["sparkle"], center - Offset(0f, s * 0.2f), s * 0.9f * lidOpen, lidOpen, Color.White, true)
     }
 }
 

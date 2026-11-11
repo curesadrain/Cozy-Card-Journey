@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -196,30 +197,56 @@ fun GoldBadge(n: Int, modifier: Modifier = Modifier, enabled: Boolean = true) {
     }
 }
 
-/**
- * Booster artwork. Boosters that match a game piece reuse that piece's art so they read the same
- * on the board and in menus; the remaining tools fall back to drawn icons until dedicated art exists.
- */
+/** Booster artwork: piece boosters reuse the board art, tools have their own icons. */
 @Composable
 fun BoosterArt(type: BoosterType, modifier: Modifier = Modifier) {
-    when (type) {
-        BoosterType.ROCKET, BoosterType.BOMB, BoosterType.RAINBOW, BoosterType.ROCKET_BOMB -> androidx.compose.foundation.Canvas(modifier) {
-            val s = size.minDimension
-            when (type) {
-                BoosterType.ROCKET -> drawImageCentered(Sprites["rocket_h"], center, s, 1f, null, false)
-                BoosterType.BOMB -> drawImageCentered(Sprites["bomb"], center, s, 1f, null, false)
-                BoosterType.RAINBOW -> drawImageCentered(Sprites["rainbow"], center, s, 1f, null, false)
-                else -> {
-                    drawImageCentered(Sprites["rocket_v"], center - Offset(s * 0.18f, 0f), s * 0.8f, 1f, null, false)
-                    drawImageCentered(Sprites["bomb"], center + Offset(s * 0.2f, s * 0.12f), s * 0.7f, 1f, null, false)
-                }
+    androidx.compose.foundation.Canvas(modifier) {
+        val s = size.minDimension
+        when (type) {
+            BoosterType.ROCKET -> drawImageCentered(Sprites["rocket_h"], center, s, 1f, null, false)
+            BoosterType.BOMB -> drawImageCentered(Sprites["bomb"], center, s, 1f, null, false)
+            BoosterType.RAINBOW -> drawImageCentered(Sprites["rainbow"], center, s, 1f, null, false)
+            BoosterType.ROCKET_BOMB -> {
+                drawImageCentered(Sprites["rocket_v"], center - Offset(s * 0.18f, 0f), s * 0.8f, 1f, null, false)
+                drawImageCentered(Sprites["bomb"], center + Offset(s * 0.2f, s * 0.12f), s * 0.7f, 1f, null, false)
+            }
+            BoosterType.EXTRA_MOVES -> drawImageCentered(Sprites["icon_moves"], center, s * 1.1f, 1f, null, false)
+            BoosterType.HAMMER -> drawImageCentered(Sprites["icon_hammer"], center, s * 1.1f, 1f, null, false)
+            BoosterType.SUPER_HAMMER -> drawImageCentered(Sprites["icon_super_hammer"], center, s * 1.15f, 1f, null, false)
+            BoosterType.SWAP_GLOVE -> drawImageCentered(Sprites["icon_glove"], center, s * 1.1f, 1f, null, false)
+            BoosterType.SHUFFLE -> drawImageCentered(Sprites["icon_shuffle"], center, s * 1.05f, 1f, null, false)
+            BoosterType.AREA_CLEAR -> drawImageCentered(Sprites["icon_area"], center, s * 1.0f, 1f, null, false)
+        }
+    }
+}
+
+/** Progress bar in the shared style (no Material track gap / end dot). */
+@Composable
+fun CozyProgress(progress: Float, modifier: Modifier = Modifier, color: Color = Palette.SakuraDeep) {
+    androidx.compose.foundation.Canvas(modifier.height(9.dp)) {
+        val r = androidx.compose.ui.geometry.CornerRadius(size.height / 2)
+        drawRoundRect(Color(0x22000000), cornerRadius = r)
+        val w = size.width * progress.coerceIn(0f, 1f)
+        if (w > 0f) drawRoundRect(
+            Brush.verticalGradient(listOf(color.copy(alpha = 0.75f), color)),
+            size = androidx.compose.ui.geometry.Size(w.coerceAtLeast(size.height), size.height), cornerRadius = r,
+        )
+        if (w > size.height) drawRoundRect(Color(0x55FFFFFF), topLeft = Offset(size.height * 0.4f, size.height * 0.15f),
+            size = androidx.compose.ui.geometry.Size((w - size.height * 0.8f).coerceAtLeast(0f), size.height * 0.3f), cornerRadius = r)
+    }
+}
+
+/** Compact one-line dropdown in the chip style. */
+@Composable
+fun <T> CozyDropdown(label: String, active: Boolean, options: List<Pair<T, String>>, onPick: (T) -> Unit) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    Box {
+        CozyChip(active, { open = true }, { Text("$label ▾", maxLines = 1) })
+        androidx.compose.material3.DropdownMenu(open, { open = false }, containerColor = Palette.Paper) {
+            options.forEach { (v, text) ->
+                androidx.compose.material3.DropdownMenuItem({ Text(text, color = Palette.Ink) }, { onPick(v); open = false })
             }
         }
-        BoosterType.EXTRA_MOVES -> Box(modifier, contentAlignment = Alignment.Center) {
-            Text("+5", fontSize = 20.sp, fontWeight = FontWeight.Black, color = Color(0xFF3F8F4A),
-                style = MaterialTheme.typography.titleLarge.copy(shadow = Shadow(Color.White, Offset(0f, 2f), 2f)))
-        }
-        else -> BoosterIcon(type, modifier)
     }
 }
 
@@ -235,3 +262,22 @@ fun Gap(h: Dp = 8.dp) = Spacer(Modifier.height(h))
 @Suppress("unused")
 @Composable
 private fun DesignPreviewColumn(content: @Composable () -> Unit) = Column(Modifier.fillMaxWidth()) { content() }
+
+/** Space screens leave at the bottom of scrolling content for the floating navigation buttons. */
+val NAV_SPACE = 124.dp
+
+fun screenPadding(h: Dp = 12.dp, top: Dp = 12.dp) = PaddingValues(start = h, end = h, top = top, bottom = NAV_SPACE)
+
+/** Full-screen overlays hide the floating navigation while they are shown. */
+object NavBarState {
+    var hiddenBy by androidx.compose.runtime.mutableIntStateOf(0)
+    val visible get() = hiddenBy == 0
+}
+
+@Composable
+fun HideNavBar() {
+    androidx.compose.runtime.DisposableEffect(Unit) {
+        NavBarState.hiddenBy++
+        onDispose { NavBarState.hiddenBy-- }
+    }
+}

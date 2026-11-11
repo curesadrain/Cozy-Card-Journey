@@ -84,7 +84,7 @@ private fun ProgressTab() {
     val container = LocalContext.current.container
     val player by container.repository.state.collectAsState()
     val catalog = container.content.catalog
-    LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         item {
             Panel(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(14.dp)) {
@@ -153,7 +153,7 @@ private fun QuestsTab() {
     }
     val today = TimeMath.localDate(TimeMath.dayIndex(System.currentTimeMillis(), java.util.TimeZone.getDefault().getOffset(System.currentTimeMillis()).toLong()))
     val events = EventCalendar.active(today)
-    LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         item {
             Panel(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(14.dp)) {
@@ -220,7 +220,7 @@ private fun AwardsTab() {
     val scope = rememberCoroutineScope()
     var list by remember { mutableStateOf<List<GameService.AchievementStatus>>(emptyList()) }
     LaunchedEffect(player) { list = runCatching { service.achievements() }.getOrDefault(emptyList()) }
-    LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         item { Text("${list.count { it.claimed }} / ${list.size} achievements", style = MaterialTheme.typography.titleMedium) }
         items(list, key = { it.def.id }) { a ->
             Panel(Modifier.fillMaxWidth()) {
@@ -262,7 +262,7 @@ private fun SettingsTab() {
         }
     }
 
-    LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+    LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
         item {
             Panel(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(14.dp)) {

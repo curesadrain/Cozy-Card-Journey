@@ -66,7 +66,7 @@ fun ShopScreen() {
         }
         Text("Everything here is bought with coins or tokens earned in play. There are no real-money purchases.",
             style = MaterialTheme.typography.bodySmall, color = Palette.InkSoft, modifier = Modifier.padding(horizontal = 14.dp))
-        LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             item { SectionTitle("Lootboxes") { CozyButton("Odds", { odds = true }, small = true, color = Palette.Lavender, textColor = Palette.Ink) } }
             items(items.filterIsInstance<ShopItem.Box>()) { item ->
                 ShopRow(item, player, onBuy = { confirm = item }) {
@@ -76,7 +76,7 @@ fun ShopScreen() {
             item { SectionTitle("Boosters") }
             items(items.filterIsInstance<ShopItem.Booster>()) { item ->
                 ShopRow(item, player, onBuy = { confirm = item }, owned = "You have ${player.boosters[item.type] ?: 0}") {
-                    BoosterIcon(item.type, Modifier.size(44.dp))
+                    com.cozycards.app.ui.common.BoosterArt(item.type, Modifier.size(44.dp))
                 }
             }
             item { SectionTitle("Cosmetics") }

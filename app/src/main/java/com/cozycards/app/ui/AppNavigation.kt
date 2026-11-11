@@ -57,6 +57,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.cozycards.app.StartupState
+import com.cozycards.app.ui.gfx.drawImageCentered
 import com.cozycards.app.audio.Sfx
 import com.cozycards.app.container
 import com.cozycards.app.ui.collection.CardDetailScreen
@@ -71,12 +72,12 @@ import com.cozycards.app.ui.shop.ShopScreen
 import com.cozycards.app.ui.theme.Palette
 import com.cozycards.game.economy.BoosterType
 
-private enum class Tab(val route: String, val label: String, val icon: ImageVector) {
-    MAP("map", "Map", Icons.Rounded.Map),
-    COLLECTION("collection", "Collection", Icons.Rounded.Collections),
-    LOOT("lootboxes", "Lootboxes", Icons.Rounded.CardGiftcard),
-    SHOP("shop", "Shop", Icons.Rounded.Storefront),
-    PROFILE("profile", "Profile", Icons.Rounded.Person),
+private enum class Tab(val route: String, val label: String, val sprite: String) {
+    MAP("map", "Map", "nav_map"),
+    COLLECTION("collection", "Collection", "nav_collection"),
+    LOOT("lootboxes", "Lootboxes", "nav_loot"),
+    SHOP("shop", "Shop", "nav_shop"),
+    PROFILE("profile", "Profile", "nav_profile"),
 }
 
 @Composable
@@ -123,15 +124,13 @@ private fun MainScaffold() {
     val showBar = Tab.entries.any { it.route == route }
     LaunchedEffect(route) { if (route != null) container.audio.play(Sfx.SWISH) }
 
-    Scaffold(
-        containerColor = Palette.Cream,
-        bottomBar = {
+    Box(Modifier.fillMaxSize().background(Palette.Cream)) {
+        val navBar: @Composable () -> Unit = {
             if (showBar) CozyNavBar(route, player.lootboxes.size) { nav.navigateTab(it) }
-        },
-    ) { padding ->
+        }
         NavHost(
             nav, startDestination = Tab.MAP.route,
-            modifier = Modifier.padding(bottom = if (showBar) padding.calculateBottomPadding() else 0.dp).background(Palette.Cream),
+            modifier = Modifier.fillMaxSize(),
             enterTransition = { fadeIn() }, exitTransition = { fadeOut() },
         ) {
             composable(Tab.MAP.route) {
@@ -162,6 +161,10 @@ private fun MainScaffold() {
                 )
             }
         }
+        androidx.compose.animation.AnimatedVisibility(
+            com.cozycards.app.ui.common.NavBarState.visible, Modifier.align(Alignment.BottomCenter),
+            enter = androidx.compose.animation.slideInVertically { it }, exit = androidx.compose.animation.slideOutVertically { it },
+        ) { navBar() }
     }
 }
 
@@ -177,31 +180,40 @@ private fun NavHostController.navigateTab(route: String) {
 
 @Composable
 private fun CozyNavBar(route: String?, boxes: Int, onTab: (String) -> Unit) {
-    Box(
-        Modifier.fillMaxWidth()
-            .background(androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0xFFFFFAF2), Color(0xFFF6E8D6))))
-            .drawBehind { drawRect(Palette.GoldRim, size = androidx.compose.ui.geometry.Size(size.width, 3.dp.toPx())) }
-            .navigationBarsPadding()
-            .padding(top = 6.dp, bottom = 4.dp),
+    Row(
+        Modifier.fillMaxWidth().navigationBarsPadding().padding(bottom = 4.dp, top = 4.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.Bottom,
     ) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            Tab.entries.forEach { tab ->
-                val selected = route == tab.route
-                val lift by androidx.compose.animation.core.animateFloatAsState(if (selected) 1.15f else 1f, label = "tab")
-                Column(
-                    Modifier.weight(1f).clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onTab(tab.route) },
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Box(contentAlignment = Alignment.Center) {
-                        com.cozycards.app.ui.common.Medallion(
-                            if (selected) 46.dp else 40.dp, Modifier.scale(lift), rim = if (selected) 3.dp else 2.dp,
-                            fill = if (selected) androidx.compose.ui.graphics.Brush.verticalGradient(listOf(Color(0xFFFF8FB8), Color(0xFFD9467C)))
-                            else androidx.compose.ui.graphics.Brush.radialGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF2E4D2))),
-                        ) { Icon(tab.icon, tab.label, tint = if (selected) Color.White else Palette.InkSoft, modifier = Modifier.size(22.dp)) }
-                        if (tab == Tab.LOOT && boxes > 0) com.cozycards.app.ui.common.GoldBadge(boxes, Modifier.align(Alignment.TopEnd).offset(x = 10.dp, y = (-4).dp))
+        Tab.entries.forEach { tab ->
+            val selected = route == tab.route
+            val lift by androidx.compose.animation.core.animateDpAsState(if (selected) (-8).dp else 0.dp, label = "lift")
+            val size by androidx.compose.animation.core.animateDpAsState(if (selected) 62.dp else 52.dp, label = "size")
+            Column(
+                Modifier.weight(1f).clickable(interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }, indication = null) { onTab(tab.route) },
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Box(Modifier.offset(y = lift), contentAlignment = Alignment.Center) {
+                    com.cozycards.app.ui.common.Medallion(
+                        size, rim = if (selected) 3.dp else 2.5.dp,
+                        fill = if (selected) androidx.compose.ui.graphics.Brush.radialGradient(listOf(Color(0xFFFFD0E2), Color(0xFFF07AA6)))
+                        else androidx.compose.ui.graphics.Brush.radialGradient(listOf(Color(0xFFFFFCF6), Color(0xFFF2E4D2))),
+                    ) {
+                        androidx.compose.foundation.Canvas(Modifier.size(size * 0.72f)) {
+                            drawImageCentered(com.cozycards.app.ui.gfx.Sprites[tab.sprite], center, this.size.minDimension, 1f, null, false)
+                        }
                     }
-                    Text(tab.label, style = MaterialTheme.typography.labelSmall, color = if (selected) Palette.SakuraDeep else Palette.InkSoft, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold)
+                    if (tab == Tab.LOOT && boxes > 0) com.cozycards.app.ui.common.GoldBadge(boxes, Modifier.align(Alignment.TopEnd).offset(x = 6.dp, y = (-2).dp))
                 }
+                Text(
+                    tab.label, maxLines = 1,
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontWeight = androidx.compose.ui.text.font.FontWeight.ExtraBold,
+                        shadow = androidx.compose.ui.graphics.Shadow(Color.White, androidx.compose.ui.geometry.Offset.Zero, 6f),
+                    ),
+                    color = if (selected) Palette.SakuraDeep else Palette.Ink,
+                    modifier = Modifier.offset(y = lift / 2),
+                )
             }
         }
     }

@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 — 2026-11-11
+Second feedback round.
+
+### Changed
+* New icon art: booster tools, navigation tabs and four lootbox chests (sheet 7), used on the board,
+  pre-level picker, shop, map milestones, win screen and lootbox opening.
+* Swipes off the board are ignored entirely (no text); invalid swaps only wiggle and play a sound.
+* Floating navigation: no plate behind the buttons; content scrolls underneath; hidden during
+  full-screen overlays (lootbox opening).
+* Map background stays fixed behind the path and cross-fades to the next chapter's art as its gate
+  scrolls through the screen.
+* Lootbox history moved behind a "History" button.
+* Collection: compact one-line dropdown filters (rarity, owned/favourites, series, sort) with a search
+  toggle; fixed the rectangular ripple artefact on the selected collection tab; custom progress bars.
+
 ## 1.2.0 — 2026-11-11
 Feedback round after device testing.
 

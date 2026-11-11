@@ -115,7 +115,7 @@ def sheet(file, keycol, names, size, overrides=None, min_gap=25):
         print(f"  {name:16s} {save(part, name, opts.get('size', size), opts.get('rotate', 0.0), opts.get('square', True), opts.get('pad', 0.04))}")
 
 
-def main():
+def main(only=None):
     os.makedirs(OUT, exist_ok=True)
     os.makedirs(BG_OUT, exist_ok=True)
     print("tiles")
@@ -145,6 +145,12 @@ def main():
     sheet("sheet6_ui_green.jpg", GREEN, ["btn_pink", "btn_lavender", "ui_coin", "ui_token", "ui_panel", "ui_star"], 192, {
         "btn_pink": {"size": 480, "square": False}, "btn_lavender": {"size": 480, "square": False},
         "ui_panel": {"size": 384, "square": False}})
+    print("icons")
+    sheet("sheet7_icons_magenta.jpg", MAGENTA, [
+        "icon_hammer", "icon_super_hammer", "icon_glove", "icon_shuffle",
+        "icon_area", "icon_moves", "nav_map", "nav_collection",
+        "nav_loot", "nav_shop", "nav_profile", "nav_settings",
+        "chest_common", "chest_rare", "chest_epic", "chest_legendary"], 160)
     print("backgrounds")
     for n in range(1, 21):
         im = Image.open(os.path.join(SRC, f"bg_chapter_{n:02d}.jpg")).convert("RGB")

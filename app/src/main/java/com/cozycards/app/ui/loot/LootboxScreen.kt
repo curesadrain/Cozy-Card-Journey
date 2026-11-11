@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -83,6 +85,7 @@ fun LootboxScreen(onCard: (String) -> Unit) {
     val scope = rememberCoroutineScope()
     var opening by remember { mutableStateOf<List<OpenResult>?>(null) }
     var showOdds by remember { mutableStateOf(false) }
+    var showHistory by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<String?>(null) }
     var busy by remember { mutableStateOf(false) }
 
@@ -99,9 +102,11 @@ fun LootboxScreen(onCard: (String) -> Unit) {
     Column(Modifier.fillMaxSize().background(Palette.Cream).statusBarsPadding()) {
         Row(Modifier.fillMaxWidth().padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
             Text("Lootboxes", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.weight(1f))
+            CozyButton("History", { showHistory = true }, small = true, color = Palette.Lavender, enabled = player.recentOpened.isNotEmpty())
+            Spacer(Modifier.width(8.dp))
             CozyButton("Odds", { showOdds = true }, small = true, color = Palette.Lavender, textColor = Palette.Ink)
         }
-        LazyColumn(contentPadding = PaddingValues(12.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        LazyColumn(contentPadding = com.cozycards.app.ui.common.screenPadding(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item {
                 Panel(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(14.dp)) {
@@ -144,29 +149,36 @@ fun LootboxScreen(onCard: (String) -> Unit) {
                     }
                 }
             }
-            if (player.recentOpened.isNotEmpty()) {
-                item { Text("Recently opened", style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 8.dp)) }
-                items(player.recentOpened, key = { "h${it.boxId}" }) { o ->
-                    Panel(Modifier.fillMaxWidth()) {
-                        Column(Modifier.padding(12.dp)) {
-                            Text("${tierName(o.tier)} box · ${o.source}", style = MaterialTheme.typography.labelLarge)
+        }
+    }
+    opening?.let { results -> OpeningOverlay(results, onCard = { opening = null; onCard(it) }, onDone = { opening = null }) }
+    if (showOdds) OddsDialog { showOdds = false }
+    if (showHistory) androidx.compose.ui.window.Dialog(onDismissRequest = { showHistory = false }) {
+        Panel(Modifier.fillMaxWidth()) {
+            Column(Modifier.padding(16.dp)) {
+                Text("Recently opened", style = MaterialTheme.typography.titleLarge, color = Palette.Ink)
+                Spacer(Modifier.height(8.dp))
+                LazyColumn(Modifier.heightIn(max = 460.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(player.recentOpened, key = { "h${it.boxId}" }) { o ->
+                        Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color(0x14000000)).padding(10.dp)) {
+                            Text("${tierName(o.tier)} box · ${o.source}", style = MaterialTheme.typography.labelLarge, color = Palette.Ink)
                             Text(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(Date(o.openedAt)), style = MaterialTheme.typography.labelSmall, color = Palette.InkSoft)
                             Spacer(Modifier.height(4.dp))
                             o.draws.forEach { d ->
                                 val c = container.content.catalog[d.cardId]
-                                Row(Modifier.clickable { onCard(d.cardId) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Row(Modifier.clickable { showHistory = false; onCard(d.cardId) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                                     RarityBadge(d.rarity)
-                                    Text("  ${c?.name ?: d.cardId}" + if (d.isNew) "  · NEW" else "", style = MaterialTheme.typography.bodySmall)
+                                    Text("  ${c?.name ?: d.cardId}" + if (d.isNew) "  · NEW" else "", style = MaterialTheme.typography.bodySmall, color = Palette.Ink)
                                 }
                             }
                         }
                     }
                 }
+                Spacer(Modifier.height(10.dp))
+                CozyButton("Close", { showHistory = false }, Modifier.fillMaxWidth(), color = Palette.Lavender)
             }
         }
     }
-    opening?.let { results -> OpeningOverlay(results, onCard = { opening = null; onCard(it) }, onDone = { opening = null }) }
-    if (showOdds) OddsDialog { showOdds = false }
     error?.let { AlertDialog(onDismissRequest = { error = null }, confirmButton = { TextButton({ error = null }) { Text("OK") } }, text = { Text(it) }) }
 }
 
@@ -201,10 +213,11 @@ fun OddsDialog(onDismiss: () -> Unit) {
 
 /**
  * Opening animation. The cards were already granted atomically; this is presentation only, so
- * closing the app mid-animation never loses anything (results remain in "Recently opened").
+ * closing the app mid-animation never loses anything (results remain in the History).
  */
 @Composable
 private fun OpeningOverlay(results: List<OpenResult>, onCard: (String) -> Unit, onDone: () -> Unit) {
+    com.cozycards.app.ui.common.HideNavBar()
     val container = LocalContext.current.container
     val player by container.repository.state.collectAsState()
     val draws: List<CardDraw> = results.flatMap { it.draws }
